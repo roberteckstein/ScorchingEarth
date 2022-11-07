@@ -14,14 +14,23 @@ import java.awt.event.ItemListener;
 
 public class ScorchTankSettings extends JPanel implements ActionListener, ItemListener {
 
+    //  This is a Swing panel that appears below the playfield. It displays
+    //  the current weapon that is selected, the amount of that weapon that the
+    //  player still has, the current power with adjustment buttons, the current
+    //  angle with adjustment buttons, and the fire button, which is entirely in red.
+
+    //  Reference the game object
     ScorchGame game;
+
+    //  Reference to the current tank object
     ScorchTank currentTank;
 
-    JComboBox artillery;
+    //  Following are Swing components that are used in the panel
+    JComboBox artillery = new JComboBox();
     JLabel amountLabel = new JLabel("Amount: ");
     JLabel amountValue = new JLabel();
 
-    JLabel space1 = new JLabel("    ");
+    JLabel space1 = new JLabel("    ");     //  Currently unused, but is there if you want it
 
     JLabel powerLabel = new JLabel("Power: ");
     JLabel powerValue = new JLabel();
@@ -34,40 +43,43 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
     JButton increaseAngleButton = new JButton("+");
     JButton fireButton = new JButton("Fire");
 
+
     public ScorchTankSettings(ScorchGame game) {
 
+        //  Must call the JPanel superclass constructor
         super();
 
+        //  Set the reference to the current game object
         this.game = game;
 
-        artillery = new JComboBox();
-
-        setLayout(new FlowLayout());
-
+        //  Give a unique red look to the fire button
         fireButton.setBackground(Color.red);
         fireButton.setBorderPainted(false);
         fireButton.setOpaque(true);
 
+        //  Layout the Swing objects using the FlowLayout manager
+        setLayout(new FlowLayout());
 
+        //  Add them in order from left to right
         add(artillery);
 
         add(amountLabel);
         add(amountValue);
-
-       // add(space1);
 
         add(powerLabel);
         add(powerValue);
         add(decreasePowerButton);
         add(increasePowerButton);
 
-      //  add(space2);
-
         add(angleLabel);
         add(angleValue);
         add(decreaseAngleButton);
         add(increaseAngleButton);
         add(fireButton);
+
+        //  Add listeners for each of the Swing components. When the components
+        //  are interacted with (button pressed, combo box selected, the appropriate
+        //  listener methods are called.
 
         artillery.addItemListener(this);
         decreasePowerButton.addActionListener(this);
@@ -77,6 +89,9 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
         fireButton.addActionListener(this);
 
     }
+
+    //  Reset the contents of the combo box based on the current weapon
+    //  count inside the tank object passed in.
 
     public void resetWeapons(ScorchTank tank) {
 
@@ -89,14 +104,15 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
 
     }
 
+    //  Reset the status of the Swing components in the panel based on
+    //  the tank object passed in
+
     public void setStatus(ScorchTank tank) {
 
         currentTank = tank;
 
         //  Reset the contents of the combo box
-        artillery.removeAllItems();
-        for (String k : currentTank.getWeaponsCount().keySet())
-            artillery.addItem(k);
+        resetWeapons(tank);
         artillery.setSelectedItem(currentTank.getSelectedWeapon());
 
         //  Reset the amount that is available
@@ -111,7 +127,8 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        //  This method handles all the button presses
+        //  This method handles all the button presses. First, get
+        //  the angle and power of the current tank
 
         int currentAngle = currentTank.getGunAngle();
         int currentPower = currentTank.getPower();
@@ -168,6 +185,8 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
             double dy = y-(int)(currentPower/10.0 * Math.cos(a)) - y;
 
             int currentNumber = currentTank.getWeaponsCount().get(artillery.getSelectedItem());
+
+            //  Only perform the action if the player has more than 0 of the selected weapon
             if (currentNumber > 0) {
 
                 currentNumber--;
@@ -181,16 +200,24 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
                     game.bullets.add(new ScorchMIRVBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 }
 
+                //  Set the boolean in the game object that the fire button has been pressed.
+                //  At this point, the main thread will start processing animating objects.
+
                 game.waitForPlayerFire = false;
             }
         }
+
+        //  Redraw the status panel
 
         setStatus(currentTank);
     }
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-        //  Reset the amount that is available
+
+        //  This method is called when the combo box has been set to a new item.
+        //  Reset the amount that is available.
+
         currentTank.setSelectedWeapon((String)artillery.getSelectedItem());
         amountValue.setText(""+currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
     }

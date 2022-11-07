@@ -11,12 +11,22 @@ import java.util.ArrayList;
 
 public class ScorchTerrain extends JPanel {
 
+    //  This is a panel that represents the playfield. Maybe it could get a better name.
+    //  That's up to you.
+
     public ScorchGame game;
 
     public int height;
     public int width;
 
+    //  This is a boolean property representing whether there are objects
+    //  animating on the playfield or not.
+
     private boolean animating;
+
+    //  This is a massive array that represents the terrain. Each entry in the
+    //  array is a Color object, which represents an RGB color. Anything other
+    //  than black (0,0,0) is considered terrain.
 
     private Color[][] terrain;
 
@@ -80,7 +90,8 @@ public class ScorchTerrain extends JPanel {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
 
-                //  Set the color and draw a single pixel.
+                //  Copy from the terrain array, set the color, and draw a single pixel.
+
                 graphics.setPaint(terrain[i][j]);
                 graphics.drawLine(i,j,i,j);
 
@@ -94,6 +105,9 @@ public class ScorchTerrain extends JPanel {
 
         Graphics2D graphics = (Graphics2D)g;
 
+        //  If you end up getting a ConcurrentModificationException, look below for
+        //  a way to handle this.
+
         for (ScorchTank t : tanks) {
             if (!t.isDestroyed())
                 t.draw(graphics);
@@ -105,8 +119,15 @@ public class ScorchTerrain extends JPanel {
 
         Graphics2D graphics = (Graphics2D) g;
 
+        //  Clone the array so that we don't get a ConcurrentModificationException
+
         for (ScorchBullet b : (ArrayList<ScorchBullet>)bullets.clone()) {
+
             if (b.isAlive()) {
+
+                //  Bullets move position, so erase and update their position,
+                //  then redraw them.
+
                 b.erase(graphics);
                 b.update(game, this);
                 b.draw(graphics);
@@ -118,7 +139,9 @@ public class ScorchTerrain extends JPanel {
 
         Graphics2D graphics = (Graphics2D) g;
 
-        for (ScorchExplosion e : explosions) {
+        //  Clone the array so that we don't get a ConcurrentModificationException
+
+        for (ScorchExplosion e : (ArrayList<ScorchExplosion>)explosions.clone()) {
             if (e.isAlive()) {
                 e.draw(graphics);
             }
