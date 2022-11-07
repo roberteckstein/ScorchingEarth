@@ -37,6 +37,7 @@ public class ScorchGame implements PropertyChangeListener {
         //  and two interface panels on the top and the bottom.
 
         frame = new JFrame("Scorching Earth");
+        frame.setResizable(false);
         frame.getContentPane().setLayout(new BorderLayout());
 
         status = new ScorchStatus();
