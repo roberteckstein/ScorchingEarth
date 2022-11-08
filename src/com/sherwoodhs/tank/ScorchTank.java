@@ -21,7 +21,7 @@ public class ScorchTank {
     private boolean destroyed = false;
 
     private int playerNumber;
-    private Color playerColor;
+    public Color playerColor;
 
     private int gunAngle = 90;
     private int power;

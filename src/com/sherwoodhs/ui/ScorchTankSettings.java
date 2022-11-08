@@ -53,7 +53,7 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
         this.game = game;
 
         //  Give a unique red look to the fire button
-        fireButton.setBackground(Color.red);
+        fireButton.setBackground(Color.RED);
         fireButton.setBorderPainted(false);
         fireButton.setOpaque(true);
 
@@ -121,6 +121,9 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
         //  Reset the angle and the power
         angleValue.setText(""+currentTank.getGunAngle());
         powerValue.setText(""+currentTank.getPower());
+
+        // changing fireButton color based on current player
+        fireButton.setBackground(currentTank.playerColor);
 
     }
 
