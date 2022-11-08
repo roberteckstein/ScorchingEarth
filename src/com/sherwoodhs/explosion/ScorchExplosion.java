@@ -6,6 +6,9 @@ import java.awt.*;
 
 public class ScorchExplosion {
 
+    //  A simple class to represent an explosion. Extend and override methods if you want to
+    //  make fancier explosions.
+
     private ScorchTerrain terrain;
 
     private boolean alive;
