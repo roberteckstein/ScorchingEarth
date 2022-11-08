@@ -5,6 +5,8 @@ import com.sherwoodhs.tank.ScorchTank;
 import javax.swing.*;
 import java.awt.*;
 
+import static java.lang.Math.abs;
+
 public class ScorchStatus extends JPanel {
 
     //  This is a Swing panel that appears above the playfield. It only displays
@@ -41,8 +43,15 @@ public class ScorchStatus extends JPanel {
         //  to the end of an empty string.
 
         playerNumber.setText(""+t.getPlayerNumber());
-        windValue.setText(""+wind);
 
+        //displays wind at the top
+        //for numbers below 0 I used abs to return a positive int
+        //wind is not actually positive, just displays as positive
+        if(wind < 0) {
+            windValue.setText("" + "<--- "+ abs(wind));
+        } else {
+            windValue.setText("" + wind+" --->");
+        }
     }
 
 }

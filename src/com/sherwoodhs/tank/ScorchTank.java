@@ -54,6 +54,7 @@ public class ScorchTank {
 
     }
 
+
     //  Standard add and remove listener events.
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -94,6 +95,7 @@ public class ScorchTank {
         this.pcs.firePropertyChange("gunAngle", oldValue, this.gunAngle);
     }
 
+
     public int getPower() {
         return power;
     }
@@ -131,6 +133,7 @@ public class ScorchTank {
         this.y = y;
         this.pcs.firePropertyChange("y", oldValue, this.y);
     }
+
 
 
     public String getSelectedWeapon() {
