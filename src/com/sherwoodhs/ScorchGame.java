@@ -38,7 +38,7 @@ public class ScorchGame implements PropertyChangeListener {
     public ArrayList<ScorchExplosion> explosions = new ArrayList<>();
 
     //  This is just initialization data for each player. Change as you see fit.
-    private static Color[] playerColors = {Color.red, Color.blue, Color.yellow, Color.green, Color.pink};
+    private static Color[] playerColors = {Color.red, Color.cyan, Color.yellow, Color.green, Color.pink};
     private static int[] playerPositions = {50, 720, 200, 550, 300};
 
 

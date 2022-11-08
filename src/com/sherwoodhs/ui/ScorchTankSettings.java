@@ -52,6 +52,7 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
         //  Set the reference to the current game object
         this.game = game;
 
+        // Set the visuals of the fire button
         fireButton.setBorderPainted(false);
         fireButton.setFocusPainted(false);
         fireButton.setOpaque(true);
