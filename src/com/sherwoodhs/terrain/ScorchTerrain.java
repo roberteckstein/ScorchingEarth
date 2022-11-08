@@ -234,11 +234,13 @@ public class ScorchTerrain extends JPanel {
         drawBullets(game.bullets, g);
         drawExplosions(game.explosions, g);
 
+        //  Clone to avoid ConcurrentModificationException
         for (ScorchBullet b : (ArrayList<ScorchBullet>)game.bullets.clone()) {
             if (!b.isAlive())
                 game.bullets.remove(b);
         }
 
+        //  Clone to avoid ConcurrentModificationException
         for (ScorchExplosion e : (ArrayList<ScorchExplosion>)game.explosions.clone()) {
             if (!e.isAlive())
                 game.explosions.remove(e);
@@ -250,11 +252,24 @@ public class ScorchTerrain extends JPanel {
         if (game.explosions.size() > 0)
             return true;
 
+        //  If we've gotten this far, then there are no more bullets or explosions
+        //  that are alive. We're safe to perform a collapse of the terrain.
+
         collapseTerrain();
+
+        //  Return false indicating that our animating is complete.
 
         return false;
 
     }
+
+    //  This is a method that essentially blanks out an identical circle of an
+    //  explosion in the terrain data. Note that this is different that the data
+    //  that is actually rendered to the screen, which also contains tanks and
+    //  bullets. Here, we're duplicating a black circle straight into the huge
+    //  array that represents the terrain, which we'll later copy back when it's
+    //  time to redraw the playfield. Best not to mess with this method unless
+    //  you're really feeling adventurous.
 
     public void eraseCircleInTerrain(int x, int y, double r) {
 

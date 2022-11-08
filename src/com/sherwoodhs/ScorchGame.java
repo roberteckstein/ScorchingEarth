@@ -16,20 +16,31 @@ import java.util.ArrayList;
 public class ScorchGame implements PropertyChangeListener {
 
     private JFrame frame;
+    private int currentWind;
+
+    //  These are public because I just don't want to deal with accessors.
+    //  Getters and setters are proper use of object-oriented code, but
+    //  here I just don't feel like passing around singleton references
+    //  via constructors to all these objects. I'll just pass the ScorchGame
+    //  object and get at the terrain, status, and settings panels from there.
 
     public ScorchTerrain terrain;
     public ScorchStatus status;
     public ScorchTankSettings settings;
     public boolean waitForPlayerFire;
 
-    private int currentWind;
+    //  Same thing here-- I'll be referencing these ArrayList's in a number
+    //  of classes, and since I'm not creating APIs that have to do sanity
+    //  checks on setters, I'll just make them public... because I'm lazy.
 
     public ArrayList<ScorchTank> players = new ArrayList<>();
     public ArrayList<ScorchBullet> bullets = new ArrayList<>();
     public ArrayList<ScorchExplosion> explosions = new ArrayList<>();
 
+    //  This is just initialization data for each player. Change as you see fit.
     private static Color[] playerColors = {Color.red, Color.blue, Color.yellow, Color.green, Color.pink};
     private static int[] playerPositions = {50, 720, 200, 550, 300};
+
 
     public ScorchGame(int numberOfPlayers) {
 
@@ -56,6 +67,9 @@ public class ScorchGame implements PropertyChangeListener {
             players.add(t);
         }
 
+        //  Pack the components, which has the effect of "squishing" them together
+        //  as best as possible, then display the frame.
+
         frame.pack();
         frame.setVisible(true);
 
@@ -67,19 +81,6 @@ public class ScorchGame implements PropertyChangeListener {
 
     public void setCurrentWind(int currentWind) {
         this.currentWind = currentWind;
-    }
-
-
-    public void performTerrainCollapse() {
-
-          boolean groundStillMoving = true;
-
-          //  Keep collapsing the terrain until no more pixels move
-          while (groundStillMoving) {
-              groundStillMoving = terrain.collapseTerrain();
-          }
-
-          terrain.repaint();
     }
 
     public void performAnimation() {

@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 public class ScorchBullet {
 
+    //  This is a simple bullet. It's only purpose in life is to fly through the
+    //  playfield until it hits the terrain, at which point it changes alive to
+    //  false and replaces itself with a new ScorchExplosion object.
+
     protected boolean alive;
 
     protected int xPosition;
