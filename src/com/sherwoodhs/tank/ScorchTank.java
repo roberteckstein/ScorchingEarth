@@ -7,6 +7,11 @@ import java.util.HashMap;
 
 public class ScorchTank {
 
+    //  This class represents the players tank, and all the data that goes
+    //  with it. This includes its position, whether it is destroyed, the
+    //  player number that matches to it, the angle, the power, the color
+    //  of the tank, etc.
+
     public static final int WIDTH = 30;
     public static final int HEIGHT = 15;
 
@@ -16,15 +21,19 @@ public class ScorchTank {
     private boolean destroyed = false;
 
     private int playerNumber;
+    public Color playerColor;
+
     private int gunAngle = 90;
-    private double radius = 15.0;
-    private HashMap<String, Integer> weaponsCount;
-
-    private String selectedWeapon;
-
-    private Color playerColor;
     private int power;
 
+    private double radius = 15.0;
+
+    private HashMap<String, Integer> weaponsCount;
+    private String selectedWeapon;
+
+    //  This is a utility class provided by the Swing APIs to enable property change
+    //  listeners and events in your own classes. Look up the Javadocs on this one.
+    //  It makes life much easier.
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public ScorchTank(int playerNumber, int x, int gunAngle, Color playerColor) {
@@ -40,9 +49,12 @@ public class ScorchTank {
         this.weaponsCount.put("Normal Bullet", new Integer(100));
         this.weaponsCount.put("MIRV", new Integer(2));
 
+        //  Set the selected weapon to the first one in the list.
         this.selectedWeapon = (String)weaponsCount.keySet().toArray()[0];
 
     }
+
+    //  Standard add and remove listener events.
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         this.pcs.addPropertyChangeListener(listener);
@@ -63,14 +75,18 @@ public class ScorchTank {
     public int getPlayerNumber() {
         return playerNumber;
     }
+
     public HashMap<String, Integer> getWeaponsCount() {
         return weaponsCount;
     }
 
-
     public int getGunAngle() {
         return gunAngle;
     }
+
+    //  This setter fires off a property change if the value is different. Any
+    //  classes that register as a listener will be notified that this property
+    //  has changed.
 
     public void setGunAngle(int gunAngle) {
         int oldValue = this.gunAngle;
@@ -82,6 +98,10 @@ public class ScorchTank {
         return power;
     }
 
+    //  This setter fires off a property change if the value is different. Any
+    //  classes that register as a listener will be notified that this property
+    //  has changed.
+
     public void setPower(int power) {
         int oldValue = this.power;
         this.power = power;
@@ -92,6 +112,8 @@ public class ScorchTank {
         return x;
     }
 
+    //  Will the X position of a tank ever change? Up to you.
+
     public void setX(int x) {
         this.x = x;
     }
@@ -99,6 +121,10 @@ public class ScorchTank {
     public int getY() {
         return y;
     }
+
+    //  This setter fires off a property change if the value is different. Any
+    //  classes that register as a listener will be notified that this property
+    //  has changed.
 
     public void setY(int y) {
         int oldValue = this.y;
@@ -111,6 +137,10 @@ public class ScorchTank {
         return selectedWeapon;
     }
 
+    //  This setter fires off a property change if the value is different. Any
+    //  classes that register as a listener will be notified that this property
+    //  has changed.
+
     public void setSelectedWeapon(String selectedWeapon) {
         String oldValue = this.selectedWeapon;
         this.selectedWeapon = selectedWeapon;
@@ -122,6 +152,9 @@ public class ScorchTank {
         g.setPaint(playerColor);
         g.fill3DRect(x, y, WIDTH, HEIGHT, true);
         g.setStroke(new BasicStroke(2));
+
+        //  This is standard trigonometric math. Let me know if you don't understand it.
+        //  Or ask your math teacher about radians and sine/cosine.
 
         double angle = Math.toRadians((double)gunAngle-90.0);
         g.drawLine(x+(WIDTH/2), y,
