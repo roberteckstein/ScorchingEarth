@@ -59,6 +59,8 @@ public class ScorchGame implements PropertyChangeListener {
         settings = new ScorchTankSettings(this);
         frame.getContentPane().add(settings, BorderLayout.SOUTH);
 
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
         //  Create each player
         for (int i = 0; i < numberOfPlayers; i++) {
             ScorchTank t = new ScorchTank(i+1, playerPositions[i], 90, playerColors[i]);
