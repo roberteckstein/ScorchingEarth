@@ -6,6 +6,7 @@ import com.sherwoodhs.terrain.ScorchTerrain;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ScorchBullet {
 
@@ -21,6 +22,8 @@ public class ScorchBullet {
 
     protected ScorchGame game;
 
+    private int moveWind = 0;
+
     public ScorchBullet(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
 
         this.xPosition = x;
@@ -29,6 +32,7 @@ public class ScorchBullet {
         this.deltaY = deltaY;
         this.gravity = gravity;
         this.game = game;
+        this.wind = game.getCurrentWind();
 
         alive = true;
 
@@ -72,13 +76,16 @@ public class ScorchBullet {
         //  as well as gravity and wind. Subclasses can call this method as
         //  needed.
 
-        deltaY += (gravity/10);
+        deltaY += (gravity/5);
 
         xPosition += deltaX;
         yPosition += deltaY;
 
-        xPosition += (wind / 5);
 
+        if (moveWind % 4 == 0) {
+            xPosition += (wind / 10);
+        }
+        moveWind++;
         if (xPosition <= 0 || xPosition >= game.terrain.width)
             alive = false;
 
