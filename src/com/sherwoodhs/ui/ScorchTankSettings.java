@@ -44,6 +44,8 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
     JLabel angleValue = new JLabel();
     JButton decreaseAngleButton = new JButton("-");
     JButton increaseAngleButton = new JButton("+");
+    JSlider angleSlider = new JSlider(0, 180, 90);
+
     JButton fireButton = new JButton("Fire");
 
     public ScorchTankSettings(ScorchGame game) {
@@ -71,13 +73,14 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
         add(powerLabel);
         add(powerValue);
         add(decreasePowerButton);
-        //(powerSlider);
+        //add(powerSlider);
         add(increasePowerButton);
 
 
         add(angleLabel);
         add(angleValue);
         add(decreaseAngleButton);
+        //add(angleSlider);
         add(increaseAngleButton);
         add(fireButton);
 
@@ -92,6 +95,7 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
         increaseAngleButton.addActionListener(this);
         fireButton.addActionListener(this);
         powerSlider.addChangeListener(this);
+        angleSlider.addChangeListener(this);
     }
 
     //  Reset the contents of the combo box based on the current weapon
@@ -223,11 +227,16 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
     }
 
 
-    //Power slider listener
+    //Slider listeners
     @Override
     public void stateChanged(ChangeEvent e) {
-        int power = currentTank.getPower();
-        currentTank.setPower(power);
+        if(e.getSource() == powerSlider) {
+            int power = currentTank.getPower();
+            currentTank.setPower(power);
+            } else if(e.getSource() == angleSlider){
+                int angle = currentTank.getGunAngle();
+                currentTank.setGunAngle(angle);
+        }
     }
 
     @Override
