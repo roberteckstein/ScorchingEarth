@@ -62,6 +62,8 @@ public class ScorchGame implements PropertyChangeListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
 
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         //  Create each player
         for (int i = 0; i < numberOfPlayers; i++) {
             ScorchTank t = new ScorchTank(i+1, playerPositions[i], 90, playerColors[i]);
