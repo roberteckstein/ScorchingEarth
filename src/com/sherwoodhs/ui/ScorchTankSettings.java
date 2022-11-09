@@ -117,6 +117,10 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
 
         //  Reset the contents of the combo box
         resetWeapons(tank);
+        drawStatusPanel(tank);
+    }
+
+    public void drawStatusPanel(ScorchTank tank) {
         artillery.setSelectedItem(currentTank.getSelectedWeapon());
 
         //  Reset the amount that is available
@@ -128,7 +132,6 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
 
         // changing fireButton color based on current player
         fireButton.setBackground(currentTank.playerColor);
-
     }
 
     @Override
@@ -216,7 +219,7 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
 
         //  Redraw the status panel
 
-        setStatus(currentTank);
+        drawStatusPanel(currentTank);
     }
 
 
