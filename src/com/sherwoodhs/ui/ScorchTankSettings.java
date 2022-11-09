@@ -6,13 +6,15 @@ import com.sherwoodhs.tank.ScorchTank;
 import com.sherwoodhs.bullet.ScorchBullet;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-public class ScorchTankSettings extends JPanel implements ActionListener, ItemListener {
+public class ScorchTankSettings extends JPanel implements ActionListener, ItemListener, ChangeListener {
 
     //  This is a Swing panel that appears below the playfield. It displays
     //  the current weapon that is selected, the amount of that weapon that the
@@ -36,13 +38,13 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
     JLabel powerValue = new JLabel();
     JButton decreasePowerButton = new JButton("-");
     JButton increasePowerButton = new JButton("+");
+    JSlider powerSlider = new JSlider(0, 100, 50);
 
     JLabel angleLabel = new JLabel("Angle: ");
     JLabel angleValue = new JLabel();
     JButton decreaseAngleButton = new JButton("-");
     JButton increaseAngleButton = new JButton("+");
     JButton fireButton = new JButton("Fire");
-
 
     public ScorchTankSettings(ScorchGame game) {
 
@@ -69,7 +71,9 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
         add(powerLabel);
         add(powerValue);
         add(decreasePowerButton);
+        //(powerSlider);
         add(increasePowerButton);
+
 
         add(angleLabel);
         add(angleValue);
@@ -87,7 +91,7 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
         decreaseAngleButton.addActionListener(this);
         increaseAngleButton.addActionListener(this);
         fireButton.addActionListener(this);
-
+        powerSlider.addChangeListener(this);
     }
 
     //  Reset the contents of the combo box based on the current weapon
@@ -213,6 +217,14 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
         //  Redraw the status panel
 
         setStatus(currentTank);
+    }
+
+
+    //Power slider listener
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        int power = currentTank.getPower();
+        currentTank.setPower(power);
     }
 
     @Override
