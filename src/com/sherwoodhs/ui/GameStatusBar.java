@@ -48,9 +48,9 @@ public class GameStatusBar extends JPanel {
         //for numbers below 0 I used abs to return a positive int
         //wind is not actually positive, just displays as positive
         if(wind < 0) {
-            windValue.setText("" + "<--- "+ abs(wind));
+            windValue.setText("" + "⟵"+ abs(wind));
         } else {
-            windValue.setText("" + wind+" --->");
+            windValue.setText("" + wind+" ⟶");
         }
     }
 
