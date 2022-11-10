@@ -12,6 +12,7 @@ import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class ScorchGame implements PropertyChangeListener {
 
@@ -39,6 +40,15 @@ public class ScorchGame implements PropertyChangeListener {
 
     //  This is just initialization data for each player. Change as you see fit.
     private static Color[] playerColors = {Color.red, Color.cyan, Color.yellow, Color.green, Color.pink};
+
+    int min1 = 30;
+    int min2 = 700;
+    int min3 = 180;
+    int min4 = 530;
+    int min5 = 280;
+
+    int max1 = 70;
+
     private static int[] playerPositions = {50, 720, 200, 550, 300};
 
 
