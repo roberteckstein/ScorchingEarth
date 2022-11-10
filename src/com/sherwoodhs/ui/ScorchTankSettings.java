@@ -94,6 +94,7 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
         decreaseAngleButton.addActionListener(this);
         increaseAngleButton.addActionListener(this);
         fireButton.addActionListener(this);
+
         powerSlider.addChangeListener(this);
         angleSlider.addChangeListener(this);
     }
