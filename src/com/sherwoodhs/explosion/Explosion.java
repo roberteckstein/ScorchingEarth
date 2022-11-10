@@ -1,15 +1,15 @@
 package com.sherwoodhs.explosion;
 
-import com.sherwoodhs.terrain.ScorchTerrain;
+import com.sherwoodhs.terrain.Terrain;
 
 import java.awt.*;
 
-public class ScorchExplosion {
+public class Explosion {
 
     //  A simple class to represent an explosion. Extend and override methods if you want to
     //  make fancier explosions.
 
-    private ScorchTerrain terrain;
+    private Terrain terrain;
 
     private boolean alive;
 
@@ -21,7 +21,7 @@ public class ScorchExplosion {
     private Color color;
     private boolean expanding;
 
-    public ScorchExplosion(ScorchTerrain terrain, int x, int y, double radius, double maxSize, Color color) {
+    public Explosion(Terrain terrain, int x, int y, double radius, double maxSize, Color color) {
 
         this.terrain = terrain;
 

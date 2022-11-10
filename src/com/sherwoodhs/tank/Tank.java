@@ -5,7 +5,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
 
-public class ScorchTank {
+public class Tank {
 
     //  This class represents the players tank, and all the data that goes
     //  with it. This includes its position, whether it is destroyed, the
@@ -36,7 +36,7 @@ public class ScorchTank {
     //  It makes life much easier.
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-    public ScorchTank(int playerNumber, int x, int gunAngle, Color playerColor) {
+    public Tank(int playerNumber, int x, int gunAngle, Color playerColor) {
 
         this.playerNumber = playerNumber;
 

@@ -1,11 +1,11 @@
 package com.sherwoodhs;
 
-import com.sherwoodhs.bullet.ScorchBullet;
-import com.sherwoodhs.explosion.ScorchExplosion;
-import com.sherwoodhs.tank.ScorchTank;
-import com.sherwoodhs.terrain.ScorchTerrain;
-import com.sherwoodhs.ui.ScorchStatus;
-import com.sherwoodhs.ui.ScorchTankSettings;
+import com.sherwoodhs.bullet.BulletTemplate;
+import com.sherwoodhs.explosion.Explosion;
+import com.sherwoodhs.tank.Tank;
+import com.sherwoodhs.terrain.Terrain;
+import com.sherwoodhs.ui.GameStatusBar;
+import com.sherwoodhs.ui.TankStatusBar;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,18 +24,18 @@ public class ScorchGame implements PropertyChangeListener {
     //  via constructors to all these objects. I'll just pass the ScorchGame
     //  object and get at the terrain, status, and settings panels from there.
 
-    public ScorchTerrain terrain;
-    public ScorchStatus status;
-    public ScorchTankSettings settings;
+    public Terrain terrain;
+    public GameStatusBar status;
+    public TankStatusBar settings;
     public boolean waitForPlayerFire;
 
     //  Same thing here-- I'll be referencing these ArrayList's in a number
     //  of classes, and since I'm not creating APIs that have to do sanity
     //  checks on setters, I'll just make them public... because I'm lazy.
 
-    public ArrayList<ScorchTank> players = new ArrayList<>();
-    public ArrayList<ScorchBullet> bullets = new ArrayList<>();
-    public ArrayList<ScorchExplosion> explosions = new ArrayList<>();
+    public ArrayList<Tank> players = new ArrayList<>();
+    public ArrayList<BulletTemplate> bullets = new ArrayList<>();
+    public ArrayList<Explosion> explosions = new ArrayList<>();
 
     //  This is just initialization data for each player. Change as you see fit.
     private static Color[] playerColors = {Color.red, Color.cyan, Color.yellow, Color.green, Color.pink};
@@ -50,13 +50,13 @@ public class ScorchGame implements PropertyChangeListener {
         frame = new JFrame("Scorching Earth");
         frame.getContentPane().setLayout(new BorderLayout());
 
-        status = new ScorchStatus();
+        status = new GameStatusBar();
         frame.getContentPane().add(status, BorderLayout.NORTH);
 
-        terrain = new ScorchTerrain(this, 800, 500);
+        terrain = new Terrain(this, 800, 500);
         frame.getContentPane().add(terrain, BorderLayout.CENTER);
 
-        settings = new ScorchTankSettings(this);
+        settings = new TankStatusBar(this);
         frame.getContentPane().add(settings, BorderLayout.SOUTH);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,7 +66,7 @@ public class ScorchGame implements PropertyChangeListener {
 
         //  Create each player
         for (int i = 0; i < numberOfPlayers; i++) {
-            ScorchTank t = new ScorchTank(i+1, playerPositions[i], 90, playerColors[i]);
+            Tank t = new Tank(i+1, playerPositions[i], 90, playerColors[i]);
             t.addPropertyChangeListener(this);
             t.setY(terrain.getGroundLevelAtColumn(playerPositions[i]));
             players.add(t);

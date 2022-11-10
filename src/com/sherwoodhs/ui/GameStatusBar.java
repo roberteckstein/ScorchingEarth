@@ -1,13 +1,13 @@
 package com.sherwoodhs.ui;
 
-import com.sherwoodhs.tank.ScorchTank;
+import com.sherwoodhs.tank.Tank;
 
 import javax.swing.*;
 import java.awt.*;
 
 import static java.lang.Math.abs;
 
-public class ScorchStatus extends JPanel {
+public class GameStatusBar extends JPanel {
 
     //  This is a Swing panel that appears above the playfield. It only displays
     //  the current wind speed and the current player. A setStatus() method is
@@ -20,7 +20,7 @@ public class ScorchStatus extends JPanel {
     JLabel playerLabel = new JLabel("Player: ");
     JLabel playerNumber = new JLabel();
 
-    public ScorchStatus() {
+    public GameStatusBar() {
 
         super();
 
@@ -36,7 +36,7 @@ public class ScorchStatus extends JPanel {
 
     }
 
-    public void setStatus(ScorchTank t, int wind) {
+    public void setStatus(Tank t, int wind) {
 
         //  Update the current player number and the wind value. A quick and
         //  dirty way to convert a number to a string is to concatenate it on
