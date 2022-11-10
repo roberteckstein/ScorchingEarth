@@ -82,6 +82,7 @@ public class BulletTemplate {
         deltaY += (gravity/5);
 
         xPosition += (int)deltaX;
+        //rounds based on weighted random number generator
         if (Math.random() < deltaX % 1){
             xPosition++;
         }
