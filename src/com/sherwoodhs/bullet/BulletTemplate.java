@@ -1,14 +1,13 @@
 package com.sherwoodhs.bullet;
 
-import com.sherwoodhs.explosion.ScorchExplosion;
+import com.sherwoodhs.explosion.Explosion;
 import com.sherwoodhs.ScorchGame;
-import com.sherwoodhs.terrain.ScorchTerrain;
+import com.sherwoodhs.terrain.Terrain;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Random;
 
-public class ScorchBullet {
+public class BulletTemplate {
 
     //  This is a simple bullet. It's only purpose in life is to fly through the
     //  playfield until it hits the terrain, at which point it changes alive to
@@ -28,7 +27,7 @@ public class ScorchBullet {
 
     private int moveWind = 0;
 
-    public ScorchBullet(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
+    public BulletTemplate(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
 
         this.xPosition = x;
         this.yPosition = y;
@@ -56,7 +55,7 @@ public class ScorchBullet {
         g.fill3DRect(xPosition, yPosition, 3, 3, true);
     }
 
-    public void update(ScorchGame game, ScorchTerrain terrain) {
+    public void update(ScorchGame game, Terrain terrain) {
 
         moveBullet();
 
@@ -95,7 +94,7 @@ public class ScorchBullet {
 
     }
 
-    public void checkForTriggeringExplosion(ArrayList<ScorchExplosion> explosions, ScorchTerrain terrain) {
+    public void checkForTriggeringExplosion(ArrayList<Explosion> explosions, Terrain terrain) {
 
         //  If the bullet has hit ground, then it is no longer alive and is replaced
         //  by an explosion. Subclasses can override to generate larger, smaller, or different
@@ -103,7 +102,7 @@ public class ScorchBullet {
 
         if (yPosition > terrain.getGroundLevelAtColumn(xPosition)) {
             alive = false;
-            explosions.add(new ScorchExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
+            explosions.add(new Explosion(terrain, xPosition, yPosition, 1, 20, Color.red));
         }
     }
 }

@@ -1,15 +1,15 @@
 package com.sherwoodhs.terrain;
 
 import com.sherwoodhs.ScorchGame;
-import com.sherwoodhs.tank.ScorchTank;
-import com.sherwoodhs.bullet.ScorchBullet;
-import com.sherwoodhs.explosion.ScorchExplosion;
+import com.sherwoodhs.tank.Tank;
+import com.sherwoodhs.bullet.BulletTemplate;
+import com.sherwoodhs.explosion.Explosion;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ScorchTerrain extends JPanel {
+public class Terrain extends JPanel {
 
     //  This is a panel that represents the playfield. Maybe it could get a better name.
     //  That's up to you.
@@ -30,7 +30,7 @@ public class ScorchTerrain extends JPanel {
 
     private Color[][] terrain;
 
-    public ScorchTerrain(ScorchGame game, int width, int height) {
+    public Terrain(ScorchGame game, int width, int height) {
 
         super();
 
@@ -101,27 +101,27 @@ public class ScorchTerrain extends JPanel {
 
     }
 
-    public void drawTanks(ArrayList<ScorchTank> tanks, Graphics g) {
+    public void drawTanks(ArrayList<Tank> tanks, Graphics g) {
 
         Graphics2D graphics = (Graphics2D)g;
 
         //  If you end up getting a ConcurrentModificationException, look below for
         //  a way to handle this.
 
-        for (ScorchTank t : tanks) {
+        for (Tank t : tanks) {
             if (!t.isDestroyed())
                 t.draw(graphics);
         }
 
     }
 
-    public void drawBullets(ArrayList<ScorchBullet> bullets, Graphics g) {
+    public void drawBullets(ArrayList<BulletTemplate> bullets, Graphics g) {
 
         Graphics2D graphics = (Graphics2D) g;
 
         //  Clone the array so that we don't get a ConcurrentModificationException
 
-        for (ScorchBullet b : (ArrayList<ScorchBullet>)bullets.clone()) {
+        for (BulletTemplate b : (ArrayList<BulletTemplate>)bullets.clone()) {
 
             if (b.isAlive()) {
 
@@ -135,13 +135,13 @@ public class ScorchTerrain extends JPanel {
         }
     }
 
-    public void drawExplosions(ArrayList<ScorchExplosion> explosions, Graphics g) {
+    public void drawExplosions(ArrayList<Explosion> explosions, Graphics g) {
 
         Graphics2D graphics = (Graphics2D) g;
 
         //  Clone the array so that we don't get a ConcurrentModificationException
 
-        for (ScorchExplosion e : (ArrayList<ScorchExplosion>)explosions.clone()) {
+        for (Explosion e : (ArrayList<Explosion>)explosions.clone()) {
             if (e.isAlive()) {
                 e.draw(graphics);
             }
@@ -235,13 +235,13 @@ public class ScorchTerrain extends JPanel {
         drawExplosions(game.explosions, g);
 
         //  Clone to avoid ConcurrentModificationException
-        for (ScorchBullet b : (ArrayList<ScorchBullet>)game.bullets.clone()) {
+        for (BulletTemplate b : (ArrayList<BulletTemplate>)game.bullets.clone()) {
             if (!b.isAlive())
                 game.bullets.remove(b);
         }
 
         //  Clone to avoid ConcurrentModificationException
-        for (ScorchExplosion e : (ArrayList<ScorchExplosion>)game.explosions.clone()) {
+        for (Explosion e : (ArrayList<Explosion>)game.explosions.clone()) {
             if (!e.isAlive())
                 game.explosions.remove(e);
         }

@@ -1,9 +1,9 @@
 package com.sherwoodhs.ui;
 
 import com.sherwoodhs.ScorchGame;
-import com.sherwoodhs.bullet.ScorchMIRVBullet;
-import com.sherwoodhs.tank.ScorchTank;
-import com.sherwoodhs.bullet.ScorchBullet;
+import com.sherwoodhs.bullet.MIRVBullet;
+import com.sherwoodhs.tank.Tank;
+import com.sherwoodhs.bullet.BulletTemplate;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-public class ScorchTankSettings extends JPanel implements ActionListener, ItemListener, ChangeListener {
+public class TankStatus extends JPanel implements ActionListener, ItemListener, ChangeListener {
 
     //  This is a Swing panel that appears below the playfield. It displays
     //  the current weapon that is selected, the amount of that weapon that the
@@ -25,7 +25,7 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
     ScorchGame game;
 
     //  Reference to the current tank object
-    ScorchTank currentTank;
+    Tank currentTank;
 
     //  Following are Swing components that are used in the panel
     JComboBox artillery = new JComboBox();
@@ -48,7 +48,7 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
 
     JButton fireButton = new JButton("Fire");
 
-    public ScorchTankSettings(ScorchGame game) {
+    public TankStatus(ScorchGame game) {
 
         //  Must call the JPanel superclass constructor
         super();
@@ -101,7 +101,7 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
     //  Reset the contents of the combo box based on the current weapon
     //  count inside the tank object passed in.
 
-    public void resetWeapons(ScorchTank tank) {
+    public void resetWeapons(Tank tank) {
 
         currentTank = tank;
 
@@ -115,7 +115,7 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
     //  Reset the status of the Swing components in the panel based on
     //  the tank object passed in
 
-    public void setStatus(ScorchTank tank) {
+    public void setStatus(Tank tank) {
 
         currentTank = tank;
 
@@ -124,7 +124,7 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
         drawStatusPanel(tank);
     }
 
-    public void drawStatusPanel(ScorchTank tank) {
+    public void drawStatusPanel(Tank tank) {
         artillery.setSelectedItem(currentTank.getSelectedWeapon());
 
         //  Reset the amount that is available
@@ -209,9 +209,9 @@ public class ScorchTankSettings extends JPanel implements ActionListener, ItemLi
                 //  Add the appropriate bullet type to the array list of active game bullets
 
                 if (artillery.getSelectedItem().equals("Normal Bullet")) {
-                    game.bullets.add(new ScorchBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
+                    game.bullets.add(new BulletTemplate(game, (int) x, (int) (y - 10), dx, dy, .5));
                 } else if (artillery.getSelectedItem().equals(("MIRV"))) {
-                    game.bullets.add(new ScorchMIRVBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
+                    game.bullets.add(new MIRVBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 }
 
                 //  Set the boolean in the game object that the fire button has been pressed.

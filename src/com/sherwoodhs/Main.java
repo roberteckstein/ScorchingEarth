@@ -1,7 +1,7 @@
 package com.sherwoodhs;
 
 
-import com.sherwoodhs.tank.ScorchTank;
+import com.sherwoodhs.tank.Tank;
 
 public class Main {
 
@@ -33,7 +33,7 @@ public class Main {
             //  status and settings panels above and below the playfield
             //  accordingly.
 
-            ScorchTank currentTank = game.players.get(currentPlayer);
+            Tank currentTank = game.players.get(currentPlayer);
             game.status.setStatus(currentTank, currentWind);
             game.settings.setStatus(currentTank);
 
