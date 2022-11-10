@@ -14,7 +14,7 @@ public class MIRVBullet extends BulletTemplate {
 
         super.moveBullet();
 
-        //  If the MIRV has reached its apex, break it apart into five bullets
+        //  If the MIRV has reached its apex, break it apart into 4.0 (yes for some horrible reason it's only spwning a number of bullets equal to the effective size of the random spread) bullets
         //  with slightly random trajectories.
 
         if (alive && yPosition > lastYPosition) {
