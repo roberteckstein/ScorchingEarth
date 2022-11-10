@@ -188,7 +188,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
             //  Set the current tank gun power
             currentTank.setPower(currentPower);
 
-        } else if (e.getSource() == fireButton) {
+        } else if (e.getSource() == fireButton && game.waitForPlayerFire == true) {
 
             // The fire button has been pressed, so calculate the opening position and
             // movement of the selected bullet type.
