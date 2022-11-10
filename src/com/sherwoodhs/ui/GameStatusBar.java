@@ -5,8 +5,6 @@ import com.sherwoodhs.tank.Tank;
 import javax.swing.*;
 import java.awt.*;
 
-import java.lang.reflect.Field;
-
 import static java.lang.Math.abs;
 
 public class GameStatusBar extends JPanel {
@@ -40,59 +38,19 @@ public class GameStatusBar extends JPanel {
 
     public void setStatus(Tank t, int wind) {
 
-        //  Update the current player number and the wind value.
+        //  Update the current player number and the wind value. A quick and
+        //  dirty way to convert a number to a string is to concatenate it on
+        //  to the end of an empty string.
 
-        String c = getStringFromColor(t.playerColor);
-        String hex = getHexFromString(c);
+        playerNumber.setText(""+t.getPlayerNumber());
 
-        playerNumber.setText("<html>" + t.getPlayerNumber() + " (<font color=" + hex + ">" + c + "</font>)</html>");
-
-        // displays wind at the top
-        // for numbers below 0 I used abs to return a positive int
-        // wind is not actually positive, just displays as positive
-        if (wind < 0) {
-            windValue.setText("" + "<--- " + abs(wind));
+        //displays wind at the top
+        //for numbers below 0 I used abs to return a positive int
+        //wind is not actually positive, just displays as positive
+        if(wind < 0) {
+            windValue.setText("" + "<--- "+ abs(wind));
         } else {
-            windValue.setText("" + wind +" --->");
-        }
-    }
-
-    public String getStringFromColor(Color c) {
-        // cycle through every field in Color c
-        for (Field f : Color.class.getDeclaredFields()) {
-            // we only want fields defining a Color
-            if (f.getType().equals(Color.class)) {
-                try {
-                    // if the field defining a Color is equal to Color c, define fs as the field's name
-                    if (f.get(null).equals(c)) {
-                        String fs = f.getName();
-                        // return fs with only the first letter capitalized
-                        return fs.substring(0,1).toUpperCase() + fs.substring(1).toLowerCase();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        // no name was detected
-        return "null";
-    }
-
-    public String getHexFromString(String s) {
-        s = s.toLowerCase();
-        switch (s) {
-            case "red":
-                return "#FF2A12";
-            case "cyan":
-                return "#00CAE7";
-            case "pink":
-                return "#FF44E0";
-            case "yellow":
-                return "#E9B511";
-            case "green":
-                return "#0BCE12";
-            default:
-                return null;
+            windValue.setText("" + wind+" --->");
         }
     }
 

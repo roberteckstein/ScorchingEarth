@@ -94,6 +94,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         decreaseAngleButton.addActionListener(this);
         increaseAngleButton.addActionListener(this);
         fireButton.addActionListener(this);
+
         powerSlider.addChangeListener(this);
         angleSlider.addChangeListener(this);
     }
@@ -180,14 +181,14 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         } else if (e.getSource() == increasePowerButton) {
 
             currentPower++;
-            if (currentPower > 250) {
-                currentPower = 250;
+            if (currentPower > 100) {
+                currentPower = 100;
             }
 
             //  Set the current tank gun power
             currentTank.setPower(currentPower);
 
-        } else if (e.getSource() == fireButton) {
+        } else if (e.getSource() == fireButton && game.waitForPlayerFire == true) {
 
             // The fire button has been pressed, so calculate the opening position and
             // movement of the selected bullet type.

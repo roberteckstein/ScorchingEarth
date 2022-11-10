@@ -11,8 +11,8 @@ public class Main {
 
         boolean gameOver = false;
 
-        //  Randomly generate the current wind from -50 to 50
-        int currentWind = (int)(50 - (Math.random() * 100));
+        //  Randomly generate the current wind from -25 to 25
+        int currentWind = (int)(25 - (Math.random() * 50));
 
         //  Create a game object and set the current wind
         ScorchGame game = new ScorchGame(numberOfPlayers);
@@ -25,9 +25,8 @@ public class Main {
 
             game.waitForPlayerFire = true;
 
-            //  If we've gone through all the players, go back to the first player
-            if (currentPlayer == numberOfPlayers)
-                currentPlayer = 0;
+            //  If we've gone through all the players, go back to the first player. Uses modulus
+            currentPlayer %= numberOfPlayers;
 
             //  Get the tank representing the current player, and set the
             //  status and settings panels above and below the playfield
@@ -59,6 +58,9 @@ public class Main {
 
             currentPlayer++;
 
+            //change wind
+            currentWind = (int)(25 - (Math.random() * 50));
+            game.setCurrentWind(currentWind);
         }
 
     }
