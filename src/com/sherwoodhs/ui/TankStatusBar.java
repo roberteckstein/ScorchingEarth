@@ -94,6 +94,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         decreaseAngleButton.addActionListener(this);
         increaseAngleButton.addActionListener(this);
         fireButton.addActionListener(this);
+
         powerSlider.addChangeListener(this);
         angleSlider.addChangeListener(this);
     }
