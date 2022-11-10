@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-public class TankStatus extends JPanel implements ActionListener, ItemListener, ChangeListener {
+public class TankStatusBar extends JPanel implements ActionListener, ItemListener, ChangeListener {
 
     //  This is a Swing panel that appears below the playfield. It displays
     //  the current weapon that is selected, the amount of that weapon that the
@@ -48,7 +48,7 @@ public class TankStatus extends JPanel implements ActionListener, ItemListener, 
 
     JButton fireButton = new JButton("Fire");
 
-    public TankStatus(ScorchGame game) {
+    public TankStatusBar(ScorchGame game) {
 
         //  Must call the JPanel superclass constructor
         super();

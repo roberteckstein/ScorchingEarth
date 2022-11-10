@@ -7,7 +7,7 @@ import java.awt.*;
 
 import static java.lang.Math.abs;
 
-public class GameStatus extends JPanel {
+public class GameStatusBar extends JPanel {
 
     //  This is a Swing panel that appears above the playfield. It only displays
     //  the current wind speed and the current player. A setStatus() method is
@@ -20,7 +20,7 @@ public class GameStatus extends JPanel {
     JLabel playerLabel = new JLabel("Player: ");
     JLabel playerNumber = new JLabel();
 
-    public GameStatus() {
+    public GameStatusBar() {
 
         super();
 
