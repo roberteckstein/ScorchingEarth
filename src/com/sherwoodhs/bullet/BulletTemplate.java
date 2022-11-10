@@ -81,7 +81,10 @@ public class BulletTemplate {
 
         deltaY += (gravity/5);
 
-        xPosition += deltaX;
+        xPosition += (int)deltaX;
+        if (Math.random() < deltaX % 1){
+            xPosition++;
+        }
         yPosition += deltaY;
 
 
