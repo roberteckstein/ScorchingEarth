@@ -181,8 +181,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         } else if (e.getSource() == increasePowerButton) {
 
             currentPower++;
-            if (currentPower > 250) {
-                currentPower = 250;
+            if (currentPower > 100) {
+                currentPower = 100;
             }
 
             //  Set the current tank gun power
