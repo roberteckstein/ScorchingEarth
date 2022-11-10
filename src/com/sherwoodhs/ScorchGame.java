@@ -4,8 +4,8 @@ import com.sherwoodhs.bullet.BulletTemplate;
 import com.sherwoodhs.explosion.Explosion;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
-import com.sherwoodhs.ui.GameStatus;
-import com.sherwoodhs.ui.TankStatus;
+import com.sherwoodhs.ui.GameStatusBar;
+import com.sherwoodhs.ui.TankStatusBar;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,8 +25,8 @@ public class ScorchGame implements PropertyChangeListener {
     //  object and get at the terrain, status, and settings panels from there.
 
     public Terrain terrain;
-    public GameStatus status;
-    public TankStatus settings;
+    public GameStatusBar status;
+    public TankStatusBar settings;
     public boolean waitForPlayerFire;
 
     //  Same thing here-- I'll be referencing these ArrayList's in a number
@@ -50,13 +50,13 @@ public class ScorchGame implements PropertyChangeListener {
         frame = new JFrame("Scorching Earth");
         frame.getContentPane().setLayout(new BorderLayout());
 
-        status = new GameStatus();
+        status = new GameStatusBar();
         frame.getContentPane().add(status, BorderLayout.NORTH);
 
         terrain = new Terrain(this, 800, 500);
         frame.getContentPane().add(terrain, BorderLayout.CENTER);
 
-        settings = new TankStatus(this);
+        settings = new TankStatusBar(this);
         frame.getContentPane().add(settings, BorderLayout.SOUTH);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
