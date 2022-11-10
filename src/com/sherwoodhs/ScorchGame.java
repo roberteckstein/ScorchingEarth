@@ -64,11 +64,19 @@ public class ScorchGame implements PropertyChangeListener {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        int highestTerrainPoint = 0;
         //  Create each player
         for (int i = 0; i < numberOfPlayers; i++) {
             Tank t = new Tank(i+1, playerPositions[i], 90, playerColors[i]);
             t.addPropertyChangeListener(this);
-            t.setY(terrain.getGroundLevelAtColumn(playerPositions[i]));
+            // sets variable to ground height at left edge of tank
+            highestTerrainPoint = terrain.getGroundLevelAtColumn(playerPositions[i]+t.WIDTH);
+            // if the height at right edge is greater than left edge update the highest point
+            if (highestTerrainPoint > terrain.getGroundLevelAtColumn(playerPositions[i])) {
+                highestTerrainPoint = terrain.getGroundLevelAtColumn(playerPositions[i]);
+                System.out.println(highestTerrainPoint+"\n");
+            }
+            t.setY(highestTerrainPoint-t.HEIGHT);
             players.add(t);
         }
 
