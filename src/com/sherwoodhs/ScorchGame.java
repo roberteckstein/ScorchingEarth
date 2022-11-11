@@ -41,15 +41,41 @@ public class ScorchGame implements PropertyChangeListener {
     //  This is just initialization data for each player. Change as you see fit.
     private static Color[] playerColors = {Color.red, Color.cyan, Color.yellow, Color.green, Color.pink};
 
-    int min1 = 30;
-    int min2 = 700;
-    int min3 = 180;
-    int min4 = 530;
-    int min5 = 280;
 
-    int max1 = 70;
+    //PLAYER SPAWNING ALGORITHM
+    //Has hardcoded ranges and chooses a random int between those ranges to spawn a tank at
+    //the difference is small rn so might need some tweaking to make in more intense
 
-    private static int[] playerPositions = {50, 720, 200, 550, 300};
+    //Define lowest int in range. def = default
+    static int min1 = 30; //def 50
+    static int min2 = 700; //def 720
+    static int min3 = 180; //def 200
+    static int min4 = 530; //def 550
+    static int min5 = 280; //def 300
+
+    //define highest int in range
+    static int max1 = 70;
+    static int max2 = 740;
+    static int max3 = 220;
+    static int max4 = 570;
+    static int max5 = 320;
+
+    //create range int
+    static int range1 = max1 - min1 + 1;
+    static int range2 = max2 - min2 + 1;
+    static int range3 = max3 - min3 + 1;
+    static int range4 = max4 - min4 + 1;
+    static int range5 = max5 - min5 + 1;
+
+    //get random int
+    static int rand1 = (int)(Math.random() * range1) + min1;
+    static int rand2 = (int)(Math.random() * range2) + min2;
+    static int rand3 = (int)(Math.random() * range3) + min3;
+    static int rand4 = (int)(Math.random() * range4) + min4;
+    static int rand5 = (int)(Math.random() * range5) + min5;
+
+    //add randomised int to the playerPositions array
+    private static int[] playerPositions = {rand1, rand2, rand3, rand4, rand5};
 
 
     public ScorchGame(int numberOfPlayers) {
