@@ -129,11 +129,16 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         artillery.setSelectedItem(currentTank.getSelectedWeapon());
 
         //  Reset the amount that is available
-        amountValue.setText(""+currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
+        //  If it's the normal bullet it sets the value label to ∞
+        if (artillery.getSelectedItem().equals("Normal Bullet")) {
+            amountValue.setText("" + "∞");
+        } else {
+            amountValue.setText("" + currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
+        }
 
         //  Reset the angle and the power
-        angleValue.setText(""+currentTank.getGunAngle());
-        powerValue.setText(""+currentTank.getPower());
+        angleValue.setText("" + currentTank.getGunAngle());
+        powerValue.setText("" + currentTank.getPower());
 
         // changing fireButton color based on current player
         fireButton.setBackground(currentTank.playerColor);
@@ -193,19 +198,25 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
             // The fire button has been pressed, so calculate the opening position and
             // movement of the selected bullet type.
 
-            double x = currentTank.getX()+20;
+            double x = currentTank.getX() + 20;
             double y = currentTank.getY();
-            double a = Math.toRadians((double)currentTank.getGunAngle()-90.0);
-            double dx = x+(WIDTH/2)+(int)(currentPower/10.0 * Math.sin(a)) - x+(WIDTH/2);
-            double dy = y-(int)(currentPower/10.0 * Math.cos(a)) - y;
+            double a = Math.toRadians((double) currentTank.getGunAngle() - 90.0);
+            double dx = x + (WIDTH / 2) + (int) (currentPower / 10.0 * Math.sin(a)) - x + (WIDTH / 2);
+            double dy = y - (int) (currentPower / 10.0 * Math.cos(a)) - y;
 
             int currentNumber = currentTank.getWeaponsCount().get(artillery.getSelectedItem());
 
             //  Only perform the action if the player has more than 0 of the selected weapon
             if (currentNumber > 0) {
 
-                currentNumber--;
-                currentTank.getWeaponsCount().put((String) artillery.getSelectedItem(), currentNumber);
+                //only removes ammo if not normal bullet
+                //if it is then it doesn't do anything
+                if (artillery.getSelectedItem().equals("Normal Bullet")) {
+                    currentTank.getWeaponsCount().put((String) artillery.getSelectedItem(), currentNumber);
+                } else {
+                    currentNumber--;
+                    currentTank.getWeaponsCount().put((String) artillery.getSelectedItem(), currentNumber);
+                }
 
                 //  Add the appropriate bullet type to the array list of active game bullets
 
@@ -231,12 +242,12 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
     //Slider listeners
     @Override
     public void stateChanged(ChangeEvent e) {
-        if(e.getSource() == powerSlider) {
+        if (e.getSource() == powerSlider) {
             int power = currentTank.getPower();
             currentTank.setPower(power);
-            } else if(e.getSource() == angleSlider){
-                int angle = currentTank.getGunAngle();
-                currentTank.setGunAngle(angle);
+        } else if (e.getSource() == angleSlider) {
+            int angle = currentTank.getGunAngle();
+            currentTank.setGunAngle(angle);
         }
     }
 
@@ -245,8 +256,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
 
         //  This method is called when the combo box has been set to a new item.
         //  Reset the amount that is available.
+        currentTank.setSelectedWeapon((String) artillery.getSelectedItem());
+        amountValue.setText("" + currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
 
-        currentTank.setSelectedWeapon((String)artillery.getSelectedItem());
-        amountValue.setText(""+currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
     }
 }
