@@ -89,5 +89,5 @@ public class GameStatusBar extends JPanel {
             default:
                 return null;
         }
-
+    }
 }
