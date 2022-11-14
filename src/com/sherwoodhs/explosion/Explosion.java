@@ -57,9 +57,6 @@ public class Explosion {
             radius++;
         } else {
             //  Otherwise, draw a black oval first, then decrease the radius by 1
-            g.setPaint(Color.black);
-            g.fillOval((int)(xPosition- maxRadius), (int)(yPosition- maxRadius),
-                    (int) maxRadius *2, (int) maxRadius *2);
             radius--;
 
         }
