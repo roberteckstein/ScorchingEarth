@@ -140,6 +140,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  Reset the angle and the power
         angleValue.setText("" + currentTank.getGunAngle());
         powerValue.setText("" + currentTank.getPower());
+        powerSlider.setValue(currentTank.getPower());
+        angleSlider.setValue(currentTank.getGunAngle());
 
         // changing fireButton color based on current player
         fireButton.setBackground(currentTank.playerColor);
