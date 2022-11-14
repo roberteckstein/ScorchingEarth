@@ -4,14 +4,15 @@ import com.sherwoodhs.bullet.BulletTemplate;
 import com.sherwoodhs.explosion.Explosion;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
-import com.sherwoodhs.ui.GameStatus;
-import com.sherwoodhs.ui.TankStatus;
+import com.sherwoodhs.ui.GameStatusBar;
+import com.sherwoodhs.ui.TankStatusBar;
 
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class ScorchGame implements PropertyChangeListener {
 
@@ -25,8 +26,8 @@ public class ScorchGame implements PropertyChangeListener {
     //  object and get at the terrain, status, and settings panels from there.
 
     public Terrain terrain;
-    public GameStatus status;
-    public TankStatus settings;
+    public GameStatusBar status;
+    public TankStatusBar settings;
     public boolean waitForPlayerFire;
 
     //  Same thing here-- I'll be referencing these ArrayList's in a number
@@ -39,7 +40,42 @@ public class ScorchGame implements PropertyChangeListener {
 
     //  This is just initialization data for each player. Change as you see fit.
     private static Color[] playerColors = {Color.red, Color.cyan, Color.yellow, Color.green, Color.pink};
-    private static int[] playerPositions = {50, 720, 200, 550, 300};
+
+
+    //PLAYER SPAWNING ALGORITHM
+    //Has hardcoded ranges and chooses a random int between those ranges to spawn a tank at
+    //the difference is small rn so might need some tweaking to make in more intense
+
+    //Define lowest int in range. def = default
+    static int min1 = 30; //def 50
+    static int min2 = 700; //def 720
+    static int min3 = 180; //def 200
+    static int min4 = 530; //def 550
+    static int min5 = 280; //def 300
+
+    //define highest int in range
+    static int max1 = 70;
+    static int max2 = 740;
+    static int max3 = 220;
+    static int max4 = 570;
+    static int max5 = 320;
+
+    //create range int
+    static int range1 = max1 - min1 + 1;
+    static int range2 = max2 - min2 + 1;
+    static int range3 = max3 - min3 + 1;
+    static int range4 = max4 - min4 + 1;
+    static int range5 = max5 - min5 + 1;
+
+    //get random int
+    static int rand1 = (int)(Math.random() * range1) + min1;
+    static int rand2 = (int)(Math.random() * range2) + min2;
+    static int rand3 = (int)(Math.random() * range3) + min3;
+    static int rand4 = (int)(Math.random() * range4) + min4;
+    static int rand5 = (int)(Math.random() * range5) + min5;
+
+    //add randomised int to the playerPositions array
+    private static int[] playerPositions = {rand1, rand2, rand3, rand4, rand5};
 
 
     public ScorchGame(int numberOfPlayers) {
@@ -50,13 +86,13 @@ public class ScorchGame implements PropertyChangeListener {
         frame = new JFrame("Scorching Earth");
         frame.getContentPane().setLayout(new BorderLayout());
 
-        status = new GameStatus();
+        status = new GameStatusBar();
         frame.getContentPane().add(status, BorderLayout.NORTH);
 
         terrain = new Terrain(this, 800, 500);
         frame.getContentPane().add(terrain, BorderLayout.CENTER);
 
-        settings = new TankStatus(this);
+        settings = new TankStatusBar(this);
         frame.getContentPane().add(settings, BorderLayout.SOUTH);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
