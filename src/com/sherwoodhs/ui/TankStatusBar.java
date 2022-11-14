@@ -73,16 +73,16 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
 
         add(powerLabel);
         add(powerValue);
-        add(decreasePowerButton);
-        //add(powerSlider);
-        add(increasePowerButton);
+        //add(decreasePowerButton);
+        add(powerSlider);
+        //add(increasePowerButton);
 
 
         add(angleLabel);
         add(angleValue);
-        add(decreaseAngleButton);
-        //add(angleSlider);
-        add(increaseAngleButton);
+        //add(decreaseAngleButton);
+        add(angleSlider);
+        //add(increaseAngleButton);
         add(fireButton);
 
         //  Add listeners for each of the Swing components. When the components
