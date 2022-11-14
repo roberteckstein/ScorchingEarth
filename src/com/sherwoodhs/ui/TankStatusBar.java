@@ -124,6 +124,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  Reset the contents of the combo box
         resetWeapons(tank);
         drawStatusPanel(tank);
+        artillery.setSelectedItem("Normal Bullet");
     }
 
     public void drawStatusPanel(Tank tank) {
