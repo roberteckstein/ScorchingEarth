@@ -243,12 +243,15 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
     //Slider listeners
     @Override
     public void stateChanged(ChangeEvent e) {
-        if (e.getSource() == powerSlider) {
-            int power = currentTank.getPower();
+        JSlider source = (JSlider) e.getSource();
+        if (source == powerSlider) {
+            int power = source.getValue();
             currentTank.setPower(power);
-        } else if (e.getSource() == angleSlider) {
-            int angle = currentTank.getGunAngle();
+            powerValue.setText(Integer.toString(power));
+        } else if (source == angleSlider) {
+            int angle = source.getValue();
             currentTank.setGunAngle(angle);
+            angleValue.setText(Integer.toString(angle));
         }
     }
 
