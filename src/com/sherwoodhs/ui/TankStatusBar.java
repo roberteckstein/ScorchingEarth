@@ -131,7 +131,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  Reset the amount that is available
         //  If it's the normal bullet it sets the value label to ∞
         if (artillery.getSelectedItem().equals("Normal Bullet")) {
-            amountValue.setText("" + "∞");
+            amountValue.setText("" + "inf");
         } else {
             amountValue.setText("" + currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
         }
@@ -257,7 +257,11 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  This method is called when the combo box has been set to a new item.
         //  Reset the amount that is available.
         currentTank.setSelectedWeapon((String) artillery.getSelectedItem());
-        amountValue.setText("" + currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
+        if (artillery.getSelectedItem().equals("Normal Bullet")) {
+            amountValue.setText("" + "inf");
+        } else {
+            amountValue.setText("" + currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
+        }
 
     }
 }
