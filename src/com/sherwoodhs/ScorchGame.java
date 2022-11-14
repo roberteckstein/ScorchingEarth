@@ -104,7 +104,8 @@ public class ScorchGame implements PropertyChangeListener {
         for (int i = 0; i < numberOfPlayers; i++) {
             Tank t = new Tank(i+1, playerPositions[i], 90, playerColors[i]);
             t.addPropertyChangeListener(this);
-            t.setY(terrain.getGroundLevelAtColumn(playerPositions[i]));
+
+            t.setY(terrain.getGroundLevelAtColumn(playerPositions[i] + t.WIDTH/2)-t.HEIGHT);
             players.add(t);
         }
 
