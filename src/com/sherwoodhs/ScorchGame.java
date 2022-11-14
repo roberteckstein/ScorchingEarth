@@ -129,7 +129,9 @@ public class ScorchGame implements PropertyChangeListener {
         if (terrain.isAnimating())
             terrain.repaint();
     }
-
+    public int getTankPosition(int i){
+        return (playerPositions[i]);
+    }
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         terrain.repaint();

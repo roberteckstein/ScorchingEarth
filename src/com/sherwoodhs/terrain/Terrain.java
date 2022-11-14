@@ -1,5 +1,6 @@
 package com.sherwoodhs.terrain;
 
+import com.sherwoodhs.Main;
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.bullet.BulletTemplate;
@@ -225,6 +226,11 @@ public class Terrain extends JPanel {
 
         if (animating) {
             animating = updateBallisticItems(g);
+            for (int i = 0; i < Main.numberOfPlayers; i++) {
+                Tank updatingTank = game.players.get(i);
+                updatingTank.setY(getGroundLevelAtColumn(game.getTankPosition(i) + updatingTank.WIDTH/2)-updatingTank.HEIGHT);
+            }
+
         }
 
     }
@@ -256,6 +262,8 @@ public class Terrain extends JPanel {
         //  that are alive. We're safe to perform a collapse of the terrain.
 
         collapseTerrain();
+
+
 
         //  Return false indicating that our animating is complete.
 
