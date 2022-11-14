@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Objects;
 
 public class TankStatusBar extends JPanel implements ActionListener, ItemListener, ChangeListener {
 
@@ -131,7 +132,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  Reset the amount that is available
         //  If it's the normal bullet it sets the value label to ∞
         if (artillery.getSelectedItem().equals("Normal Bullet")) {
-            amountValue.setText("" + "∞");
+            amountValue.setText("" + "inf");
         } else {
             amountValue.setText("" + currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
         }
@@ -257,7 +258,11 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  This method is called when the combo box has been set to a new item.
         //  Reset the amount that is available.
         currentTank.setSelectedWeapon((String) artillery.getSelectedItem());
-        amountValue.setText("" + currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
+        if (Objects.equals(artillery.getSelectedItem(), "Normal Bullet")) {
+            amountValue.setText("" + "inf");
+        } else {
+            amountValue.setText("" + currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
+        }
 
     }
 }
