@@ -7,6 +7,8 @@ import com.sherwoodhs.terrain.Terrain;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static java.lang.Math.floor;
+
 public class BulletTemplate {
 
     //  This is a simple bullet. It's only purpose in life is to fly through the
@@ -27,6 +29,8 @@ public class BulletTemplate {
 
     private int moveWind = 0;
 
+    protected double decX;
+
     public BulletTemplate(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
 
         this.xPosition = x;
@@ -36,6 +40,7 @@ public class BulletTemplate {
         this.gravity = gravity;
         this.game = game;
         this.wind = game.getCurrentWind();
+        this.decX = 0.0;
 
         alive = true;
 
@@ -80,14 +85,29 @@ public class BulletTemplate {
         //  needed.
 
         deltaY += (gravity/5);
+        // gravity
 
-        xPosition += (int)deltaX;
-        //rounds based on weighted random number generator
-        if (Math.random() < deltaX % 1){
-            xPosition++;
+        if (deltaX >= 0.0) {
+            xPosition += (int) deltaX;
+            decX += deltaX - floor(deltaX);
+            if (decX >= 1) {
+                decX --;
+                xPosition ++;
+            }
         }
-        yPosition += deltaY;
+        if (deltaX < 0.0) {
+            xPosition -= Math.abs((int) deltaX);
+            decX -= Math.abs(deltaX) - floor(Math.abs(deltaX));
+            if (decX <= -1) {
+                decX++;
+                xPosition--;
+            }
+        }
+        //x motion
 
+
+        yPosition += deltaY;
+        //y motion
 
         if (moveWind % 4 == 0) {
             xPosition += (wind / 10);
