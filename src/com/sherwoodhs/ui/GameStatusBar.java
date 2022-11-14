@@ -54,10 +54,12 @@ public class GameStatusBar extends JPanel {
         // wind is not actually positive, just displays as positive
         if(wind < 0) {
             windValue.setText("" + "⟵ "+ abs(wind));
+        } else if(wind == 0) {
+            windValue.setText("" + wind + " ");
         } else {
-            windValue.setText("" + wind+" ⟶");
+                windValue.setText("" + wind+" ⟶");
+            }
         }
-    }
     public String getStringFromColor(Color c) {
         for (Field f : Color.class.getDeclaredFields()) {
             if (f.getType().equals(Color.class))

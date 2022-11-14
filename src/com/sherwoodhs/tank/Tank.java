@@ -46,8 +46,8 @@ public class Tank {
         this.playerColor = playerColor;
 
         this.weaponsCount = new HashMap<>();
-        this.weaponsCount.put("MIRV", new Integer(2));
-        this.weaponsCount.put("Normal Bullet", new Integer(100));
+        this.weaponsCount.put("MIRV", 2);
+        this.weaponsCount.put("Normal Bullet", 1); //infinite
 
         //  Set the selected weapon to the first one in the list.
         this.selectedWeapon = (String)weaponsCount.keySet().toArray()[0];
