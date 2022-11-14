@@ -2,6 +2,7 @@ package com.sherwoodhs.bullet;
 
 import com.sherwoodhs.explosion.Explosion;
 import com.sherwoodhs.ScorchGame;
+import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
 
 import java.awt.*;
@@ -68,7 +69,7 @@ public class BulletTemplate {
         //  check if it has triggered an explosion
 
         if (alive)
-            checkForTriggeringExplosion(game.explosions, terrain);
+            checkForTriggeringExplosion(game.explosions, terrain, game.players);
     }
 
     public void draw(Graphics2D g) {
@@ -118,7 +119,7 @@ public class BulletTemplate {
 
     }
 
-    public void checkForTriggeringExplosion(ArrayList<Explosion> explosions, Terrain terrain) {
+    public void checkForTriggeringExplosion(ArrayList<Explosion> explosions, Terrain terrain, ArrayList<Tank> Players) {
 
         //  If the bullet has hit ground, then it is no longer alive and is replaced
         //  by an explosion. Subclasses can override to generate larger, smaller, or different
@@ -127,6 +128,12 @@ public class BulletTemplate {
         if (yPosition > terrain.getGroundLevelAtColumn(xPosition)) {
             alive = false;
             explosions.add(new Explosion(terrain, xPosition, yPosition, 1, 20, Color.red));
+        }
+        for (Tank i: Players) {
+            if (((xPosition >= i.getX()) && (xPosition <= i.getX() + 30)) && ((yPosition >= i.getY()) && (yPosition <= i.getY() + 15))) {
+                alive = false;
+                explosions.add(new Explosion(terrain, xPosition, yPosition, 1, 20, Color.red));
+            }
         }
     }
 }
