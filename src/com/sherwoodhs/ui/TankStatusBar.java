@@ -36,17 +36,18 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
 
     JLabel space1 = new JLabel("    ");     //  Currently unused, but is there if you want it
 
-    JLabel powerLabel = new JLabel("Power: ");
-    JLabel powerValue = new JLabel();
-    JButton decreasePowerButton = new JButton("-");
-    JButton increasePowerButton = new JButton("+");
-    JSlider powerSlider = new JSlider(0, 100, 50);
 
     JLabel angleLabel = new JLabel("Angle: ");
     JLabel angleValue = new JLabel();
     JButton decreaseAngleButton = new JButton("-");
     JButton increaseAngleButton = new JButton("+");
     JSlider angleSlider = new JSlider(0, 180, 90);
+
+    JLabel powerLabel = new JLabel("Power: ");
+    JLabel powerValue = new JLabel();
+    JButton decreasePowerButton = new JButton("-");
+    JButton increasePowerButton = new JButton("+");
+    JSlider powerSlider = new JSlider(0, 100, 50);
 
     JButton fireButton = new JButton("Fire");
 
@@ -69,22 +70,27 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  Add them in order from left to right
         add(artillery);
 
+
         add(amountLabel);
         add(amountValue);
-
-        add(powerLabel);
-        add(powerValue);
-        //add(decreasePowerButton);
-        add(powerSlider);
-        //add(increasePowerButton);
-
 
         add(angleLabel);
         add(angleValue);
         //add(decreaseAngleButton);
         add(angleSlider);
+        angleSlider.setPreferredSize(new Dimension(150,30)); // sets AngleSlider dimensions/size
         //add(increaseAngleButton);
+
+
+        add(powerLabel);
+        add(powerValue);
+        //add(decreasePowerButton);
+        add(powerSlider);
+        powerSlider.setPreferredSize(new Dimension(150,30)); // sets PowerSlide dimensions/size
+        //add(increasePowerButton);
+
         add(fireButton);
+
 
         //  Add listeners for each of the Swing components. When the components
         //  are interacted with (button pressed, combo box selected, the appropriate
