@@ -40,14 +40,14 @@ public class GameStatusBar extends JPanel {
 
     public void setStatus(Tank t, int wind) {
 
+        // Set color of status bar to player color
+        setBackground(t.playerColor);
+
         //  Update the current player number and the wind value. A quick and
         //  dirty way to convert a number to a string is to concatenate it on
-        //  to the end of an empty string.
-        
-        String c = getStringFromColor(t.playerColor);
-        String hex = getHexFromString(c);
+        //  to the end of an empty string
 
-        playerNumber.setText("<html>" + t.getPlayerNumber() + " (<font color=" + hex + ">" + getStringFromColor(t.playerColor) + "</font>)</html>");
+        playerNumber.setText("<html>" + t.getPlayerNumber() + " (" + getStringFromColor(t.playerColor) + ")" + "</html>");
 
         // displays wind at the top
         // for numbers below 0 I used abs to return a positive int
