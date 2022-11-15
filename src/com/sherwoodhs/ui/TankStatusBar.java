@@ -9,6 +9,7 @@ import com.sherwoodhs.bullet.BulletTemplate;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,35 +60,44 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  Set the reference to the current game object
         this.game = game;
 
+        // lock given component sizes in the panel
+        setLayout(new FlowLayout());
+
         // Set the visuals of the fire button
         fireButton.setBorderPainted(false);
         fireButton.setFocusPainted(false);
         fireButton.setOpaque(true);
 
-        //  Layout the Swing objects using the FlowLayout manager
-        setLayout(new FlowLayout());
-
         //  Add them in order from left to right
+        artillery.setPreferredSize(new Dimension(150, 25));
         add(artillery);
 
-
+        amountValue.setPreferredSize(new Dimension(25, 20));
         add(amountLabel);
         add(amountValue);
 
-        add(angleLabel);
-        add(angleValue);
+        JPanel angle = new JPanel(new GridBagLayout());
+        angle.setPreferredSize(new Dimension(225, 30));
+        angleValue.setPreferredSize(new Dimension(25, 20));
+        angle.add(angleLabel);
+        angle.add(angleValue);
         //add(decreaseAngleButton);
-        add(angleSlider);
+        angle.add(angleSlider);
         angleSlider.setPreferredSize(new Dimension(150,30)); // sets AngleSlider dimensions/size
         //add(increaseAngleButton);
 
-
-        add(powerLabel);
-        add(powerValue);
+        JPanel power = new JPanel(new GridBagLayout());
+        power.setPreferredSize(new Dimension(225, 30));
+        powerValue.setPreferredSize(new Dimension(25, 20));
+        power.add(powerLabel);
+        power.add(powerValue);
         //add(decreasePowerButton);
-        add(powerSlider);
+        power.add(powerSlider);
         powerSlider.setPreferredSize(new Dimension(150,30)); // sets PowerSlide dimensions/size
         //add(increasePowerButton);
+
+        add(angle);
+        add(power);
 
         add(fireButton);
 
