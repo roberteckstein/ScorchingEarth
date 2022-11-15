@@ -22,7 +22,7 @@ public class FAEBullet extends BulletTemplate {
             for (int i = 0; i < 5; i++)
                 game.bullets.add(
                         new BulletTemplate(game, (int)xPosition, yPosition,
-                            2.0-(Math.random()*4.0), -5.0, .5));
+                            2.0-(Math.random()*4.0), -3, .5));
 
         }
 
