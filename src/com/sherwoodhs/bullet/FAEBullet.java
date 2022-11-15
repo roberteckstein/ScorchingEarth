@@ -2,6 +2,8 @@ package com.sherwoodhs.bullet;
 
 import com.sherwoodhs.ScorchGame;
 
+import java.awt.*;
+
 public class FAEBullet extends BulletTemplate {
 
     public FAEBullet(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
@@ -25,6 +27,12 @@ public class FAEBullet extends BulletTemplate {
                             2.0-(Math.random()*4.0), -3, .5));
 
         }
+
+    }
+    public void draw(Graphics2D g) {
+
+        g.setPaint(Color.green);
+        g.fill3DRect(xPosition, yPosition, 3, 3, true);
 
     }
 
