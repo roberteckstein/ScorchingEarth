@@ -41,7 +41,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
     JLabel angleValue = new JLabel();
     JButton decreaseAngleButton = new JButton("-");
     JButton increaseAngleButton = new JButton("+");
-    JSlider angleSlider = new JSlider(0, 180, 90);
+    JSlider angleSlider = new JSlider(0, 180, 0);
 
     JLabel powerLabel = new JLabel("Power: ");
     JLabel powerValue = new JLabel();
@@ -60,7 +60,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         this.game = game;
 
         // Set the visuals of the fire button
-        fireButton.setBorderPainted(false);
+        fireButton.setBorder(BorderFactory.createBevelBorder(1, Color.black, Color.black));
+        fireButton.setPreferredSize(new Dimension(60, 30));
         fireButton.setFocusPainted(false);
         fireButton.setOpaque(true);
 
@@ -146,7 +147,6 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         }
 
         //  Reset the angle and the power
-        angleValue.setText("" + currentTank.getGunAngle());
         powerValue.setText("" + currentTank.getPower());
         powerSlider.setValue(currentTank.getPower());
         angleSlider.setValue(currentTank.getGunAngle());
@@ -263,7 +263,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         } else if (source == angleSlider) {
             int angle = source.getValue();
             currentTank.setGunAngle(angle);
-            angleValue.setText(Integer.toString(angle));
+            angleValue.setText(Integer.toString( angle- 90 ));
         }
     }
 
