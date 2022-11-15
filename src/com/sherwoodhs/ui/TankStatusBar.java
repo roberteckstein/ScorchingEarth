@@ -3,6 +3,7 @@ package com.sherwoodhs.ui;
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.bullet.FAEBullet;
 import com.sherwoodhs.bullet.MIRVBullet;
+import com.sherwoodhs.bullet.NukeBullet;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.bullet.BulletTemplate;
 
@@ -42,7 +43,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
     JLabel angleValue = new JLabel();
     JButton decreaseAngleButton = new JButton("-");
     JButton increaseAngleButton = new JButton("+");
-    JSlider angleSlider = new JSlider(0, 180, 90);
+    JSlider angleSlider = new JSlider(0, 180, 0);
 
     JLabel powerLabel = new JLabel("Power: ");
     JLabel powerValue = new JLabel();
@@ -64,7 +65,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         setLayout(new FlowLayout());
 
         // Set the visuals of the fire button
-        fireButton.setBorderPainted(false);
+        fireButton.setBorder(BorderFactory.createBevelBorder(1, Color.black, Color.black));
+        fireButton.setPreferredSize(new Dimension(60, 30));
         fireButton.setFocusPainted(false);
         fireButton.setOpaque(true);
 
@@ -156,7 +158,6 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         }
 
         //  Reset the angle and the power
-        angleValue.setText("" + currentTank.getGunAngle());
         powerValue.setText("" + currentTank.getPower());
         powerSlider.setValue(currentTank.getPower());
         angleSlider.setValue(currentTank.getGunAngle());
@@ -247,6 +248,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                     game.bullets.add(new MIRVBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 } else if (artillery.getSelectedItem().equals(("FAE"))) {
                 game.bullets.add(new FAEBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
+                } else if (artillery.getSelectedItem().equals(("Nuclear Bomb"))) {
+                    game.bullets.add(new NukeBullet(game, (int) x, (int) (y - 10), dx, dy, .75));
                 }
 
                 //  Set the boolean in the game object that the fire button has been pressed.
@@ -273,7 +276,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         } else if (source == angleSlider) {
             int angle = source.getValue();
             currentTank.setGunAngle(angle);
-            angleValue.setText(Integer.toString(angle));
+            angleValue.setText(Integer.toString( angle- 90 ));
         }
     }
 

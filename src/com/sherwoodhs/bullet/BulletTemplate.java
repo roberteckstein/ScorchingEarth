@@ -111,7 +111,7 @@ public class BulletTemplate {
         //y motion
 
         if (moveWind % 4 == 0) {
-            xPosition += (wind / 10);
+            deltaX += (wind / 250);
         }
         moveWind++;
         if (xPosition <= 0 || xPosition >= game.terrain.width)

@@ -48,6 +48,7 @@ public class Tank {
         this.weaponsCount = new HashMap<>();
         this.weaponsCount.put("MIRV", 2);
         this.weaponsCount.put("FAE", 1);
+        this.weaponsCount.put("Nuclear Bomb", 1);
         this.weaponsCount.put("Normal Bullet", 1); //infinite
 
         //  Set the selected weapon to the first one in the list.
@@ -133,6 +134,9 @@ public class Tank {
         int oldValue = this.y;
         this.y = y;
         this.pcs.firePropertyChange("y", oldValue, this.y);
+        if (y > 500) {
+            this.destroyed = true;
+        }
     }
 
 
