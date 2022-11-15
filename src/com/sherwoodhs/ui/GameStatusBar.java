@@ -55,7 +55,7 @@ public class GameStatusBar extends JPanel {
         if(wind < 0) {
             windValue.setText("" + "⟵ "+ abs(wind));
         } else if(wind == 0) {
-            windValue.setText("" + wind + " ");
+            windValue.setText("" + wind);
         } else {
                 windValue.setText("" + wind+" ⟶");
             }
