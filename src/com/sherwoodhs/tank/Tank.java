@@ -133,6 +133,9 @@ public class Tank {
         int oldValue = this.y;
         this.y = y;
         this.pcs.firePropertyChange("y", oldValue, this.y);
+        if (y > 500) {
+            this.destroyed = true;
+        }
     }
 
 
