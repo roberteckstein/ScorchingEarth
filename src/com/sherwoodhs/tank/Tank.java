@@ -47,6 +47,7 @@ public class Tank {
 
         this.weaponsCount = new HashMap<>();
         this.weaponsCount.put("MIRV", 2);
+        this.weaponsCount.put("FAE", 1);
         this.weaponsCount.put("Normal Bullet", 1); //infinite
 
         //  Set the selected weapon to the first one in the list.
@@ -160,8 +161,12 @@ public class Tank {
         //  Or ask your math teacher about radians and sine/cosine.
 
         double angle = Math.toRadians((double)gunAngle-90.0);
+        
+        //  Adjust this constant if you want to change the barrel size in terms of power
+        double radiusConstant = (power / 5) + 6;
+        
         g.drawLine(x+(WIDTH/2), y,
-                x+(WIDTH/2)+(int)(radius * Math.sin(angle)), y-(int)(radius * Math.cos(angle)));
+                x+(WIDTH/2)+(int)(radiusConstant * Math.sin(angle)), y-(int)(radiusConstant * Math.cos(angle)));
 
     }
 

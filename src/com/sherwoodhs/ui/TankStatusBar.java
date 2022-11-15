@@ -1,6 +1,7 @@
 package com.sherwoodhs.ui;
 
 import com.sherwoodhs.ScorchGame;
+import com.sherwoodhs.bullet.FAEBullet;
 import com.sherwoodhs.bullet.MIRVBullet;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.bullet.BulletTemplate;
@@ -35,17 +36,18 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
 
     JLabel space1 = new JLabel("    ");     //  Currently unused, but is there if you want it
 
-    JLabel powerLabel = new JLabel("Power: ");
-    JLabel powerValue = new JLabel();
-    JButton decreasePowerButton = new JButton("-");
-    JButton increasePowerButton = new JButton("+");
-    JSlider powerSlider = new JSlider(0, 100, 50);
 
     JLabel angleLabel = new JLabel("Angle: ");
     JLabel angleValue = new JLabel();
     JButton decreaseAngleButton = new JButton("-");
     JButton increaseAngleButton = new JButton("+");
     JSlider angleSlider = new JSlider(0, 180, 90);
+
+    JLabel powerLabel = new JLabel("Power: ");
+    JLabel powerValue = new JLabel();
+    JButton decreasePowerButton = new JButton("-");
+    JButton increasePowerButton = new JButton("+");
+    JSlider powerSlider = new JSlider(0, 100, 50);
 
     JButton fireButton = new JButton("Fire");
 
@@ -68,22 +70,27 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  Add them in order from left to right
         add(artillery);
 
+
         add(amountLabel);
         add(amountValue);
-
-        add(powerLabel);
-        add(powerValue);
-        //add(decreasePowerButton);
-        add(powerSlider);
-        //add(increasePowerButton);
-
 
         add(angleLabel);
         add(angleValue);
         //add(decreaseAngleButton);
         add(angleSlider);
+        angleSlider.setPreferredSize(new Dimension(150,30)); // sets AngleSlider dimensions/size
         //add(increaseAngleButton);
+
+
+        add(powerLabel);
+        add(powerValue);
+        //add(decreasePowerButton);
+        add(powerSlider);
+        powerSlider.setPreferredSize(new Dimension(150,30)); // sets PowerSlide dimensions/size
+        //add(increasePowerButton);
+
         add(fireButton);
+
 
         //  Add listeners for each of the Swing components. When the components
         //  are interacted with (button pressed, combo box selected, the appropriate
@@ -124,6 +131,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  Reset the contents of the combo box
         resetWeapons(tank);
         drawStatusPanel(tank);
+        artillery.setSelectedItem("Normal Bullet");
     }
 
     public void drawStatusPanel(Tank tank) {
@@ -140,6 +148,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  Reset the angle and the power
         angleValue.setText("" + currentTank.getGunAngle());
         powerValue.setText("" + currentTank.getPower());
+        powerSlider.setValue(currentTank.getPower());
+        angleSlider.setValue(currentTank.getGunAngle());
 
         // changing fireButton color based on current player
         fireButton.setBackground(currentTank.playerColor);
@@ -225,6 +235,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                     game.bullets.add(new BulletTemplate(game, (int) x, (int) (y - 10), dx, dy, .5));
                 } else if (artillery.getSelectedItem().equals(("MIRV"))) {
                     game.bullets.add(new MIRVBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
+                } else if (artillery.getSelectedItem().equals(("FAE"))) {
+                game.bullets.add(new FAEBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 }
 
                 //  Set the boolean in the game object that the fire button has been pressed.
