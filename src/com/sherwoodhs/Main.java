@@ -11,8 +11,8 @@ public class Main {
 
         boolean gameOver = false;
 
-        //  Randomly generate the current wind from -25 to 25
-        int currentWind = (int)(25 - (Math.random() * 50));
+        //  Randomly generate the current wind from -50 to 50
+        int currentWind = (int)(40 - (Math.random() * 80));
 
         //  Create a game object and set the current wind
         ScorchGame game = new ScorchGame(numberOfPlayers);
@@ -59,7 +59,7 @@ public class Main {
             currentPlayer++;
 
             //change wind
-            currentWind = (int)(25 - (Math.random() * 50));
+            currentWind = (int)(40 - (Math.random() * 80));
             game.setCurrentWind(currentWind);
         }
 
