@@ -60,7 +60,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         this.game = game;
 
         // Set the visuals of the fire button
-        fireButton.setBorderPainted(false);
+        fireButton.setBorder(BorderFactory.createBevelBorder(1, Color.black, Color.black));
+        fireButton.setPreferredSize(new Dimension(60, 30));
         fireButton.setFocusPainted(false);
         fireButton.setOpaque(true);
 
@@ -146,7 +147,6 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         }
 
         //  Reset the angle and the power
-        angleValue.setText("" + currentTank.getGunAngle());
         powerValue.setText("" + currentTank.getPower());
         powerSlider.setValue(currentTank.getPower());
         angleSlider.setValue(currentTank.getGunAngle());
@@ -167,8 +167,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         if (e.getSource() == decreaseAngleButton) {
 
             currentAngle--;
-            if (currentAngle < -90) {
-                currentAngle = -90;
+            if (currentAngle < 0) {
+                currentAngle = 0;
             }
 
             //  Set the current tank gun angle, which will redraw it
@@ -177,12 +177,12 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         } else if (e.getSource() == increaseAngleButton) {
 
             currentAngle++;
-            if (currentAngle > 90) {
-                currentAngle = 90;
+            if (currentAngle > 180) {
+                currentAngle = 180;
             }
 
             //  Set the current tank gun angle, which will redraw it
-            currentTank.setGunAngle(currentAngle-90);
+            currentTank.setGunAngle(currentAngle);
 
         } else if (e.getSource() == decreasePowerButton) {
 
@@ -263,7 +263,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         } else if (source == angleSlider) {
             int angle = source.getValue();
             currentTank.setGunAngle(angle);
-            angleValue.setText(Integer.toString(angle-90));
+            angleValue.setText(Integer.toString( angle- 90 ));
         }
     }
 
