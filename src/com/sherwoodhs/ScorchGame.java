@@ -39,7 +39,7 @@ public class ScorchGame implements PropertyChangeListener {
     public ArrayList<Explosion> explosions = new ArrayList<>();
 
     //  This is just initialization data for each player. Change as you see fit.
-    private static Color[] playerColors = {Color.red, Color.cyan, Color.yellow, Color.green, Color.pink};
+    private static Color[] playerColors = {Color.decode("#FF5C40"), Color.cyan, Color.yellow, Color.green, Color.pink};
 
 
     //PLAYER SPAWNING ALGORITHM
