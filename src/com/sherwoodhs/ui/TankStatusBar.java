@@ -41,7 +41,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
     JLabel angleValue = new JLabel();
     JButton decreaseAngleButton = new JButton("-");
     JButton increaseAngleButton = new JButton("+");
-    JSlider angleSlider = new JSlider(0, 180, 90);
+    JSlider angleSlider = new JSlider(0, 180, 0);
 
     JLabel powerLabel = new JLabel("Power: ");
     JLabel powerValue = new JLabel();
@@ -167,8 +167,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         if (e.getSource() == decreaseAngleButton) {
 
             currentAngle--;
-            if (currentAngle < 0) {
-                currentAngle = 0;
+            if (currentAngle < -90) {
+                currentAngle = -90;
             }
 
             //  Set the current tank gun angle, which will redraw it
@@ -177,12 +177,12 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         } else if (e.getSource() == increaseAngleButton) {
 
             currentAngle++;
-            if (currentAngle > 180) {
-                currentAngle = 180;
+            if (currentAngle > 90) {
+                currentAngle = 90;
             }
 
             //  Set the current tank gun angle, which will redraw it
-            currentTank.setGunAngle(currentAngle);
+            currentTank.setGunAngle(currentAngle-90);
 
         } else if (e.getSource() == decreasePowerButton) {
 
@@ -263,7 +263,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         } else if (source == angleSlider) {
             int angle = source.getValue();
             currentTank.setGunAngle(angle);
-            angleValue.setText(Integer.toString(angle));
+            angleValue.setText(Integer.toString(angle-90));
         }
     }
 
