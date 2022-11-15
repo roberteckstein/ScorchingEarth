@@ -1,11 +1,8 @@
 package com.sherwoodhs.ui;
 
 import com.sherwoodhs.ScorchGame;
-import com.sherwoodhs.bullet.FAEBullet;
-import com.sherwoodhs.bullet.MIRVBullet;
-import com.sherwoodhs.bullet.NukeBullet;
+import com.sherwoodhs.bullet.*;
 import com.sherwoodhs.tank.Tank;
-import com.sherwoodhs.bullet.BulletTemplate;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -250,6 +247,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                 game.bullets.add(new FAEBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 } else if (artillery.getSelectedItem().equals(("Nuclear Bomb"))) {
                     game.bullets.add(new NukeBullet(game, (int) x, (int) (y - 10), dx, dy, .75));
+                } else if (artillery.getSelectedItem().equals(("Line"))) {
+                    game.bullets.add(new LineBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 }
 
                 //  Set the boolean in the game object that the fire button has been pressed.
