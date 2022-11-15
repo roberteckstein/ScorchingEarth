@@ -49,6 +49,7 @@ public class Tank {
         this.weaponsCount.put("MIRV", 2);
         this.weaponsCount.put("FAE", 1);
         this.weaponsCount.put("Nuclear Bomb", 1);
+        this.weaponsCount.put("Line", 3);
         this.weaponsCount.put("Normal Bullet", 1); //infinite
 
         //  Set the selected weapon to the first one in the list.

@@ -149,7 +149,7 @@ public class Terrain extends JPanel {
 
         for (Explosion e : (ArrayList<Explosion>)explosions.clone()) {
             if (e.isAlive()) {
-                e.draw(graphics);
+                e.draw(graphics, game);
             }
         }
 

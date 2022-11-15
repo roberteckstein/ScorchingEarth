@@ -1,5 +1,8 @@
 package com.sherwoodhs.explosion;
 
+import com.sherwoodhs.Main;
+import com.sherwoodhs.ScorchGame;
+import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
 
 import java.awt.*;
@@ -10,7 +13,6 @@ public class Explosion {
     //  make fancier explosions.
 
     private Terrain terrain;
-
     private boolean alive;
 
     private int xPosition;
@@ -42,7 +44,7 @@ public class Explosion {
         return alive;
     }
 
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, ScorchGame game) {
 
         //  Check if the radius of the explosion is now 0. If it is, the explosion is finished,
         //  and we can set alive to false and return.
@@ -68,6 +70,18 @@ public class Explosion {
         if (radius > maxRadius) {
             terrain.eraseCircleInTerrain(xPosition, yPosition, maxRadius);
             expanding = false;
+            // Put in the tank death check at this point
+            for (int i = 0; i < Main.numberOfPlayers; i++) {
+                Tank checked = game.players.get(i);
+                // Pythagorean theorem
+                double distance = Math.sqrt(Math.pow(checked.getX()+15 -xPosition,2) + Math.pow(checked.getY()-yPosition,2));
+                if (distance < maxRadius) {
+                    System.out.println(checked.playerColor + " is dead");
+                } else {
+                    System.out.println(checked.playerColor + " is not dead");
+                }
+            }
+            System.out.println();
         }
 
         //  Finally, draw the explosion
