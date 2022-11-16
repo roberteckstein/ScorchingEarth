@@ -126,14 +126,16 @@ public class DefaultBullet {
         //  colored explosions.
 
         if (yPosition > terrain.getGroundLevelAtColumn(xPosition)) {
-            alive = false;
-            explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
+            this.detonate(explosions, terrain);
         }
         for (Tank i: Players) {
             if (((xPosition >= i.getX()) && (xPosition <= i.getX() + 30)) && ((yPosition >= i.getY()) && (yPosition <= i.getY() + 15))) {
-                alive = false;
-                explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
+                this.detonate(explosions, terrain);
             }
         }
+    }
+    public void detonate(ArrayList<DefaultExplosion> explosions, Terrain terrain){
+        alive = false;
+        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
     }
 }

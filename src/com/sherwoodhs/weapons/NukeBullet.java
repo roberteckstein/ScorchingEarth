@@ -19,12 +19,10 @@ public class NukeBullet extends DefaultBullet {
         super.moveBullet();
 
     }
-    public void checkForTriggeringExplosion(ArrayList<DefaultExplosion> explosions, Terrain terrain, ArrayList<Tank> players) {
+    public void detonate(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
+        alive = false;
+        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 50, Color.orange));
 
-        if (yPosition > terrain.getGroundLevelAtColumn(xPosition)) {
-            alive = false;
-            explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 50, Color.orange));
-        }
     }
 
 }

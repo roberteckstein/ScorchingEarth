@@ -19,14 +19,11 @@ public class LineBullet extends DefaultBullet {
         super.moveBullet();
 
     }
-    public void checkForTriggeringExplosion(ArrayList<DefaultExplosion> explosions, Terrain terrain, ArrayList<Tank> players) {
-
-        if (yPosition > terrain.getGroundLevelAtColumn(xPosition)) {
-            alive = false;
-            explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
-            explosions.add(new DefaultExplosion(terrain, xPosition - 30, yPosition, 1, 20, Color.red));
-            explosions.add(new DefaultExplosion(terrain, xPosition + 30, yPosition, 1, 20, Color.red));
-        }
+    public void detonate(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
+        this.alive = false;
+        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
+        explosions.add(new DefaultExplosion(terrain, xPosition - 30, yPosition, 1, 20, Color.red));
+        explosions.add(new DefaultExplosion(terrain, xPosition + 30, yPosition, 1, 20, Color.red));
     }
 
 }
