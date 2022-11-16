@@ -25,5 +25,6 @@ public class LineBullet extends DefaultBullet {
         explosions.add(new DefaultExplosion(terrain, xPosition - 30, yPosition, 1, 20, Color.red));
         explosions.add(new DefaultExplosion(terrain, xPosition + 30, yPosition, 1, 20, Color.red));
     }
+    //um
 
 }

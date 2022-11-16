@@ -138,4 +138,5 @@ public class DefaultBullet {
         alive = false;
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
     }
+    //q
 }

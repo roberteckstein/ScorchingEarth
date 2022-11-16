@@ -24,5 +24,5 @@ public class NukeBullet extends DefaultBullet {
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 50, Color.orange));
 
     }
-
+//u
 }
