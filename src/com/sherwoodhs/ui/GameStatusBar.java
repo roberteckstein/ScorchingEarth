@@ -74,22 +74,4 @@ public class GameStatusBar extends JPanel {
         }
         return null;
     }
-
-    public String getHexFromString(String s) {
-        s = s.toLowerCase();
-        switch (s) {
-            case "red":
-                return "#FF2A12";
-            case "cyan":
-                return "#00CAE7";
-            case "pink":
-                return "#FF44E0";
-            case "yellow":
-                return "#E9B511";
-            case "green":
-                return "#0BCE12";
-            default:
-                return null;
-        }
-    }
 }

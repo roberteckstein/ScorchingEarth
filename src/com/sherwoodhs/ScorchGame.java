@@ -1,7 +1,7 @@
 package com.sherwoodhs;
 
-import com.sherwoodhs.bullet.BulletTemplate;
-import com.sherwoodhs.explosion.Explosion;
+import com.sherwoodhs.weapons.DefaultBullet;
+import com.sherwoodhs.explosions.DefaultExplosion;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
 import com.sherwoodhs.ui.GameStatusBar;
@@ -35,8 +35,8 @@ public class ScorchGame implements PropertyChangeListener {
     //  checks on setters, I'll just make them public... because I'm lazy.
 
     public ArrayList<Tank> players = new ArrayList<>();
-    public ArrayList<BulletTemplate> bullets = new ArrayList<>();
-    public ArrayList<Explosion> explosions = new ArrayList<>();
+    public ArrayList<DefaultBullet> bullets = new ArrayList<>();
+    public ArrayList<DefaultExplosion> explosions = new ArrayList<>();
 
     //  This is just initialization data for each player. Change as you see fit.
     private static Color[] playerColors = {Color.red, Color.cyan, Color.yellow, Color.green, Color.pink};

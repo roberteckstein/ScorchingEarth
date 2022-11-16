@@ -3,8 +3,8 @@ package com.sherwoodhs.terrain;
 import com.sherwoodhs.Main;
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.tank.Tank;
-import com.sherwoodhs.bullet.BulletTemplate;
-import com.sherwoodhs.explosion.Explosion;
+import com.sherwoodhs.weapons.DefaultBullet;
+import com.sherwoodhs.explosions.DefaultExplosion;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +20,8 @@ public class Terrain extends JPanel {
     public int height;
     public int width;
 
+    private Color skyColor;
+
     //  This is a boolean property representing whether there are objects
     //  animating on the playfield or not.
 
@@ -30,6 +32,7 @@ public class Terrain extends JPanel {
     //  than black (0,0,0) is considered terrain.
 
     private Color[][] terrain;
+    private int[] terrainHeight;
 
     public Terrain(ScorchGame game, int width, int height) {
 
@@ -40,6 +43,8 @@ public class Terrain extends JPanel {
         this.height = height;
         this.width = width;
         this.terrain = new Color[width][height];
+        this.terrainHeight = new int[width];
+        this.skyColor = Color.black;
 
         initTerrain();
 
@@ -77,11 +82,11 @@ public class Terrain extends JPanel {
                             255-(int)(j/(double)height*128),
                             30);
                 } else {
-                    terrain[i][j] = Color.black;
+                    terrain[i][j] = skyColor;
                 }
             }
         }
-
+        refreshGroundLevel();
     }
 
     public void drawTerrain(Graphics g) {
@@ -116,13 +121,13 @@ public class Terrain extends JPanel {
 
     }
 
-    public void drawBullets(ArrayList<BulletTemplate> bullets, Graphics g) {
+    public void drawBullets(ArrayList<DefaultBullet> bullets, Graphics g) {
 
         Graphics2D graphics = (Graphics2D) g;
 
         //  Clone the array so that we don't get a ConcurrentModificationException
 
-        for (BulletTemplate b : (ArrayList<BulletTemplate>)bullets.clone()) {
+        for (DefaultBullet b : (ArrayList<DefaultBullet>)bullets.clone()) {
 
             if (b.isAlive()) {
 
@@ -136,32 +141,33 @@ public class Terrain extends JPanel {
         }
     }
 
-    public void drawExplosions(ArrayList<Explosion> explosions, Graphics g) {
+    public void drawExplosions(ArrayList<DefaultExplosion> explosions, Graphics g) {
 
         Graphics2D graphics = (Graphics2D) g;
 
         //  Clone the array so that we don't get a ConcurrentModificationException
 
-        for (Explosion e : (ArrayList<Explosion>)explosions.clone()) {
+        for (DefaultExplosion e : (ArrayList<DefaultExplosion>)explosions.clone()) {
             if (e.isAlive()) {
-                e.draw(graphics);
+                e.draw(graphics, game);
             }
         }
 
     }
 
-    public int getGroundLevelAtColumn(int i) {
-
-        //  Start at the top and move down the column until we
-        //  encounter a non-black pixel.
-
-        for (int j = 0; j < height; j++) {
-            if (!terrain[i][j].equals(Color.black))
-                return j;
+    public void refreshGroundLevel() {
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++) {
+                if (!terrain[i][j].equals(skyColor)) {
+                    terrainHeight[i] = j;
+                    break;
+                }
+            }
         }
-
-        return height;
-
+    }
+    public int getGroundLevelAtColumn(int i) {
+        return terrainHeight[i];
     }
 
     public boolean collapseTerrain() {
@@ -174,7 +180,7 @@ public class Terrain extends JPanel {
                 //  Start at the bottom of each column, working our way up
                 //  and checking if there are any gaps in the terrain.
 
-                if (terrain[i][j].equals(Color.black)) {
+                if (terrain[i][j].equals(skyColor)) {
 
                     //  If there are, search upwards to see if there is any
                     //  terrain above us.
@@ -185,7 +191,7 @@ public class Terrain extends JPanel {
                         //  and add one to j so that it checks the same pixel
                         //  again.
 
-                        if (!terrain[i][k].equals(Color.black)) {
+                        if (!terrain[i][k].equals(skyColor)) {
                             shiftColumnTerrainDown(i,j);
                             j++;
                             shiftedAnyPixels = true;
@@ -196,12 +202,12 @@ public class Terrain extends JPanel {
                     // The top pixel after everything is shifted by 1 should
                     // now be black.
 
-                    terrain[i][0] = Color.black;
+                    terrain[i][0] = skyColor;
 
                 }
             }
         }
-
+        refreshGroundLevel();
         return shiftedAnyPixels;
     }
 
@@ -215,7 +221,7 @@ public class Terrain extends JPanel {
             terrain[i][k] = terrain[i][k-1];
         }
 
-        terrain[i][0] = Color.black;
+        terrain[i][0] = skyColor;
 
     }
 
@@ -241,13 +247,13 @@ public class Terrain extends JPanel {
         drawExplosions(game.explosions, g);
 
         //  Clone to avoid ConcurrentModificationException
-        for (BulletTemplate b : (ArrayList<BulletTemplate>)game.bullets.clone()) {
+        for (DefaultBullet b : (ArrayList<DefaultBullet>)game.bullets.clone()) {
             if (!b.isAlive())
                 game.bullets.remove(b);
         }
 
         //  Clone to avoid ConcurrentModificationException
-        for (Explosion e : (ArrayList<Explosion>)game.explosions.clone()) {
+        for (DefaultExplosion e : (ArrayList<DefaultExplosion>)game.explosions.clone()) {
             if (!e.isAlive())
                 game.explosions.remove(e);
         }
@@ -301,7 +307,7 @@ public class Terrain extends JPanel {
                         int coorX = x - xx;
                         int coorY = y - yy;
                         if (coorX >= 0 && coorX < width && coorY >= 0 && coorY < height)
-                            terrain[coorX][coorY] = Color.black;
+                            terrain[coorX][coorY] = skyColor;
                     }
                 }
 

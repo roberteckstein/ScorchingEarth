@@ -1,10 +1,8 @@
 package com.sherwoodhs.ui;
 
 import com.sherwoodhs.ScorchGame;
-import com.sherwoodhs.bullet.FAEBullet;
-import com.sherwoodhs.bullet.MIRVBullet;
+import com.sherwoodhs.weapons.*;
 import com.sherwoodhs.tank.Tank;
-import com.sherwoodhs.bullet.BulletTemplate;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -59,36 +57,45 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         //  Set the reference to the current game object
         this.game = game;
 
+        // lock given component sizes in the panel
+        setLayout(new FlowLayout());
+
         // Set the visuals of the fire button
         fireButton.setBorder(BorderFactory.createBevelBorder(1, Color.black, Color.black));
         fireButton.setPreferredSize(new Dimension(60, 30));
         fireButton.setFocusPainted(false);
         fireButton.setOpaque(true);
 
-        //  Layout the Swing objects using the FlowLayout manager
-        setLayout(new FlowLayout());
-
         //  Add them in order from left to right
+        artillery.setPreferredSize(new Dimension(150, 25));
         add(artillery);
 
-
+        amountValue.setPreferredSize(new Dimension(25, 20));
         add(amountLabel);
         add(amountValue);
 
-        add(angleLabel);
-        add(angleValue);
+        JPanel angle = new JPanel(new GridBagLayout());
+        angle.setPreferredSize(new Dimension(225, 30));
+        angleValue.setPreferredSize(new Dimension(25, 20));
+        angle.add(angleLabel);
+        angle.add(angleValue);
         //add(decreaseAngleButton);
-        add(angleSlider);
+        angle.add(angleSlider);
         angleSlider.setPreferredSize(new Dimension(150,30)); // sets AngleSlider dimensions/size
         //add(increaseAngleButton);
 
-
-        add(powerLabel);
-        add(powerValue);
+        JPanel power = new JPanel(new GridBagLayout());
+        power.setPreferredSize(new Dimension(225, 30));
+        powerValue.setPreferredSize(new Dimension(25, 20));
+        power.add(powerLabel);
+        power.add(powerValue);
         //add(decreasePowerButton);
-        add(powerSlider);
+        power.add(powerSlider);
         powerSlider.setPreferredSize(new Dimension(150,30)); // sets PowerSlide dimensions/size
         //add(increasePowerButton);
+
+        add(angle);
+        add(power);
 
         add(fireButton);
 
@@ -232,11 +239,15 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                 //  Add the appropriate bullet type to the array list of active game bullets
 
                 if (artillery.getSelectedItem().equals("Normal Bullet")) {
-                    game.bullets.add(new BulletTemplate(game, (int) x, (int) (y - 10), dx, dy, .5));
+                    game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 } else if (artillery.getSelectedItem().equals(("MIRV"))) {
                     game.bullets.add(new MIRVBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 } else if (artillery.getSelectedItem().equals(("FAE"))) {
                 game.bullets.add(new FAEBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
+                } else if (artillery.getSelectedItem().equals(("Nuclear Bomb"))) {
+                    game.bullets.add(new NukeBullet(game, (int) x, (int) (y - 10), dx, dy, .75));
+                } else if (artillery.getSelectedItem().equals(("Line"))) {
+                    game.bullets.add(new LineBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 }
 
                 //  Set the boolean in the game object that the fire button has been pressed.

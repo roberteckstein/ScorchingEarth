@@ -1,10 +1,12 @@
-package com.sherwoodhs.bullet;
+package com.sherwoodhs.weapons;
 
 import com.sherwoodhs.ScorchGame;
 
-public class MIRVBullet extends BulletTemplate {
+import java.awt.*;
 
-    public MIRVBullet(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
+public class FAEBullet extends DefaultBullet {
+
+    public FAEBullet(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
         super(game, x, y, deltaX, deltaY, gravity);
     }
 
@@ -21,10 +23,16 @@ public class MIRVBullet extends BulletTemplate {
             alive = false;
             for (int i = 0; i < 5; i++)
                 game.bullets.add(
-                        new BulletTemplate(game, (int)xPosition, yPosition,
-                            deltaX+(2.0-(Math.random()*4.0)), deltaY, .5));
+                        new DefaultBullet(game, (int)xPosition, yPosition,
+                            2.0-(Math.random()*4.0), -3, .5));
 
         }
+
+    }
+    public void draw(Graphics2D g) {
+
+        g.setPaint(Color.green);
+        g.fill3DRect(xPosition, yPosition, 3, 3, true);
 
     }
 
