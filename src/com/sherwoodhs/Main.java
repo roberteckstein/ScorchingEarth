@@ -33,7 +33,7 @@ public class Main {
             //  accordingly.
 
             Tank currentTank = game.players.get(currentPlayer);
-            if (!currentTank.isDestroyed()) {
+            if (!currentTank.isDestroyed()) { // skips dead tanks
                 game.status.setStatus(currentTank, currentWind);
                 game.settings.setStatus(currentTank);
 
@@ -54,6 +54,8 @@ public class Main {
                 while (game.terrain.isAnimating()) {
                     game.performAnimation();
                 }
+
+                // Tanks fall down if no terrain is immediately under
                 for (int i = 0; i < Main.numberOfPlayers; i++) {
                     Tank updatingTank = game.players.get(i);
                     updatingTank.setY(game.terrain.getGroundLevelAtColumn(game.getTankPosition(i) + updatingTank.WIDTH / 2) - updatingTank.HEIGHT);
