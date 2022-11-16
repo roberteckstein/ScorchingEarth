@@ -68,10 +68,15 @@ public class Main {
             }
             //  Move on to the next player.
             currentPlayer++;
-            if (alivePlayers <= 1){
+            // Win conditions
+            if (alivePlayers <= 1){ // 1 or 0 players remaining
                 gameOver = true;
+                // To be upadating
                 System.out.println("You win.");
-                System.exit(0);
+                // Closes current game panel
+                game.closeFrame();
+                // Creates another game
+                Main.main(args);
             }
         }
 

@@ -120,6 +120,8 @@ public class ScorchGame implements PropertyChangeListener {
         return currentWind;
     }
 
+    public void closeFrame() {frame.dispose();} //closes frame
+
     public void setCurrentWind(int currentWind) {
         this.currentWind = currentWind;
     }
