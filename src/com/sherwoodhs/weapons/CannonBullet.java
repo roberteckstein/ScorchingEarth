@@ -15,7 +15,7 @@ public class CannonBullet extends DefaultBullet {
     @Override
     public void draw(Graphics2D g) {
         g.setPaint(Color.gray);
-        g.fill3DRect(xPosition, yPosition, 10, 10, true);
+        g.fillOval(xPosition, yPosition, 10, 10);
     }
 
     @Override
