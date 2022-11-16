@@ -73,13 +73,12 @@ public class DefaultExplosion {
             // Put in the tank death check at this point
             for (int i = 0; i < Main.numberOfPlayers; i++) {
                 Tank checked = game.players.get(i);
-                // Pythagorean theorem
-                double distance = Math.sqrt(Math.pow(checked.getX()+15 -xPosition,2) + Math.pow(checked.getY()-yPosition,2));
-                if (distance < maxRadius) {
-                    System.out.println(checked.playerColor + " is dead");
-                    checked.setDestroyed(true);
-                } else {
-                    System.out.println(checked.playerColor + " is not dead");
+                if (!checked.isDestroyed()) {
+                    // Pythagorean theorem
+                    double distance = Math.sqrt(Math.pow(checked.getX() + 15 - xPosition, 2) + Math.pow(checked.getY() - yPosition, 2));
+                    if (distance < maxRadius) { // if distance is pushed
+                        checked.setDestroyed(true); // set tank as destroyed
+                    }
                 }
             }
             System.out.println();
