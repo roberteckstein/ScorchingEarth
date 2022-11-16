@@ -155,6 +155,29 @@ public class Terrain extends JPanel {
 
     }
 
+
+    public void clearTerrainAroundTanks(int x, int y) //clears out terrain around a tank based on the left corner's position
+    {
+        int groundLevel = y+15;
+        for (int i = x; i < x +30; i++)
+        {
+            for (int j = groundLevel; j >= 0; j--)
+            {
+                terrain[i][j] = skyColor;
+            }
+            for (int j = groundLevel; j <= groundLevel+15; j++)
+            {
+                if (terrain[i][j] == skyColor) {
+                    terrain[i][j] = new Color(
+                            255-(int)(j/(double)height*128),
+                            255-(int)(j/(double)height*128),
+                            30);
+                }
+            }
+        }
+        refreshGroundLevel();
+    }
+
     public void refreshGroundLevel() {
         for (int i = 0; i < width; i++)
         {
