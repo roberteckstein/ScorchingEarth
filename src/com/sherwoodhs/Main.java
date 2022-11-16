@@ -6,6 +6,7 @@ import com.sherwoodhs.tank.Tank;
 public class Main {
 
     public static final int numberOfPlayers = 5;
+    public static int alivePlayers = numberOfPlayers;
 
     public static void main(String[] args) {
 
@@ -65,9 +66,13 @@ public class Main {
                 currentWind = (int) (40 - (Math.random() * 80));
                 game.setCurrentWind(currentWind);
             }
-
             //  Move on to the next player.
             currentPlayer++;
+            if (alivePlayers <= 1){
+                gameOver = true;
+                System.out.println("You win.");
+                System.exit(0);
+            }
         }
 
     }
