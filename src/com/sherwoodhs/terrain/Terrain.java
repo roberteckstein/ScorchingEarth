@@ -155,6 +155,30 @@ public class Terrain extends JPanel {
 
     }
 
+
+    public void clearTerrainAroundTanks(int x, int y) //clears out terrain around a tank based on the left corner's position
+    {
+        int groundLevel = y+15;
+        for (int i = x; i < x +30; i++)
+        {
+            for (int j = groundLevel; j >= 0; j--)
+            {
+                terrain[i][j] = skyColor;
+            }
+            for (int j = groundLevel; j <= groundLevel+5; j++)
+            {
+                if (terrain[i][j] == skyColor) {
+                    terrain[i][j] = new Color(
+                            255-(int)(j/(double)height*128),
+                            255-(int)(j/(double)height*128),
+                            30);
+                }
+            }
+        }
+        collapseTerrain();
+        refreshGroundLevel();
+    }
+
     public void refreshGroundLevel() {
         for (int i = 0; i < width; i++)
         {
@@ -232,11 +256,6 @@ public class Terrain extends JPanel {
 
         if (animating) {
             animating = updateBallisticItems(g);
-            for (int i = 0; i < Main.numberOfPlayers; i++) {
-                Tank updatingTank = game.players.get(i);
-                updatingTank.setY(getGroundLevelAtColumn(game.getTankPosition(i) + updatingTank.WIDTH/2)-updatingTank.HEIGHT);
-            }
-
         }
 
     }

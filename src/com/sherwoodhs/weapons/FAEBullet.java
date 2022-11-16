@@ -5,9 +5,10 @@ import com.sherwoodhs.ScorchGame;
 import java.awt.*;
 
 public class FAEBullet extends DefaultBullet {
-
+    protected boolean cansplit;
     public FAEBullet(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
         super(game, x, y, deltaX, deltaY, gravity);
+        this.cansplit = true;
     }
 
     public void moveBullet() {
@@ -19,12 +20,13 @@ public class FAEBullet extends DefaultBullet {
         //  If the MIRV has reached its apex, break it apart into 4.0 (they end up ontop of eachother, deltaX is an int) bullets
         //  with slightly random trajectories.
 
-        if (alive && yPosition > lastYPosition) {
-            alive = false;
-            for (int i = 0; i < 5; i++)
+        if (cansplit && alive && yPosition > lastYPosition) {
+            cansplit = false;
+            deltaY += 2;
+            for (int i = 0; i < 3; i++)
                 game.bullets.add(
                         new DefaultBullet(game, (int)xPosition, yPosition,
-                            2.0-(Math.random()*4.0), -3, .5));
+                            0.5-(Math.random()*1.0), -3, .5));
 
         }
 

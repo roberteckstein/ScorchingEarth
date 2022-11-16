@@ -19,7 +19,9 @@ public class DefaultBullet {
     protected boolean alive;
 
     protected int xPosition;
+    protected int xWidth;
     protected int yPosition;
+    protected int yHight;
 
     protected double deltaX;
     protected double deltaY;
@@ -35,7 +37,9 @@ public class DefaultBullet {
     public DefaultBullet(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
 
         this.xPosition = x;
+        this.xWidth = 3;
         this.yPosition = y;
+        this.yHight = 3;
         this.deltaX = deltaX;
         this.deltaY = deltaY;
         this.gravity = gravity;
@@ -75,7 +79,7 @@ public class DefaultBullet {
     public void draw(Graphics2D g) {
 
         g.setPaint(Color.white);
-        g.fill3DRect(xPosition, yPosition, 3, 3, true);
+        g.fill3DRect(xPosition - xWidth / 2, yPosition - yHight / 2, xWidth, yHight, true);
 
     }
 
@@ -129,8 +133,10 @@ public class DefaultBullet {
             this.explode(explosions, terrain);
         }
         for (Tank i: Players) {
-            if (((xPosition >= i.getX()) && (xPosition <= i.getX() + 30)) && ((yPosition >= i.getY()) && (yPosition <= i.getY() + 15))) {
-                this.explode(explosions, terrain);
+            if (!(i.isDestroyed())) {
+                if (((xPosition + xWidth / 2 >= i.getX()) && (xPosition - xWidth / 2 <= i.getX() + 30)) && ((yPosition + yHight / 2 >= i.getY()) && (yPosition - yHight / 2 <= i.getY() + 15))) {
+                    this.explode(explosions, terrain);
+                }
             }
         }
     }
