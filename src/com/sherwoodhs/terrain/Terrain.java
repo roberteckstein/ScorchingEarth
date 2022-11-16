@@ -165,7 +165,7 @@ public class Terrain extends JPanel {
             {
                 terrain[i][j] = skyColor;
             }
-            for (int j = groundLevel; j <= groundLevel+15; j++)
+            for (int j = groundLevel; j <= groundLevel+5; j++)
             {
                 if (terrain[i][j] == skyColor) {
                     terrain[i][j] = new Color(
@@ -175,6 +175,7 @@ public class Terrain extends JPanel {
                 }
             }
         }
+        collapseTerrain();
         refreshGroundLevel();
     }
 
