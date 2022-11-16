@@ -21,10 +21,10 @@ public class FAEBullet extends DefaultBullet {
 
         if (alive && yPosition > lastYPosition) {
             alive = false;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
                 game.bullets.add(
                         new DefaultBullet(game, (int)xPosition, yPosition,
-                            2.0-(Math.random()*4.0), -3, .5));
+                            1.0-(Math.random()*2.0), -3, .5));
 
         }
 

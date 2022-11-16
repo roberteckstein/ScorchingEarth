@@ -133,8 +133,10 @@ public class DefaultBullet {
             this.explode(explosions, terrain);
         }
         for (Tank i: Players) {
-            if (((xPosition + xWidth / 2 >= i.getX()) && (xPosition - xWidth / 2 <= i.getX() + 30)) && ((yPosition + yHight / 2 >= i.getY()) && (yPosition - yHight / 2 <= i.getY() + 15))) {
-                this.explode(explosions, terrain);
+            if (!(i.isDestroyed())) {
+                if (((xPosition + xWidth / 2 >= i.getX()) && (xPosition - xWidth / 2 <= i.getX() + 30)) && ((yPosition + yHight / 2 >= i.getY()) && (yPosition - yHight / 2 <= i.getY() + 15))) {
+                    this.explode(explosions, terrain);
+                }
             }
         }
     }
