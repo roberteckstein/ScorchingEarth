@@ -12,16 +12,16 @@ public class DefaultExplosion {
     //  A simple class to represent an explosion. Extend and override methods if you want to
     //  make fancier explosions.
 
-    private Terrain terrain;
-    private boolean alive;
+    public Terrain terrain;
+    public boolean alive;
 
-    private int xPosition;
-    private int yPosition;
+    public int xPosition;
+    public int yPosition;
 
-    private double radius;
-    private double maxRadius;
-    private Color color;
-    private boolean expanding;
+    public double radius;
+    public double maxRadius;
+    public Color color;
+    public boolean expanding;
 
     public DefaultExplosion(Terrain terrain, int x, int y, double radius, double maxSize, Color color) {
 
