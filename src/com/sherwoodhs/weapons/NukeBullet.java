@@ -2,8 +2,6 @@ package com.sherwoodhs.weapons;
 
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.explosions.DefaultExplosion;
-import com.sherwoodhs.explosions.NukeExplotion;
-import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
 
 import java.awt.*;
