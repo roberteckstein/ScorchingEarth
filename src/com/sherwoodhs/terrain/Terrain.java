@@ -232,11 +232,6 @@ public class Terrain extends JPanel {
 
         if (animating) {
             animating = updateBallisticItems(g);
-            for (int i = 0; i < Main.numberOfPlayers; i++) {
-                Tank updatingTank = game.players.get(i);
-                updatingTank.setY(getGroundLevelAtColumn(game.getTankPosition(i) + updatingTank.WIDTH/2)-updatingTank.HEIGHT);
-            }
-
         }
 
     }
