@@ -19,7 +19,7 @@ public class NukeBullet extends DefaultBullet {
         super.moveBullet();
 
     }
-    public void detonate(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
+    public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
         alive = false;
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 50, Color.orange));
 
