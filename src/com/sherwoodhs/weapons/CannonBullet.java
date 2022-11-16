@@ -10,12 +10,14 @@ import java.util.ArrayList;
 public class CannonBullet extends DefaultBullet {
     public CannonBullet(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
         super(game, x, y, deltaX, deltaY, gravity);
+        this.xWidth = 10;
+        this.yHight = 10;
     }
 
     @Override
     public void draw(Graphics2D g) {
         g.setPaint(Color.gray);
-        g.fillOval(xPosition, yPosition, 10, 10);
+        g.fillOval(xPosition - xWidth / 2, yPosition - yHight / 2, xWidth, yHight);
     }
 
     @Override
