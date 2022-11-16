@@ -33,38 +33,39 @@ public class Main {
             //  accordingly.
 
             Tank currentTank = game.players.get(currentPlayer);
-            game.status.setStatus(currentTank, currentWind);
-            game.settings.setStatus(currentTank);
+            if (!currentTank.isDestroyed()) {
+                game.status.setStatus(currentTank, currentWind);
+                game.settings.setStatus(currentTank);
 
-            //  Wait for a signal that the player has pressed the fire button.
-            //  Do this by yielding to other threads that are running, such
-            //  as the event dispatch thread.
+                //  Wait for a signal that the player has pressed the fire button.
+                //  Do this by yielding to other threads that are running, such
+                //  as the event dispatch thread.
 
-            while (game.waitForPlayerFire) {
-                Thread.yield();
-            }
+                while (game.waitForPlayerFire) {
+                    Thread.yield();
+                }
 
-            //  Once the user has pressed the fire button, there should now be
-            //  objects in the playfield that are animating. Set the appropriate
-            //  flag in the game object and perform animations until the flag
-            //  is set the false (when all animating objects are no longer alive.)
+                //  Once the user has pressed the fire button, there should now be
+                //  objects in the playfield that are animating. Set the appropriate
+                //  flag in the game object and perform animations until the flag
+                //  is set the false (when all animating objects are no longer alive.)
 
-            game.terrain.setAnimating(true);
-            while (game.terrain.isAnimating()) {
-                game.performAnimation();
-            }
-            for (int i = 0; i < Main.numberOfPlayers; i++) {
-                Tank updatingTank = game.players.get(i);
-                updatingTank.setY(game.terrain.getGroundLevelAtColumn(game.getTankPosition(i) + updatingTank.WIDTH/2)-updatingTank.HEIGHT);
+                game.terrain.setAnimating(true);
+                while (game.terrain.isAnimating()) {
+                    game.performAnimation();
+                }
+                for (int i = 0; i < Main.numberOfPlayers; i++) {
+                    Tank updatingTank = game.players.get(i);
+                    updatingTank.setY(game.terrain.getGroundLevelAtColumn(game.getTankPosition(i) + updatingTank.WIDTH / 2) - updatingTank.HEIGHT);
+                }
+
+                //change wind
+                currentWind = (int) (40 - (Math.random() * 80));
+                game.setCurrentWind(currentWind);
             }
 
             //  Move on to the next player.
-
             currentPlayer++;
-
-            //change wind
-            currentWind = (int)(40 - (Math.random() * 80));
-            game.setCurrentWind(currentWind);
         }
 
     }

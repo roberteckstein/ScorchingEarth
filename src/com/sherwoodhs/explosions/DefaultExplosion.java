@@ -77,6 +77,7 @@ public class DefaultExplosion {
                 double distance = Math.sqrt(Math.pow(checked.getX()+15 -xPosition,2) + Math.pow(checked.getY()-yPosition,2));
                 if (distance < maxRadius) {
                     System.out.println(checked.playerColor + " is dead");
+                    checked.setDestroyed(true);
                 } else {
                     System.out.println(checked.playerColor + " is not dead");
                 }
