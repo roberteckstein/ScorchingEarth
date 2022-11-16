@@ -1,4 +1,4 @@
-package com.sherwoodhs.explosion;
+package com.sherwoodhs.explosions;
 
 import com.sherwoodhs.Main;
 import com.sherwoodhs.ScorchGame;
@@ -7,7 +7,7 @@ import com.sherwoodhs.terrain.Terrain;
 
 import java.awt.*;
 
-public class Explosion {
+public class DefaultExplosion {
 
     //  A simple class to represent an explosion. Extend and override methods if you want to
     //  make fancier explosions.
@@ -23,7 +23,7 @@ public class Explosion {
     private Color color;
     private boolean expanding;
 
-    public Explosion(Terrain terrain, int x, int y, double radius, double maxSize, Color color) {
+    public DefaultExplosion(Terrain terrain, int x, int y, double radius, double maxSize, Color color) {
 
         this.terrain = terrain;
 

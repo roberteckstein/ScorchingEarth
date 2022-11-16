@@ -3,8 +3,8 @@ package com.sherwoodhs.terrain;
 import com.sherwoodhs.Main;
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.tank.Tank;
-import com.sherwoodhs.bullet.BulletTemplate;
-import com.sherwoodhs.explosion.Explosion;
+import com.sherwoodhs.weapons.DefaultBullet;
+import com.sherwoodhs.explosions.DefaultExplosion;
 
 import javax.swing.*;
 import java.awt.*;
@@ -121,13 +121,13 @@ public class Terrain extends JPanel {
 
     }
 
-    public void drawBullets(ArrayList<BulletTemplate> bullets, Graphics g) {
+    public void drawBullets(ArrayList<DefaultBullet> bullets, Graphics g) {
 
         Graphics2D graphics = (Graphics2D) g;
 
         //  Clone the array so that we don't get a ConcurrentModificationException
 
-        for (BulletTemplate b : (ArrayList<BulletTemplate>)bullets.clone()) {
+        for (DefaultBullet b : (ArrayList<DefaultBullet>)bullets.clone()) {
 
             if (b.isAlive()) {
 
@@ -141,13 +141,13 @@ public class Terrain extends JPanel {
         }
     }
 
-    public void drawExplosions(ArrayList<Explosion> explosions, Graphics g) {
+    public void drawExplosions(ArrayList<DefaultExplosion> explosions, Graphics g) {
 
         Graphics2D graphics = (Graphics2D) g;
 
         //  Clone the array so that we don't get a ConcurrentModificationException
 
-        for (Explosion e : (ArrayList<Explosion>)explosions.clone()) {
+        for (DefaultExplosion e : (ArrayList<DefaultExplosion>)explosions.clone()) {
             if (e.isAlive()) {
                 e.draw(graphics, game);
             }
@@ -247,13 +247,13 @@ public class Terrain extends JPanel {
         drawExplosions(game.explosions, g);
 
         //  Clone to avoid ConcurrentModificationException
-        for (BulletTemplate b : (ArrayList<BulletTemplate>)game.bullets.clone()) {
+        for (DefaultBullet b : (ArrayList<DefaultBullet>)game.bullets.clone()) {
             if (!b.isAlive())
                 game.bullets.remove(b);
         }
 
         //  Clone to avoid ConcurrentModificationException
-        for (Explosion e : (ArrayList<Explosion>)game.explosions.clone()) {
+        for (DefaultExplosion e : (ArrayList<DefaultExplosion>)game.explosions.clone()) {
             if (!e.isAlive())
                 game.explosions.remove(e);
         }

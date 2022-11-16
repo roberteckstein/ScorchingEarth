@@ -1,13 +1,12 @@
 package com.sherwoodhs.ui;
 
 import com.sherwoodhs.ScorchGame;
-import com.sherwoodhs.bullet.*;
+import com.sherwoodhs.weapons.*;
 import com.sherwoodhs.tank.Tank;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -240,7 +239,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                 //  Add the appropriate bullet type to the array list of active game bullets
 
                 if (artillery.getSelectedItem().equals("Normal Bullet")) {
-                    game.bullets.add(new BulletTemplate(game, (int) x, (int) (y - 10), dx, dy, .5));
+                    game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 } else if (artillery.getSelectedItem().equals(("MIRV"))) {
                     game.bullets.add(new MIRVBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 } else if (artillery.getSelectedItem().equals(("FAE"))) {

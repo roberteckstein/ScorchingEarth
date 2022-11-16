@@ -1,6 +1,6 @@
-package com.sherwoodhs.bullet;
+package com.sherwoodhs.weapons;
 
-import com.sherwoodhs.explosion.Explosion;
+import com.sherwoodhs.explosions.DefaultExplosion;
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static java.lang.Math.floor;
 
-public class BulletTemplate {
+public class DefaultBullet {
 
     //  This is a simple bullet. It's only purpose in life is to fly through the
     //  playfield until it hits the terrain, at which point it changes alive to
@@ -32,7 +32,7 @@ public class BulletTemplate {
 
     protected double decX;
 
-    public BulletTemplate(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
+    public DefaultBullet(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
 
         this.xPosition = x;
         this.yPosition = y;
@@ -119,7 +119,7 @@ public class BulletTemplate {
 
     }
 
-    public void checkForTriggeringExplosion(ArrayList<Explosion> explosions, Terrain terrain, ArrayList<Tank> Players) {
+    public void checkForTriggeringExplosion(ArrayList<DefaultExplosion> explosions, Terrain terrain, ArrayList<Tank> Players) {
 
         //  If the bullet has hit ground, then it is no longer alive and is replaced
         //  by an explosion. Subclasses can override to generate larger, smaller, or different
@@ -127,12 +127,12 @@ public class BulletTemplate {
 
         if (yPosition > terrain.getGroundLevelAtColumn(xPosition)) {
             alive = false;
-            explosions.add(new Explosion(terrain, xPosition, yPosition, 1, 20, Color.red));
+            explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
         }
         for (Tank i: Players) {
             if (((xPosition >= i.getX()) && (xPosition <= i.getX() + 30)) && ((yPosition >= i.getY()) && (yPosition <= i.getY() + 15))) {
                 alive = false;
-                explosions.add(new Explosion(terrain, xPosition, yPosition, 1, 20, Color.red));
+                explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
             }
         }
     }
