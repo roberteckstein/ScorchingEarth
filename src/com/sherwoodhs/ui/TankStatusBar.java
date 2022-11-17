@@ -242,7 +242,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                     game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 } else if (artillery.getSelectedItem().equals(("MIRV"))) {
                     game.bullets.add(new MIRVBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
-                } else if (artillery.getSelectedItem().equals(("FAE"))) {
+                } else if (artillery.getSelectedItem().equals(("Flare Bomber"))) {
                 game.bullets.add(new FAEBullet(game, (int) x, (int) (y - 10), dx, dy, .5));
                 } else if (artillery.getSelectedItem().equals(("Nuclear Bomb"))) {
                     game.bullets.add(new NukeBullet(game, (int) x, (int) (y - 10), dx, dy, .75));
@@ -252,6 +252,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                     game.bullets.add(new CannonBullet(game, (int) x, (int) (y - 10), dx, dy, 1));
                 }else if (artillery.getSelectedItem().equals(("Firework"))) {
                     game.bullets.add(new Firework(game, (int) x, (int) (y - 10), dx, dy, 1));
+                }else if (artillery.getSelectedItem().equals(("Drill"))) {
+                    game.bullets.add(new Firework(game, (int) x, (int) (y - 10), dx, dy, 0.75));
                 }
                 //  Set the boolean in the game object that the fire button has been pressed.
                 //  At this point, the main thread will start processing animating objects.
