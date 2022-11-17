@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 public class NukeBullet extends DefaultBullet {
 
+    public static final int WIDTH = 8;
+    public static final int HEIGHT = 16;
+
     public NukeBullet(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
         super(game, x, y, deltaX, deltaY, gravity);
     }
@@ -28,7 +31,10 @@ public class NukeBullet extends DefaultBullet {
 
     public void draw(Graphics2D g) {
         g.setPaint(Color.orange);
-        g.fillOval(xPosition, yPosition, 8, 8);
+        g.fillOval(xPosition, yPosition, WIDTH, HEIGHT);
+        int [] x = {xPosition-(WIDTH/8), xPosition+(WIDTH/2), xPosition+WIDTH+(WIDTH/8)};
+        int [] y = {yPosition-(HEIGHT/2), yPosition+2, yPosition-(HEIGHT/2)};
+        g.fillPolygon(x, y, 3);
     }
 //u
 }
