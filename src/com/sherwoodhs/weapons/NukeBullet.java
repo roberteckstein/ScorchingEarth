@@ -25,5 +25,10 @@ public class NukeBullet extends DefaultBullet {
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 50, Color.orange));
 
     }
+
+    public void draw(Graphics2D g) {
+        g.setPaint(Color.orange);
+        g.fillOval(xPosition, yPosition, 8, 8);
+    }
 //u
 }
