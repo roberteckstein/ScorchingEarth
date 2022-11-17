@@ -5,6 +5,7 @@ import com.sherwoodhs.explosions.DefaultExplosion;
 import com.sherwoodhs.terrain.Terrain;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Firework extends DefaultBullet {
 
@@ -23,14 +24,6 @@ public class Firework extends DefaultBullet {
             alive = false;
         }
 
-        if (alive = false) {
-            for (int i = 0; i < 5; i++)
-                game.bullets.add(
-                        new DefaultBullet(game, (int)xPosition, yPosition,
-                                2.0-(Math.random()*5.0), -3, .5));
-
-        }
-
     }
     @Override
     public void draw(Graphics2D g) {
@@ -40,4 +33,12 @@ public class Firework extends DefaultBullet {
 
     }
 
+    @Override
+    public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
+        super.explode(explosions, terrain);
+        for (int i = 0; i < 5; i++)
+            game.bullets.add(
+                    new Shadowbullet(game, (int)xPosition, yPosition,
+                            2.0-(Math.random()*5.0), -3, .5));
+    }
 }
