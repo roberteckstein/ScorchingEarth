@@ -13,11 +13,13 @@ public class NukeBullet extends DefaultBullet {
         super(game, x, y, deltaX, deltaY, gravity);
     }
 
+    @Override
     public void moveBullet() {
 
         super.moveBullet();
 
     }
+    @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
         alive = false;
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 50, Color.orange));

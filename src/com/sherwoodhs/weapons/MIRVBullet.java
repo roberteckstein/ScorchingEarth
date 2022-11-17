@@ -8,6 +8,7 @@ public class MIRVBullet extends DefaultBullet {
         super(game, x, y, deltaX, deltaY, gravity);
     }
 
+    @Override
     public void moveBullet() {
 
         double lastYPosition = yPosition;

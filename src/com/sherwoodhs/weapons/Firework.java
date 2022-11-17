@@ -13,8 +13,6 @@ public class Firework extends DefaultBullet {
         super(game, x, y, deltaX, deltaY, gravity);
     }
 
-
-
     public void moveBullet(Terrain terrain) {
 
 
