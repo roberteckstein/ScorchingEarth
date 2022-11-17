@@ -8,6 +8,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Shadowbullet extends DefaultBullet{
+    //used for firework, not ment to be it's own weapon
     protected boolean shadow;
     public Shadowbullet(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
         super(game, x, y, deltaX, deltaY, gravity);
