@@ -82,7 +82,6 @@ public class DefaultExplosion {
                     }
                 }
             }
-            System.out.println();
         }
 
         //  Finally, draw the explosion

@@ -3,15 +3,17 @@ package com.sherwoodhs;
 
 import com.sherwoodhs.tank.Tank;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static final int numberOfPlayers = 5;
-    public static int alivePlayers = numberOfPlayers;
+    public static int alivePlayers;
 
     public static void main(String[] args) {
 
         boolean gameOver = false;
-
+        alivePlayers = numberOfPlayers;
         //  Randomly generate the current wind from -50 to 50
         int currentWind = (int)(40 - (Math.random() * 80));
 
@@ -71,8 +73,19 @@ public class Main {
             // Win conditions
             if (alivePlayers <= 1){ // 1 or 0 players remaining
                 gameOver = true;
-                // To be upadating
-                System.out.println("You win.");
+                // Check for the alive tank
+                ArrayList a = new ArrayList();
+                for (int i = 0; i < Main.numberOfPlayers; i++) {
+                    Tank updatingTank = game.players.get(i);
+                    if (!updatingTank.isDestroyed()){
+                        a.add(i+1);
+                    }
+                }
+                if (a.size() == 0) {
+                    System.out.println("Everyone loses.");
+                } else {
+                    System.out.println("Player " + a.get(0) + " wins.");
+                }
                 // Closes current game panel
                 game.closeFrame();
                 // Creates another game
