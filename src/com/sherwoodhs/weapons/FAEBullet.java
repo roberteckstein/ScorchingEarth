@@ -11,6 +11,12 @@ public class FAEBullet extends DefaultBullet {
         this.cansplit = true;
     }
 
+    @Override
+    public boolean isAlive() {
+        return super.isAlive();
+    }
+
+    @Override
     public void moveBullet() {
 
         double lastYPosition = yPosition;
@@ -31,6 +37,7 @@ public class FAEBullet extends DefaultBullet {
         }
 
     }
+    @Override
     public void draw(Graphics2D g) {
 
         g.setPaint(Color.green);
