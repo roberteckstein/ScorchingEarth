@@ -18,7 +18,7 @@ public class Drill extends DefaultBullet {
 
     }
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
-        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
+        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 12, Color.red));
         if (yPosition - 20 > terrain.getGroundLevelAtColumn(xPosition)) {
             alive = false;
         }
