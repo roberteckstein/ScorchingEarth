@@ -54,7 +54,6 @@ public class Tank {
         this.weaponsCount.put("Cannon Ball" , 10);
         this.weaponsCount.put("Firework" , 10);
         this.weaponsCount.put("Drill" , 1);
-
         //  Set the selected weapon to the first one in the list.
         this.selectedWeapon = (String)weaponsCount.keySet().toArray()[0];
 
