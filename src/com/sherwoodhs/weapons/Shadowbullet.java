@@ -14,6 +14,7 @@ public class Shadowbullet extends DefaultBullet{
         super(game, x, y, deltaX, deltaY, gravity);
         this.shadow = false;
     }
+    @Override
     public void moveBullet() {
         double lastYPosition = yPosition;
 
@@ -23,6 +24,7 @@ public class Shadowbullet extends DefaultBullet{
             shadow = true;
         }
     }
+    @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain){
         if (shadow) {
             alive = false;

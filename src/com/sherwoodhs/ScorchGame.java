@@ -49,18 +49,18 @@ public class ScorchGame implements PropertyChangeListener {
     //the difference is small rn so might need some tweaking to make in more intense
 
     //Define lowest int in range. def = default
-    static int min1 = 30; //def 50
-    static int min2 = 700; //def 720
-    static int min3 = 180; //def 200
-    static int min4 = 530; //def 550
-    static int min5 = 280; //def 300
+    static int min1 = 130; //def 50
+    static int min2 = 1400; //def 720
+    static int min3 = 1180; //def 200
+    static int min4 = 830; //def 550
+    static int min5 = 480; //def 300
 
     //define highest int in range
-    static int max1 = 70;
-    static int max2 = 740;
-    static int max3 = 220;
-    static int max4 = 570;
-    static int max5 = 320;
+    static int max1 = 170;
+    static int max2 = 1500;
+    static int max3 = 1280;
+    static int max4 = 970;
+    static int max5 = 520;
 
     //create range int
     static int range1 = max1 - min1 + 1;
@@ -102,6 +102,7 @@ public class ScorchGame implements PropertyChangeListener {
 
         //  Create each player
         for (int i = 0; i < numberOfPlayers; i++) {
+            System.out.println("wdaosf");
             Tank t = new Tank(i+1, playerPositions[i], 90, playerColors[i]);
             t.addPropertyChangeListener(this);
             //t.setY(terrain.height-20);
