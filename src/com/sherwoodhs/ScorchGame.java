@@ -146,4 +146,8 @@ public class ScorchGame implements PropertyChangeListener {
         terrain.repaint();
     }
 
+    // Creates a Dialog Box
+    public void showDialog (String input, String title) {
+        JOptionPane.showMessageDialog(frame, input, title, JOptionPane.PLAIN_MESSAGE);
+    }
 }
