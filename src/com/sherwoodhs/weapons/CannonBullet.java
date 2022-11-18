@@ -23,7 +23,7 @@ public class CannonBullet extends DefaultBullet {
     @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain){
         alive = false;
-        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 10, Color.black));
+        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 10, 10, Color.black));
     }
 
 }
