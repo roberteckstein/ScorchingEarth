@@ -79,7 +79,7 @@ public class DefaultBullet {
     public void draw(Graphics2D g) {
 
         g.setPaint(Color.white);
-        g.fill3DRect(xPosition - xWidth / 2, yPosition - yHight / 2, xWidth, yHight, true);
+        g.fill3DRect(xPosition - xWidth / 5, yPosition - yHight / 5, xWidth, yHight, true);
 
     }
 

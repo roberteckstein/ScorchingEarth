@@ -249,13 +249,33 @@ public class Terrain extends JPanel {
 
     }
 
+    // these var names are arbitrary..
+    boolean drawTerrain = true;
+    boolean drewTerrain = true;
     public void paint(Graphics g) {
 
-        drawTerrain(g);
-        drawTanks(game.players, g);
+        if (drawTerrain) {
+            drawTerrain(g);
+            drawTerrain = false;
+        }
+
+        if (ScorchGame.redrawTank) {
+            drawTerrain(g);
+            drawTanks(game.players, g);
+        }
 
         if (animating) {
+            try {
+                Thread.sleep(20);
+            } catch (Exception e) {}
+            if (drewTerrain) {
+                drawTerrain(g);
+                drawTanks(game.players, g);
+                drewTerrain = false;
+            }
             animating = updateBallisticItems(g);
+        } else {
+            drewTerrain = true;
         }
 
     }
@@ -288,7 +308,7 @@ public class Terrain extends JPanel {
 
         collapseTerrain();
 
-
+        drawTerrain = true;
 
         //  Return false indicating that our animating is complete.
 

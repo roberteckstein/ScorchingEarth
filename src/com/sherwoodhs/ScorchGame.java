@@ -30,6 +30,8 @@ public class ScorchGame implements PropertyChangeListener {
     public TankStatusBar settings;
     public boolean waitForPlayerFire;
 
+    public static boolean redrawTank = true;
+
     //  Same thing here-- I'll be referencing these ArrayList's in a number
     //  of classes, and since I'm not creating APIs that have to do sanity
     //  checks on setters, I'll just make them public... because I'm lazy.
@@ -89,14 +91,14 @@ public class ScorchGame implements PropertyChangeListener {
         status = new GameStatusBar();
         frame.getContentPane().add(status, BorderLayout.NORTH);
 
-        terrain = new Terrain(this, 800, 500);
+        terrain = new Terrain(this, 1600, 800);
         frame.getContentPane().add(terrain, BorderLayout.CENTER);
 
         settings = new TankStatusBar(this);
         frame.getContentPane().add(settings, BorderLayout.SOUTH);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+        frame.setResizable(true);
 
         //  Create each player
         for (int i = 0; i < numberOfPlayers; i++) {
@@ -107,6 +109,9 @@ public class ScorchGame implements PropertyChangeListener {
             terrain.clearTerrainAroundTanks(t.getX(), t.getY());
             players.add(t);
         }
+
+        // 'fire' button used to draw randomly in the top-left corner
+        terrain.repaint();
 
         //  Pack the components, which has the effect of "squishing" them together
         //  as best as possible, then display the frame.
@@ -127,14 +132,17 @@ public class ScorchGame implements PropertyChangeListener {
     }
 
     public void performAnimation() {
-        if (terrain.isAnimating())
+        if (terrain.isAnimating()) {
+            redrawTank = false;
             terrain.repaint();
+        }
     }
     public int getTankPosition(int i){
         return (playerPositions[i]);
     }
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+        redrawTank = true;
         terrain.repaint();
     }
 
