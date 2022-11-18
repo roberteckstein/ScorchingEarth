@@ -70,13 +70,19 @@ public class DefaultExplosion {
         if (radius > maxRadius) {
             terrain.eraseCircleInTerrain(xPosition, yPosition, maxRadius);
             expanding = false;
+
+
             // Put in the tank death check at this point
             for (int i = 0; i < Main.numberOfPlayers; i++) {
                 Tank checked = game.players.get(i);
                 if (!checked.isDestroyed()) {
                     // Pythagorean theorem
-                    double distance = Math.sqrt(Math.pow(checked.getX() + 15 - xPosition, 2) + Math.pow(checked.getY() - yPosition, 2));
-                    if (distance < maxRadius) { // if distance is pushed
+                    double distance = distanceCalc(i,0,0,game); // top right corner
+                    double distance2 = distanceCalc(i,30,0,game); // top left corner
+                    double distance3 = distanceCalc(i,0,7.5,game); // bottom right corner
+                    double distance4 = distanceCalc(i,30,7.5,game); // bottom left corner
+
+                    if (distance < maxRadius || distance2 < maxRadius || distance3 < maxRadius || distance4 < maxRadius) { // if distance is pushed
                         checked.setDestroyed(true); // set tank as destroyed
                         Main.alivePlayers--;
                     }
@@ -91,5 +97,9 @@ public class DefaultExplosion {
                 (int) radius *2, (int) radius *2);
 
     }
-
+    // Method to calculate distance from explosion center to point on tank.
+    private double distanceCalc (int i, double x, double y, ScorchGame game){
+        Tank checked = game.players.get(i);
+        return (Math.sqrt(Math.pow(checked.getX() + x - xPosition, 2) + Math.pow(checked.getY() + y - yPosition, 2)));
+    }
 }

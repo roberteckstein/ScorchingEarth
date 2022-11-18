@@ -36,9 +36,7 @@ public class Firework extends DefaultBullet {
     @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
         super.explode(explosions, terrain);
-        for (int i = 0; i < 5; i++)
-            game.bullets.add(
-                    new Shadowbullet(game, (int)xPosition, yPosition,
-                            2.0-(Math.random()*5.0), -3, .5));
+            for (int i = 0; i < 5; i++)
+                game.bullets.add(new Shadowbullet(game, (int) xPosition, yPosition, 2.0 - (Math.random() * 5.0), -3, .5));
+        }
     }
-}

@@ -1,12 +1,12 @@
 package com.sherwoodhs.ui;
 
 import com.sherwoodhs.tank.Tank;
-
 import javax.swing.*;
 import java.awt.*;
 
 import static java.lang.Math.abs;
 
+import java.awt.event.ActionEvent;
 import java.lang.reflect.Field;
 
 public class GameStatusBar extends JPanel {
