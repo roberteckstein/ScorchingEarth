@@ -82,10 +82,11 @@ public class Main {
                     }
                 }
                 if (a.size() == 0) {
-                    System.out.println("Everyone loses.");
+                    game.showDialog("😢 Everyone loses.", "Game Over");
                 } else {
-                    System.out.println("Player " + a.get(0) + " wins.");
+                    game.showDialog("🏆 Player " + a.get(0) + " wins!", "Game Over");
                 }
+
                 // Closes current game panel
                 game.closeFrame();
                 // Creates another game
