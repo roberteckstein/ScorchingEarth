@@ -4,11 +4,14 @@ package com.sherwoodhs;
 import com.sherwoodhs.tank.Tank;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
 
     public static final int numberOfPlayers = 5;
     public static int alivePlayers;
+
+    private static int[] wins = {0,0,0,0,0};
 
     public static void main(String[] args) {
 
@@ -37,8 +40,13 @@ public class Main {
 
             Tank currentTank = game.players.get(currentPlayer);
             if (!currentTank.isDestroyed()) { // skips dead tanks
+                if (currentTank.getWeaponsCount().size() > 1) {
+                    game.startGame();
+                }
+
                 game.status.setStatus(currentTank, currentWind);
                 game.settings.setStatus(currentTank);
+                game.classer.setStatus(currentTank);
 
                 //  Wait for a signal that the player has pressed the fire button.
                 //  Do this by yielding to other threads that are running, such
@@ -74,7 +82,7 @@ public class Main {
             if (alivePlayers <= 1){ // 1 or 0 players remaining
                 gameOver = true;
                 // Check for the alive tank
-                ArrayList a = new ArrayList();
+                ArrayList<Integer> a = new ArrayList();
                 for (int i = 0; i < Main.numberOfPlayers; i++) {
                     Tank updatingTank = game.players.get(i);
                     if (!updatingTank.isDestroyed()){
@@ -84,7 +92,8 @@ public class Main {
                 if (a.size() == 0) {
                     game.showDialog("😢 Everyone loses.", "Game Over");
                 } else {
-                    game.showDialog("🏆 Player " + a.get(0) + " wins!", "Game Over");
+                    wins[a.get(0)]++; // Add 1 to win counter of winner
+                    game.showDialog("🏆 Player " + a.get(0) + " wins!\n Wins:" + getWins(), "Game Over");
                 }
 
                 // Closes current game panel
@@ -94,6 +103,14 @@ public class Main {
             }
         }
 
+    }
+
+    private static String getWins (){
+        String str = "";
+        for (int i = 0; i < wins.length; i++) {
+            str += "\n  Player " + i + ": " + wins[i];
+        }
+        return(str);
     }
 
 }
