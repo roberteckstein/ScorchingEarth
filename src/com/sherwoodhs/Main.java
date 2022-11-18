@@ -40,8 +40,13 @@ public class Main {
 
             Tank currentTank = game.players.get(currentPlayer);
             if (!currentTank.isDestroyed()) { // skips dead tanks
+                if (currentTank.getWeaponsCount().size() > 1) {
+                    game.startGame();
+                }
+
                 game.status.setStatus(currentTank, currentWind);
                 game.settings.setStatus(currentTank);
+                game.classer.setStatus(currentTank);
 
                 //  Wait for a signal that the player has pressed the fire button.
                 //  Do this by yielding to other threads that are running, such

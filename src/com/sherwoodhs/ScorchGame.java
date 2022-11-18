@@ -1,5 +1,6 @@
 package com.sherwoodhs;
 
+import com.sherwoodhs.ui.ClassStatusBar;
 import com.sherwoodhs.weapons.DefaultBullet;
 import com.sherwoodhs.explosions.DefaultExplosion;
 import com.sherwoodhs.tank.Tank;
@@ -28,6 +29,7 @@ public class ScorchGame implements PropertyChangeListener {
     public Terrain terrain;
     public GameStatusBar status;
     public TankStatusBar settings;
+    public ClassStatusBar classer;
     public boolean waitForPlayerFire;
 
     public static boolean redrawTank = true;
@@ -94,8 +96,12 @@ public class ScorchGame implements PropertyChangeListener {
         terrain = new Terrain(this, 1600, 800);
         frame.getContentPane().add(terrain, BorderLayout.CENTER);
 
+        classer = new ClassStatusBar(this);
+        frame.getContentPane().add(classer, BorderLayout.SOUTH);
+
+
         settings = new TankStatusBar(this);
-        frame.getContentPane().add(settings, BorderLayout.SOUTH);
+        //frame.getContentPane().add(settings, BorderLayout.SOUTH);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
@@ -120,6 +126,11 @@ public class ScorchGame implements PropertyChangeListener {
         frame.pack();
         frame.setVisible(true);
 
+    }
+
+    public void startGame() {
+        frame.remove(classer);
+        frame.add(settings, BorderLayout.SOUTH);
     }
 
     public int getCurrentWind() {
