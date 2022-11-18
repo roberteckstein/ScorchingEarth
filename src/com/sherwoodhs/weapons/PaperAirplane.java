@@ -5,6 +5,7 @@ import com.sherwoodhs.explosions.DefaultExplosion;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class PaperAirplane extends DefaultBullet{
@@ -26,5 +27,11 @@ public class PaperAirplane extends DefaultBullet{
                 deltaY --;
             }
         }
+    }
+
+    @Override
+    public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
+        alive = false;
+        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 5, 30, Color.white));
     }
 }
