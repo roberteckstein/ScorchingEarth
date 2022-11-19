@@ -170,48 +170,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
 
         int currentAngle = currentTank.getGunAngle();
         int currentPower = currentTank.getPower();
-
-        if (e.getSource() == decreaseAngleButton) {
-
-            currentAngle--;
-            if (currentAngle < 0) {
-                currentAngle = 0;
-            }
-
-            //  Set the current tank gun angle, which will redraw it
-            currentTank.setGunAngle(currentAngle);
-
-        } else if (e.getSource() == increaseAngleButton) {
-
-            currentAngle++;
-            if (currentAngle > 180) {
-                currentAngle = 180;
-            }
-
-            //  Set the current tank gun angle, which will redraw it
-            currentTank.setGunAngle(currentAngle);
-
-        } else if (e.getSource() == decreasePowerButton) {
-
-            currentPower--;
-            if (currentPower < 0) {
-                currentPower = 0;
-            }
-
-            //  Set the current tank gun power
-            currentTank.setPower(currentPower);
-
-        } else if (e.getSource() == increasePowerButton) {
-
-            currentPower++;
-            if (currentPower > 100) {
-                currentPower = 100;
-            }
-
-            //  Set the current tank gun power
-            currentTank.setPower(currentPower);
-
-        } else if (e.getSource() == fireButton && game.waitForPlayerFire == true) {
+        if (e.getSource() == fireButton && game.waitForPlayerFire == true) {
 
             // The fire button has been pressed, so calculate the opening position and
             // movement of the selected bullet type.

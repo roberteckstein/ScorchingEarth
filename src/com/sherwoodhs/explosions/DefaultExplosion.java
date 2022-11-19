@@ -60,7 +60,6 @@ public class DefaultExplosion {
         } else {
             //  Otherwise, draw a black oval first, then decrease the radius by 1
             radius--;
-
         }
 
         //  If the explosion has reached its maximum radius, then erase the terrain
