@@ -108,7 +108,6 @@ public class ScorchGame implements PropertyChangeListener {
 
         //  Create each player
         for (int i = 0; i < numberOfPlayers; i++) {
-            System.out.println("How many time tanks are drawn.");
             Tank t = new Tank(i+1, playerPositions[i], 90, playerColors[i]);
             t.addPropertyChangeListener(this);
             //t.setY(terrain.height-20);
