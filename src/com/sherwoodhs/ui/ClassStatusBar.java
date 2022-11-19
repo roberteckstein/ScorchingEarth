@@ -54,22 +54,31 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
         this.game = game;
 
         classList = new HashMap<>();
-
+        
+        /*
+        REALLY IMPORTANT SECTION HERE FOR WEAPONS PEOPLE AND EVERYONE WORKING ON MORE CLASSES
+        */
+        // A Hashmap of weapons each class contains
         HashMap<String, Integer> defaultWeapons = new HashMap<>();
         HashMap<String, Integer> nuclearWeapons = new HashMap<>();
         HashMap<String, Integer> experimentalWeapons = new HashMap<>();
 
+        // Putting weapons into their respective classes. Normal Bullet is in them by default
         defaultWeapons.put("MIRV", 2);
 
         nuclearWeapons.put("Nuclear Bomb", 1);
 
         experimentalWeapons.put("Flare Bomber", 2);
 
+        //Puts Each Class in the Hashmap of classes.
         classList.put("Medium", defaultWeapons);
         classList.put("Nuclear", nuclearWeapons);
         classList.put("Experimental", experimentalWeapons);
 
-
+        /*
+        End of Really Important Section of This file
+        */
+        
         // lock given component sizes in the panel
         setLayout(new FlowLayout());
 
