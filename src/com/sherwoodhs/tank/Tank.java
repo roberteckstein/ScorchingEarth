@@ -46,18 +46,7 @@ public class Tank {
         this.playerColor = playerColor;
 
         this.weaponsCount = new HashMap<>();
-//        this.weaponsCount.put("MIRV", 2);
-//        this.weaponsCount.put("Flare Bomber", 1);
-//        this.weaponsCount.put("Nuclear Bomb", 1);
-//        this.weaponsCount.put("Line", 3);
-          this.weaponsCount.put("Normal Bullet", 1); //infinite
-//        this.weaponsCount.put("Cannon Ball" , 10);
-//        this.weaponsCount.put("Firework" , 10);
-//        this.weaponsCount.put("Drill" , 1);
-
-        //  Set the selected weapon to the first one in the list.
-//        this.selectedWeapon = (String)weaponsCount.keySet().toArray()[0];
-
+        this.weaponsCount.put("Normal Bullet", 1); //infinite
     }
 
     public void addWeapons(HashMap<String, Integer> weapons)
