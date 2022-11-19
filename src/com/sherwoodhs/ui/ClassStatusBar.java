@@ -36,6 +36,15 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
 
     HashMap<String, HashMap<String, Integer>> classList;
 
+
+    JDialog classFrame = new JDialog();
+    JButton infoBtn = new JButton("Class Info");
+    JEditorPane classInfo = new JEditorPane("text/html", "");
+    String classTxt = "<b>Class Info</b><br>ALL classes contain infinite default bullets." +
+            "<br><br><b>Medium class</b>" + "<br>Contains 2 MIRV bullets" +
+            "<br><br><b>Experimental class</b>" + "<br>Contains 2 Flare Bombers" +
+            "<br><br><b>Nuclear class</b>" + "<br>Contains 1 Nuclear Bomb";
+
     public ClassStatusBar(ScorchGame game) {
 
         //  Must call the JPanel superclass constructor
@@ -75,8 +84,8 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
 
         classes.setSelectedItem("Medium");
 
+        add(infoBtn);
         add(classes);
-
         add(confirmButton);
 
 
@@ -86,6 +95,7 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
 
         classes.addItemListener(this);
         confirmButton.addActionListener(this);
+        infoBtn.addActionListener(this);
     }
 
     //  Reset the contents of the combo box based on the current weapon
@@ -134,6 +144,16 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
         if (e.getSource() == confirmButton && game.waitForPlayerFire) {
             currentTank.addWeapons(classList.get(classes.getSelectedItem()));
             game.waitForPlayerFire = false;
+        } else if(e.getSource() == infoBtn){
+            classFrame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            classFrame.setSize(300, 400);
+            classInfo.setEditable(false);
+            classInfo.setText(classTxt);
+            classFrame.add(classInfo);
+            classFrame.setResizable(false);
+            classFrame.setTitle("Class Info");
+
+            classFrame.setVisible(true);
         }
 
         //  Redraw the status panel
