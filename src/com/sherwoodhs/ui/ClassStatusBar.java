@@ -43,7 +43,8 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
     String classTxt = "<b>Class Info</b><br>ALL classes contain infinite default bullets." +
             "<br><br><b>Medium class</b>" + "<br>Contains 2 MIRV bullets" +
             "<br><br><b>Experimental class</b>" + "<br>Contains 2 Flare Bombers" +
-            "<br><br><b>Nuclear class</b>" + "<br>Contains 1 Nuclear Bomb" + "<br><br><b>Friendly class</b>" + "<br>Contains 3 Paper Airplanes";
+            "<br><br><b>Nuclear class</b>" + "<br>Contains 1 Nuclear Bomb" +
+            "<br><br><b>Friendly class</b>" + "<br>Contains 3 Paper Airplanes";
 
     public ClassStatusBar(ScorchGame game) {
 
