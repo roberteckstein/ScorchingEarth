@@ -217,7 +217,9 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                 }else if (artillery.getSelectedItem().equals(("Antimatter Bomb"))) {
                     game.bullets.add(new AntimatterBomb(game, (int) x, (int) (y - 10), dx, dy, 0.5));
                 }else if (artillery.getSelectedItem().equals(("Paper Airplane"))) {
-                    game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx, dy, 0.5));
+                    game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
+                    game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
+                    game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
                 }
                 //  Set the boolean in the game object that the fire button has been pressed.
                 //  At this point, the main thread will start processing animating objects.
