@@ -78,7 +78,7 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
         classList.put("Medium", defaultWeapons);
         classList.put("Nuclear", nuclearWeapons);
         classList.put("Experimental", experimentalWeapons);
-        classList.put("Frendly", friendlyWeapons);
+        classList.put("Friendly", friendlyWeapons);
 
         /*
         End of Really Important Section of This file
