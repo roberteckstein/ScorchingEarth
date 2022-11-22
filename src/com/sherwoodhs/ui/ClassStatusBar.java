@@ -44,7 +44,7 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
             "<br><br><b>Medium class</b>" + "<br>Contains 2 MIRV bullets" +
             "<br><br><b>Experimental class</b>" + "<br>Contains 2 Flare Bombers" +
             "<br><br><b>Nuclear class</b>" + "<br>Contains 1 Nuclear Bomb" +
-            "<br><br><b>Friendly class</b>" + "<br>Contains 3 Paper Airplanes";
+            "<br><br><b>testclass</b>" + "<br>Contains stuff";
 
     public ClassStatusBar(ScorchGame game) {
 
@@ -63,7 +63,7 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
         HashMap<String, Integer> defaultWeapons = new HashMap<>();
         HashMap<String, Integer> nuclearWeapons = new HashMap<>();
         HashMap<String, Integer> experimentalWeapons = new HashMap<>();
-        HashMap<String, Integer> friendlyWeapons = new HashMap<>();
+        HashMap<String, Integer> testWeapons = new HashMap<>();
 
         // Putting weapons into their respective classes. Normal Bullet is in them by default
         defaultWeapons.put("MIRV", 2);
@@ -72,13 +72,18 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
 
         experimentalWeapons.put("Flare Bomber", 2);
 
-        friendlyWeapons.put("Paper Airplane", 3);
+        testWeapons.put("Paper Airplane", 1);
+        testWeapons.put("Sniper", 1);
+        testWeapons.put("Firework", 1);
+        testWeapons.put("Impact", 1);
+        testWeapons.put("Drill", 1);
+
 
         //Puts Each Class in the Hashmap of classes.
         classList.put("Medium", defaultWeapons);
         classList.put("Nuclear", nuclearWeapons);
         classList.put("Experimental", experimentalWeapons);
-        classList.put("Friendly", friendlyWeapons);
+        classList.put("Test", testWeapons);
 
         /*
         End of Really Important Section of This file
