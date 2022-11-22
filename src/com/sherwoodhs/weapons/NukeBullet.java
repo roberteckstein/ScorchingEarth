@@ -29,6 +29,15 @@ public class NukeBullet extends DefaultBullet {
 
     }
 
+    @Override
+    public void erase(Graphics2D g) {
+        g.setPaint(Color.black);
+        g.fillOval(xPosition, yPosition, WIDTH, HEIGHT);
+        int [] x = {xPosition-(WIDTH/8), xPosition+(WIDTH/2), xPosition+WIDTH+(WIDTH/8)};
+        int [] y = {yPosition-(HEIGHT/2), yPosition+2, yPosition-(HEIGHT/2)};
+        g.fillPolygon(x, y, 3);
+    }
+
     public void draw(Graphics2D g) {
         g.setPaint(Color.orange);
         g.fillOval(xPosition, yPosition, WIDTH, HEIGHT);

@@ -21,6 +21,12 @@ public class CannonBullet extends DefaultBullet {
     }
 
     @Override
+    public void erase(Graphics2D g) {
+        g.setPaint(Color.black);
+        g.fillOval(xPosition - xWidth / 2, yPosition - yHight / 2, xWidth, yHight);
+    }
+
+    @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain){
         alive = false;
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 10, 10, Color.black));
