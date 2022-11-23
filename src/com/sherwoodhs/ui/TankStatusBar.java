@@ -220,6 +220,10 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                     game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
                     game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
                     game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
+                }else if (artillery.getSelectedItem().equals(("Buckshot"))) {
+                    game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.4 + (Math.random() / 4)));
+                    game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.4 + (Math.random() / 4)));
+                    game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.4 + (Math.random() / 4)));
                 }else if (artillery.getSelectedItem().equals("Mortar")) {
                     game.bullets.add(new Sniper(game, (int) x, (int) (y - 10), dx * 1.5 , dy * 1.5, .75));
                 }
