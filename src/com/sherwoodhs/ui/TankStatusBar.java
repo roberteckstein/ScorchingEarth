@@ -27,6 +27,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
     //  Reference to the current tank object
     Tank currentTank;
 
+    ScorchAudioPlayer sap = new ScorchAudioPlayer();
+
     //  Following are Swing components that are used in the panel
     JComboBox artillery = new JComboBox();
     JLabel amountLabel = new JLabel("Amount: ");
@@ -238,6 +240,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                 //  At this point, the main thread will start processing animating objects.
 
                 game.waitForPlayerFire = false;
+                sap.play("src/com/sherwoodhs/audio/firegun.wav");
             }
         }
 

@@ -4,6 +4,7 @@ import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.explosions.DefaultExplosion;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
+import com.sherwoodhs.ui.ScorchAudioPlayer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -32,6 +33,8 @@ public class PaperAirplane extends DefaultBullet{
     @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
         alive = false;
+        ScorchAudioPlayer sap = new ScorchAudioPlayer();
+        sap.play("src/com/sherwoodhs/audio/explosion.wav");
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 5, 15, Color.white));
     }
 }

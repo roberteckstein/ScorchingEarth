@@ -4,6 +4,7 @@ import com.sherwoodhs.explosions.DefaultExplosion;
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
+import com.sherwoodhs.ui.ScorchAudioPlayer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class DefaultBullet {
 
     }
 
+
     public void moveBullet() {
 
         //  Standard move formula that accounts for delta X and delta Y
@@ -142,6 +144,8 @@ public class DefaultBullet {
     }
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain){
         alive = false;
+        ScorchAudioPlayer sap = new ScorchAudioPlayer();
+        sap.play("src/com/sherwoodhs/audio/explosion.wav");
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
     }
     //q

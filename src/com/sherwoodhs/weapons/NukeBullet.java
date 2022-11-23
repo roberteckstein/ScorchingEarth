@@ -3,6 +3,7 @@ package com.sherwoodhs.weapons;
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.explosions.DefaultExplosion;
 import com.sherwoodhs.terrain.Terrain;
+import com.sherwoodhs.ui.ScorchAudioPlayer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -24,9 +25,11 @@ public class NukeBullet extends DefaultBullet {
     }
     @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
+        ScorchAudioPlayer sap = new ScorchAudioPlayer();
+        sap.play("src/com/sherwoodhs/audio/explosion.wav");
+
         alive = false;
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 50, Color.orange));
-
     }
 
     @Override
@@ -38,6 +41,7 @@ public class NukeBullet extends DefaultBullet {
         g.fillPolygon(x, y, 3);
     }
 
+    @Override
     public void draw(Graphics2D g) {
         g.setPaint(Color.orange);
         g.fillOval(xPosition, yPosition, WIDTH, HEIGHT);

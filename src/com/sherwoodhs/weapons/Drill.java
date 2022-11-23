@@ -3,6 +3,7 @@ package com.sherwoodhs.weapons;
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.explosions.DefaultExplosion;
 import com.sherwoodhs.terrain.Terrain;
+import com.sherwoodhs.ui.ScorchAudioPlayer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ public class Drill extends DefaultBullet {
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 12, Color.red));
         limit --;
         if (limit == 0) {
+            ScorchAudioPlayer sap = new ScorchAudioPlayer();
+            sap.play("src/com/sherwoodhs/audio/explosion.wav");
             alive = false;
         }
     }
