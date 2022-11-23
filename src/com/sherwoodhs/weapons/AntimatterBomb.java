@@ -14,14 +14,10 @@ public class AntimatterBomb extends DefaultBullet {
     }
 
     @Override
-    public void draw(Graphics2D g) {
-        g.setPaint(Color.lightGray);
-        g.fill3DRect(xPosition - xWidth / 2, yPosition - yHight / 2, xWidth, yHight, true);
-    }
-
-    @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
-        game.bullets.add(new Shadowbullet(game, (int) xPosition, 200, 5, 1, 0.5));
+        alive = false;
+        game.bullets.add(new Shadowbullet(game, (int) xPosition, yPosition - 100, deltaX, 1, 0.5));
+        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
     }
 }
 
