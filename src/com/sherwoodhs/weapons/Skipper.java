@@ -2,14 +2,13 @@ package com.sherwoodhs.weapons;
 
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.explosions.DefaultExplosion;
-import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class AntimatterBomb extends DefaultBullet {
-    public AntimatterBomb(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
+public class Skipper extends DefaultBullet {
+    public Skipper(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
         super(game, x, y, deltaX, deltaY, gravity);
     }
 

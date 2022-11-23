@@ -7,10 +7,10 @@ import com.sherwoodhs.terrain.Terrain;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Sniper extends DefaultBullet {
+public class Mortar extends DefaultBullet {
     protected int age;
 
-    public Sniper(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
+    public Mortar(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
         super(game, x, y, deltaX, deltaY, gravity);
         age = 0;
     }

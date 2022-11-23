@@ -1,7 +1,6 @@
 package com.sherwoodhs.ui;
 
 import com.sherwoodhs.ScorchGame;
-import com.sherwoodhs.explosions.DefaultExplosion;
 import com.sherwoodhs.weapons.*;
 import com.sherwoodhs.tank.Tank;
 
@@ -216,7 +215,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                 }else if (artillery.getSelectedItem().equals(("Impact"))) {
                     game.bullets.add(new Impact(game, (int) x, (int) (y - 10), dx, dy, 0.75));
                 }else if (artillery.getSelectedItem().equals(("Skipper"))) {
-                    game.bullets.add(new AntimatterBomb(game, (int) x, (int) (y - 10), dx, dy, 0.5));
+                    game.bullets.add(new Skipper(game, (int) x, (int) (y - 10), dx, dy, 0.5));
                 }else if (artillery.getSelectedItem().equals(("Paper Airplane"))) {
                     game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
                     game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
@@ -226,7 +225,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                     game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.4 + (Math.random() / 4)));
                     game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.4 + (Math.random() / 4)));
                 }else if (artillery.getSelectedItem().equals("Mortar")) {
-                    game.bullets.add(new Sniper(game, (int) x, (int) (y - 10), dx * 1.5 , dy * 1.5, .75));
+                    game.bullets.add(new Mortar(game, (int) x, (int) (y - 10), dx * 1.5 , dy * 1.5, .75));
                 }else if (artillery.getSelectedItem().equals(("Anchor"))) {
                     game.bullets.add(new Anchor(game, (int) x, (int) (y - 10), dx, dy, .5));
                 }else if (artillery.getSelectedItem().equals(("Boomerang"))) {
