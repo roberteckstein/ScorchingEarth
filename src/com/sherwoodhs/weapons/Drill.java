@@ -27,8 +27,6 @@ public class Drill extends DefaultBullet {
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 12, Color.red));
         limit --;
         if (limit == 0) {
-            ScorchAudioPlayer sap = new ScorchAudioPlayer();
-            sap.play("src/com/sherwoodhs/audio/explosion.wav");
             alive = false;
         }
     }

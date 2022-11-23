@@ -1,8 +1,12 @@
 package com.sherwoodhs.weapons;
 
 import com.sherwoodhs.ScorchGame;
+import com.sherwoodhs.explosions.DefaultExplosion;
+import com.sherwoodhs.terrain.Terrain;
+import com.sherwoodhs.ui.ScorchAudioPlayer;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class FAEBullet extends DefaultBullet {
     protected boolean cansplit;
@@ -43,6 +47,12 @@ public class FAEBullet extends DefaultBullet {
         g.setPaint(Color.green);
         g.fill3DRect(xPosition, yPosition, 3, 3, true);
 
+    }
+
+    @Override
+    public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain){
+        alive = false;
+        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
     }
 
 }
