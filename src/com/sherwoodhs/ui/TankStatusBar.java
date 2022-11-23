@@ -215,7 +215,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                     game.bullets.add(new Drill(game, (int) x, (int) (y - 10), dx, dy, 0.75));
                 }else if (artillery.getSelectedItem().equals(("Impact"))) {
                     game.bullets.add(new Impact(game, (int) x, (int) (y - 10), dx, dy, 0.75));
-                }else if (artillery.getSelectedItem().equals(("Antimatter Bomb"))) {
+                }else if (artillery.getSelectedItem().equals(("Skipper"))) {
                     game.bullets.add(new AntimatterBomb(game, (int) x, (int) (y - 10), dx, dy, 0.5));
                 }else if (artillery.getSelectedItem().equals(("Paper Airplane"))) {
                     game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
