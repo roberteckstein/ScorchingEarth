@@ -145,7 +145,6 @@ public class DefaultBullet {
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain){
         alive = false;
         ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
-        ScorchAudioPlayer.dispose();
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
     }
     //q

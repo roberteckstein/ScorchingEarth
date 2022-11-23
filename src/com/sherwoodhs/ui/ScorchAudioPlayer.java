@@ -17,11 +17,15 @@ all audio NEEDS to be in .wav format
 /*
 For explosions:
 ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
+ScorchAudioPlayer.drain();
 
 For shooting:
 ScorchAudioPlayer.play("src/com/sherwoodhs/audio/firegun.wav");
+ScorchAudioPlayer.drain();
  */
 public class ScorchAudioPlayer {
+    //PLAY METHOD
+    //Used to start specified .wav file
     public static void play(String filename) {
         try {
             Clip clip = AudioSystem.getClip();
@@ -32,7 +36,10 @@ public class ScorchAudioPlayer {
         }
     }
 
-    public static void dispose() {
+    //DRAIN METHOD
+    //Used to drain audio clip, improves performance, I think
+    //Currently WIP
+    public static void drain() {
         try {
             Clip clip = AudioSystem.getClip();
             clip.drain();
