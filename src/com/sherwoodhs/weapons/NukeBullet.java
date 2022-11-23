@@ -25,9 +25,6 @@ public class NukeBullet extends DefaultBullet {
     }
     @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
-        ScorchAudioPlayer sap = new ScorchAudioPlayer();
-        sap.play("src/com/sherwoodhs/audio/explosion.wav");
-
         alive = false;
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 50, Color.orange));
     }

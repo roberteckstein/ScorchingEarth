@@ -15,6 +15,16 @@ file.wav should be your audio file
 all audio NEEDS to be in .wav format
 
  */
+
+/*
+For explosions:
+ScorchAudioPlayer sap = new ScorchAudioPlayer();
+sap.play("src/com/sherwoodhs/audio/explosion.wav");
+
+For shooting:
+ScorchAudioPlayer sap = new ScorchAudioPlayer();
+sap.play("src/com/sherwoodhs/audio/firegun.wav");
+ */
 public class ScorchAudioPlayer {
     public static void play(String filename) {
         try {
