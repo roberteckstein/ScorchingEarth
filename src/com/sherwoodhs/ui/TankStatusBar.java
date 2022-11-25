@@ -241,6 +241,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                 //  At this point, the main thread will start processing animating objects.
 
                 game.waitForPlayerFire = false;
+                ScorchAudioPlayer.play("src/com/sherwoodhs/audio/firegun.wav");
             }
         }
 

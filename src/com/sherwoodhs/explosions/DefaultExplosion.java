@@ -4,6 +4,7 @@ import com.sherwoodhs.Main;
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.terrain.Terrain;
+import com.sherwoodhs.ui.ScorchAudioPlayer;
 
 import java.awt.*;
 
@@ -37,7 +38,6 @@ public class DefaultExplosion {
 
         alive = true;
         expanding = true;
-
     }
 
     public boolean isAlive() {
@@ -45,7 +45,6 @@ public class DefaultExplosion {
     }
 
     public void draw(Graphics2D g, ScorchGame game) {
-
         //  Check if the radius of the explosion is now 0. If it is, the explosion is finished,
         //  and we can set alive to false and return.
 
@@ -61,6 +60,7 @@ public class DefaultExplosion {
             //  Otherwise, draw a black oval first, then decrease the radius by 1
             radius--;
         }
+
 
         //  If the explosion has reached its maximum radius, then erase the terrain
         //  data from the explosion and set expanding to false. The explosion will
