@@ -83,6 +83,7 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
         testWeapons.put("Boomerang", 1);
         testWeapons.put("PinPoint", 1);
         testWeapons.put("Skipper", 1);
+        testWeapons.put("Sharp Shot", 1);
 
 
         //Puts Each Class in the Hashmap of classes.

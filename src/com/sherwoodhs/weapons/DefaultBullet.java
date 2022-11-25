@@ -62,7 +62,7 @@ public class DefaultBullet {
     public void erase(Graphics2D g) {
 
         g.setPaint(Color.black);
-        g.fill3DRect(xPosition, yPosition, 3, 3, true);
+        g.fill3DRect(xPosition - xWidth / 5, yPosition - yHight / 5, xWidth, yHight, true);
     }
 
     public void update(ScorchGame game, Terrain terrain) {
