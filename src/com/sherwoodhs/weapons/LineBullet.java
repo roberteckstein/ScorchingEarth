@@ -25,6 +25,7 @@ public class LineBullet extends DefaultBullet {
     @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
         this.alive = false;
+        ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
         explosions.add(new DefaultExplosion(terrain, xPosition - 30, yPosition, 1, 20, Color.red));
         explosions.add(new DefaultExplosion(terrain, xPosition + 30, yPosition, 1, 20, Color.red));

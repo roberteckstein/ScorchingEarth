@@ -24,6 +24,7 @@ public class Drill extends DefaultBullet {
 
     @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
+        ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 12, Color.red));
         limit --;
         if (limit == 0) {

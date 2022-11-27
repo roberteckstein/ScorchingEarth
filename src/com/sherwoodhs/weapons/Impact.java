@@ -26,6 +26,7 @@ public class Impact extends DefaultBullet {
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
         this.alive = false;
         this.momentia = Math.sqrt((deltaX * deltaX) + (deltaY * deltaX));
+        ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
 
         explosions.add(new DefaultExplosion(terrain, (xPosition + (int) (deltaY / momentia * 15)), (yPosition - (int) (deltaX / momentia * 15)), 1, 15, Color.red));

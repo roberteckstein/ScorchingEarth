@@ -29,6 +29,7 @@ public class Shadowbullet extends DefaultBullet{
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain){
         if (shadow) {
             alive = false;
+            ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
             explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
         }
     }
