@@ -6,7 +6,7 @@ import static java.lang.Math.floor;
 
 public class Sniper extends DefaultBullet{
     public Sniper (ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
-        super(game, x, y, deltaX * 4, deltaY * 4, gravity);
+        super(game, x, y, deltaX, deltaY, gravity);
     }
 
     @Override
