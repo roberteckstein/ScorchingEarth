@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
-
+//test push
     public static final int numberOfPlayers = 5;
     public static int alivePlayers;
 
