@@ -14,6 +14,7 @@ public class Tank {
 
     public static final int WIDTH = 30;
     public static final int HEIGHT = 15;
+    public int Hp;
 
     private int x;
     private int y;
@@ -47,6 +48,7 @@ public class Tank {
 
         this.weaponsCount = new HashMap<>();
         this.weaponsCount.put("Normal Bullet", 1); //infinite
+        this.Hp = 3;
     }
 
     public void addWeapons(HashMap<String, Integer> weapons)

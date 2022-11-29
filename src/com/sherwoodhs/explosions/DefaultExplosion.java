@@ -82,8 +82,14 @@ public class DefaultExplosion {
                     double distance4 = distanceCalc(i,30,7.5,game); // bottom left corner
 
                     if (distance < maxRadius || distance2 < maxRadius || distance3 < maxRadius || distance4 < maxRadius) { // if distance is pushed
-                        checked.setDestroyed(true); // set tank as destroyed
-                        Main.alivePlayers--;
+                        checked.Hp --;
+                        if (this.color == Color.orange) {
+                            checked.Hp --;
+                        }
+                        if (checked.Hp <= 0) {
+                            checked.setDestroyed(true); // set tank as destroyed
+                            Main.alivePlayers--;
+                        }
                     }
                 }
             }
