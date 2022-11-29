@@ -245,7 +245,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                     game.bullets.add(new Sniper(game, (int) x, (int) (y - 10), dx * 5, dy * 5, 0));
                 }
                 //  Set the boolean in the game object that the fire button has been pressed.
-                //  At this point, the main thread will start processing animating objects.
+                //  At this point, the main thread will start processing animating objects. .
 
                 game.waitForPlayerFire = false;
                 ScorchAudioPlayer.play("src/com/sherwoodhs/audio/firegun.wav");
