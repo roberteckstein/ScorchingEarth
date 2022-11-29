@@ -2,6 +2,7 @@ package com.sherwoodhs;
 
 
 import com.sherwoodhs.tank.Tank;
+import com.sherwoodhs.ui.ScorchAudioPlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -93,6 +94,7 @@ public class Main {
                     game.showDialog("😢 Everyone loses.", "Game Over");
                 } else {
                     wins[a.get(0)]++; // Add 1 to win counter of winner
+                    ScorchAudioPlayer.play("src/com/sherwoodhs/audio/victory.wav");
                     game.showDialog("🏆 Player " + a.get(0) + " wins!\n Wins:" + getWins(), "Game Over");
                 }
 
