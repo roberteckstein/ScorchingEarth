@@ -48,7 +48,7 @@ public class Tank {
 
         this.weaponsCount = new HashMap<>();
         this.weaponsCount.put("Normal Bullet", 1); //infinite
-        this.Hp = 3;
+        this.Hp = 2;
     }
 
     public void addWeapons(HashMap<String, Integer> weapons)
