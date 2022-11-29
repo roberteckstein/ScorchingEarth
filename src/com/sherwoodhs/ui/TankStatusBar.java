@@ -218,9 +218,11 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                 }else if (artillery.getSelectedItem().equals(("Skipper"))) {
                     game.bullets.add(new Skipper(game, (int) x, (int) (y - 10), dx, dy, 0.5));
                 }else if (artillery.getSelectedItem().equals(("Paper Airplane"))) {
+                    game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx, dy, 0.35));
                     game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
                     game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
-                    game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
+                    game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.6), dy + (Math.random() - 0.6), 0.25 + (Math.random() / 3.5)));
+                    game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.7), dy + (Math.random() - 0.7), 0.25 + (Math.random() / 3)));
                 }else if (artillery.getSelectedItem().equals(("Buckshot"))) {
                     game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.4 + (Math.random() / 4)));
                     game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.4 + (Math.random() / 4)));
@@ -231,6 +233,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                     game.bullets.add(new Anchor(game, (int) x, (int) (y - 10), dx, dy, .5));
                 }else if (artillery.getSelectedItem().equals(("Boomerang"))) {
                     game.bullets.add(new Boomer(game, (int) x, (int) (y - 10), dx, dy, .5, (int)dx));
+                    game.bullets.add(new Boomer(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), .5, (int)dx));
                     game.bullets.add(new Boomer(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), .5, (int)dx));
                 }else if (artillery.getSelectedItem().equals(("PinPoint"))) {
                     game.bullets.add(new Ex(game, (int) (x + (dx * 50) + game.getCurrentWind()), (int) ((y - 10)  + (dy * 50)), dx, dy, .5));
