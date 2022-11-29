@@ -19,8 +19,11 @@ public class GameStatusBar extends JPanel {
     JLabel windLabel = new JLabel("Wind: ");
     JLabel windValue = new JLabel();
     JLabel space = new JLabel("      ");
+    JLabel space2 = new JLabel("      ");
     JLabel playerLabel = new JLabel("Player: ");
     JLabel playerNumber = new JLabel();
+
+    JLabel playerHealth = new JLabel("Heath: ");
 
     public GameStatusBar() {
 
@@ -36,6 +39,9 @@ public class GameStatusBar extends JPanel {
         add(windLabel);
         add(windValue);
 
+        add(space2);
+        add(playerHealth);
+
     }
 
     public void setStatus(Tank t, int wind) {
@@ -48,6 +54,8 @@ public class GameStatusBar extends JPanel {
         //  to the end of an empty string
 
         playerNumber.setText("<html>" + t.getPlayerNumber() + " (" + getStringFromColor(t.playerColor) + ")" + "</html>");
+
+        playerHealth.setText(""+ "Health: " + t.Hp);
 
         // displays wind at the top
         // for numbers below 0 I used abs to return a positive int
