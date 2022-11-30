@@ -192,6 +192,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                 if (artillery.getSelectedItem().equals("Normal Bullet")) {
                     currentTank.getWeaponsCount().put((String) artillery.getSelectedItem(), currentNumber);
                 } else {
+                    currentNumber--;
                     currentTank.getWeaponsCount().put((String) artillery.getSelectedItem(), currentNumber);
                 }
 

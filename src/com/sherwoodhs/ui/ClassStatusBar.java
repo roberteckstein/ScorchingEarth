@@ -68,7 +68,7 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
         HashMap<String, Integer> pirateWeapons = new HashMap<>();
 
         // Putting weapons into their respective classes. Normal Bullet is in them by default
-        sergeantWeapons.put("Mirv", 2);
+        sergeantWeapons.put("MIRV", 2);
         sergeantWeapons.put("Mortar", 1);
         sergeantWeapons.put("Sharp Shot", 3);
 
