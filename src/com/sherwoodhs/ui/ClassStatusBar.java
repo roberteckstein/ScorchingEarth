@@ -177,7 +177,7 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
             game.waitForPlayerFire = false;
         } else if(e.getSource() == infoBtn){
             classFrame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            classFrame.setSize(300, 400);
+            classFrame.setSize(300, 470);
             classInfo.setEditable(false);
             classInfo.setText(classTxt);
             classFrame.add(classInfo);
