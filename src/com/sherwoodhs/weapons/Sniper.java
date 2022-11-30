@@ -37,8 +37,7 @@ public class Sniper extends DefaultBullet{
 
         yPosition += deltaY;
 
-        if (xPosition <= 0 || xPosition >= game.terrain.width)
+        if (xPosition <= 0 || xPosition >= game.terrain.width || yPosition <= 0 || (deltaX+deltaY) == 0)
             alive = false;
-
     }
 }
