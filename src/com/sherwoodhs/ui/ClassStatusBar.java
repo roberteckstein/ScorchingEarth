@@ -41,11 +41,11 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
     JButton infoBtn = new JButton("Class Info");
     JEditorPane classInfo = new JEditorPane("text/html", "");
     String classTxt = "<b>Class Info</b><br>ALL classes contain infinite default bullets." +
-            "<br><br><b>Sargent class</b>" + "<br>Standard Issue, Good ol' reliable." +
+            "<br><br><b>Sergeant class</b>" + "<br>Standard Issue, Good ol' reliable." +
             "<br><br><b>Scientist class</b>" + "<br>Care to test some new weapons, Straight from the lab!" +
             "<br><br><b>Nuclear class</b>" + "<br>A pair of Warheads and whatever is left in the fridge." +
             "<br><br><b>Engineer class</b>" + "<br>All american engineering, the perfect bunker buster." +
-            "<br><br><b>Pirate class</b>" + "<br>Ahoy, Prepare this pack of powerful projectiles perfect for plundering Foes ";
+            "<br><br><b>Pirate class</b>" + "<br>Ahoy, prepare this pack of powerful projectiles perfect for plundering foes.";
 
     public ClassStatusBar(ScorchGame game) {
 
@@ -177,7 +177,7 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
             game.waitForPlayerFire = false;
         } else if(e.getSource() == infoBtn){
             classFrame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            classFrame.setSize(300, 400);
+            classFrame.setSize(300, 470);
             classInfo.setEditable(false);
             classInfo.setText(classTxt);
             classFrame.add(classInfo);
