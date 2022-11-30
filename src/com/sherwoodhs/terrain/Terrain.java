@@ -293,6 +293,7 @@ public class Terrain extends JPanel {
 
         //  Clone to avoid ConcurrentModificationException
         for (DefaultExplosion e : (ArrayList<DefaultExplosion>)game.explosions.clone()) {
+            drawTanks(game.players, g);
             if (!e.isAlive())
                 game.explosions.remove(e);
         }
@@ -300,8 +301,9 @@ public class Terrain extends JPanel {
         if (game.bullets.size() > 0)
             return true;
 
-        if (game.explosions.size() > 0)
+        if (game.explosions.size() > 0) {
             return true;
+        }
 
         //  If we've gotten this far, then there are no more bullets or explosions
         //  that are alive. We're safe to perform a collapse of the terrain.
