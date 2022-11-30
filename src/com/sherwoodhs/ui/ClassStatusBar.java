@@ -60,38 +60,41 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
         REALLY IMPORTANT SECTION HERE FOR WEAPONS PEOPLE AND EVERYONE WORKING ON MORE CLASSES
         */
         // A Hashmap of weapons each class contains
-        HashMap<String, Integer> defaultWeapons = new HashMap<>();
+        HashMap<String, Integer> sargentWeapons = new HashMap<>();
         HashMap<String, Integer> nuclearWeapons = new HashMap<>();
-        HashMap<String, Integer> experimentalWeapons = new HashMap<>();
-        HashMap<String, Integer> testWeapons = new HashMap<>();
+        HashMap<String, Integer> scientistWeapons = new HashMap<>();
+        HashMap<String, Integer> engineerWeapons = new HashMap<>();
+        HashMap<String, Integer> pirateWeapons = new HashMap<>();
 
         // Putting weapons into their respective classes. Normal Bullet is in them by default
-        defaultWeapons.put("MIRV", 2);
+        sargentWeapons.put("Mirv", 2);
+        sargentWeapons.put("Mortar", 1);
+        sargentWeapons.put("Sharp Shot", 3);
 
-        nuclearWeapons.put("Nuclear Bomb", 1);
+        nuclearWeapons.put("Nuclear Bomb", 2);
+        nuclearWeapons.put("Sharp Shot", 3);
+        nuclearWeapons.put("Boomerang", 1);
 
-        experimentalWeapons.put("Flare Bomber", 2);
+        scientistWeapons.put("Flare Bomber", 2);
+        scientistWeapons.put("Skipper", 1);
+        scientistWeapons.put("Impact", 2);
+        scientistWeapons.put("Mirror", 1);
 
-        testWeapons.put("Paper Airplane", 1);
-        testWeapons.put("Mortar", 1);
-        testWeapons.put("Firework", 1);
-        testWeapons.put("Impact", 1);
-        testWeapons.put("Drill", 1);
-        testWeapons.put("Cannon Ball", 1);
-        testWeapons.put("Grapeshot", 1);
-        testWeapons.put("Anchor", 1);
-        testWeapons.put("Boomerang", 1);
-        testWeapons.put("PinPoint", 1);
-        testWeapons.put("Skipper", 1);
-        testWeapons.put("Sharp Shot", 1);
-        testWeapons.put("Mirror", 1);
-        testWeapons.put("Sniper", 1);
+        engineerWeapons.put("Line", 2);
+        engineerWeapons.put("Paper Airplane", 1);
+        engineerWeapons.put("Drill", 1);
+        engineerWeapons.put("Firework", 2);
+
+        pirateWeapons.put("Grape shot", 5);
+        pirateWeapons.put("Cannon Ball", 2);
+        pirateWeapons.put("Anchor", 2);
 
         //Puts Each Class in the Hashmap of classes.
-        classList.put("Medium", defaultWeapons);
+        classList.put("Sargent", sargentWeapons);
         classList.put("Nuclear", nuclearWeapons);
-        classList.put("Experimental", experimentalWeapons);
-        classList.put("Test", testWeapons);
+        classList.put("Scientist", scientistWeapons);
+        classList.put("Engineer", engineerWeapons);
+        classList.put("Pirate", pirateWeapons);
 
         /*
         End of Really Important Section of This file
