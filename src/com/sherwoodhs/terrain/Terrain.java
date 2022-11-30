@@ -294,8 +294,9 @@ public class Terrain extends JPanel {
         //  Clone to avoid ConcurrentModificationException
         for (DefaultExplosion e : (ArrayList<DefaultExplosion>)game.explosions.clone()) {
             drawTanks(game.players, g);
-            if (!e.isAlive())
+            if (!e.isAlive()) {
                 game.explosions.remove(e);
+            }
         }
 
         if (game.bullets.size() > 0)
