@@ -33,10 +33,10 @@ public class FAEBullet extends DefaultBullet {
         if (cansplit && alive && yPosition > lastYPosition) {
             cansplit = false;
             deltaY += 2;
+            ScorchAudioPlayer.play("src/com/sherwoodhs/audio/pop.wav");
             for (int i = 0; i < 3; i++)
                 game.bullets.add(
-                        new DefaultBullet(game, (int)xPosition, yPosition,
-                            0.5-(Math.random()*1.0), -3, .5));
+                        new DefaultBullet(game, (int)xPosition, yPosition, 0.5-(Math.random()*1.0), -3, .5));
 
         }
 

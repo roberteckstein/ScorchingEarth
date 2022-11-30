@@ -33,6 +33,7 @@ public class PaperAirplane extends DefaultBullet{
     @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
         alive = false;
+        ScorchAudioPlayer.play("src/com/sherwoodhs/audio/paper.wav");
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 5, 15, Color.white));
     }
 }
