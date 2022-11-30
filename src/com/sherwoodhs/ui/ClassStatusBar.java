@@ -60,16 +60,16 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
         REALLY IMPORTANT SECTION HERE FOR WEAPONS PEOPLE AND EVERYONE WORKING ON MORE CLASSES
         */
         // A Hashmap of weapons each class contains
-        HashMap<String, Integer> sargentWeapons = new HashMap<>();
+        HashMap<String, Integer> sergeantWeapons = new HashMap<>();
         HashMap<String, Integer> nuclearWeapons = new HashMap<>();
         HashMap<String, Integer> scientistWeapons = new HashMap<>();
         HashMap<String, Integer> engineerWeapons = new HashMap<>();
         HashMap<String, Integer> pirateWeapons = new HashMap<>();
 
         // Putting weapons into their respective classes. Normal Bullet is in them by default
-        sargentWeapons.put("Mirv", 2);
-        sargentWeapons.put("Mortar", 1);
-        sargentWeapons.put("Sharp Shot", 3);
+        sergeantWeapons.put("Mirv", 2);
+        sergeantWeapons.put("Mortar", 1);
+        sergeantWeapons.put("Sharp Shot", 3);
 
         nuclearWeapons.put("Nuclear Bomb", 2);
         nuclearWeapons.put("Sharp Shot", 3);
@@ -90,7 +90,7 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
         pirateWeapons.put("Anchor", 2);
 
         //Puts Each Class in the Hashmap of classes.
-        classList.put("Sargent", sargentWeapons);
+        classList.put("Sergeant", sergeantWeapons);
         classList.put("Nuclear", nuclearWeapons);
         classList.put("Scientist", scientistWeapons);
         classList.put("Engineer", engineerWeapons);
