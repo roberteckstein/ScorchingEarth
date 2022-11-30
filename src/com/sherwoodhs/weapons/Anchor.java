@@ -32,7 +32,7 @@ public class Anchor extends DefaultBullet {
     @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain){
         alive = false;
-        ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
+        ScorchAudioPlayer.play("src/com/sherwoodhs/audio/anchor.wav");
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 37, Color.red));
     }
 }
