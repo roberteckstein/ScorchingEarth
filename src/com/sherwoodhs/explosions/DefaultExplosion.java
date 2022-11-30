@@ -83,6 +83,7 @@ public class DefaultExplosion {
                     double distance2 = distanceCalc(i,30,0,game); // top left corner
                     double distance3 = distanceCalc(i,0,7.5,game); // bottom right corner
                     double distance4 = distanceCalc(i,30,7.5,game); // bottom left corner
+
                     if (distance < maxRadius || distance2 < maxRadius || distance3 < maxRadius || distance4 < maxRadius) { // if distance is pushed
                         checked.Hp --;
                         if (this.color == Color.orange) {
