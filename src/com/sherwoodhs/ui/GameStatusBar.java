@@ -23,7 +23,7 @@ public class GameStatusBar extends JPanel {
     JLabel playerLabel = new JLabel("Player: ");
     JLabel playerNumber = new JLabel();
 
-    JLabel playerHealth = new JLabel("Heath: ");
+    JLabel playerHealth = new JLabel("Health: ");
 
     public GameStatusBar() {
 

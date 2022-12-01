@@ -134,6 +134,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
     //  the tank object passed in
 
     public void setStatus(Tank tank) {
+        setComponentVisibility(true);
 
         currentTank = tank;
 
@@ -144,6 +145,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
     }
 
     public void drawStatusPanel(Tank tank) {
+
         artillery.setSelectedItem(currentTank.getSelectedWeapon());
 
         //  Reset the amount that is available
@@ -161,6 +163,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
 
         // changing fireButton color based on current player
         fireButton.setBackground(currentTank.playerColor);
+
     }
 
     @Override
@@ -251,6 +254,9 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
 
                 game.waitForPlayerFire = false;
                 ScorchAudioPlayer.play("src/com/sherwoodhs/audio/firegun.wav");
+
+                setComponentVisibility(false);
+
             }
         }
 
@@ -263,6 +269,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
     //Slider listeners
     @Override
     public void stateChanged(ChangeEvent e) {
+
         JSlider source = (JSlider) e.getSource();
         if (source == powerSlider) {
             int power = source.getValue();
@@ -288,4 +295,21 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         }
 
     }
-}//e
+
+    private void setComponentVisibility(boolean status) {
+        artillery.setVisible(status);
+        amountLabel.setVisible(status);
+        amountValue.setVisible(status);
+        angleLabel.setVisible(status);
+        angleValue.setVisible(status);
+        decreaseAngleButton.setVisible(status);
+        increaseAngleButton.setVisible(status);
+        angleSlider.setVisible(status);
+        powerLabel.setVisible(status);
+        powerValue.setVisible(status);
+        decreasePowerButton.setVisible(status);
+        increasePowerButton.setVisible(status);
+        powerSlider.setVisible(status);
+        fireButton.setVisible(status);
+    }
+}
