@@ -50,7 +50,6 @@ public class Mirror extends DefaultBullet {
             limit ++;
             gravity *= -1;
             ScorchAudioPlayer.play("src/com/sherwoodhs/audio/magic.wav");
-            explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 17, Color.red));
         } else {
             alive = false;
             ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
