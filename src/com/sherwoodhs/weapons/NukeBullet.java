@@ -26,7 +26,7 @@ public class NukeBullet extends DefaultBullet {
     @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
         alive = false;
-        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 50, Color.orange));
+        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 5, 70, Color.orange));
     }
 
     @Override
