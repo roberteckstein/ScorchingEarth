@@ -9,8 +9,11 @@ import com.sherwoodhs.ui.ScorchAudioPlayer;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static java.lang.Math.floor;
+
 public class Mirror extends DefaultBullet {
     protected int limit;
+    private int moveWind = 0;
     public Mirror(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
         super(game, x, y, deltaX, deltaY, gravity);
         limit = 0;
@@ -19,7 +22,38 @@ public class Mirror extends DefaultBullet {
     @Override
     public void moveBullet() {
 
-        super.moveBullet();
+
+        deltaY += (gravity/5);
+        // gravity
+
+        if (deltaX >= 0.0) {
+            xPosition += (int) deltaX;
+            decX += deltaX - floor(deltaX);
+            if (decX >= 1) {
+                decX --;
+                xPosition ++;
+            }
+        }
+        if (deltaX < 0.0) {
+            xPosition -= Math.abs((int) deltaX);
+            decX -= Math.abs(deltaX) - floor(Math.abs(deltaX));
+            if (decX <= -1) {
+                decX++;
+                xPosition--;
+            }
+        }
+        //x motion
+
+
+        yPosition += deltaY;
+        //y motion
+
+        if ((moveWind % 4 == 0) && (limit == 0)) {
+            deltaX += (wind / 250);
+        }
+        moveWind++;
+        if (xPosition <= 0 || xPosition >= game.terrain.width)
+            alive = false;
 
     }
 
