@@ -35,4 +35,4 @@ public class Anchor extends DefaultBullet {
         ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 37, Color.red));
     }
-}
+}//e

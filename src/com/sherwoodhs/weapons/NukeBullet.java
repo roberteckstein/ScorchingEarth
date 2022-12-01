@@ -46,5 +46,4 @@ public class NukeBullet extends DefaultBullet {
         int [] y = {yPosition-(HEIGHT/2), yPosition+2, yPosition-(HEIGHT/2)};
         g.fillPolygon(x, y, 3);
     }
-//u
 }
