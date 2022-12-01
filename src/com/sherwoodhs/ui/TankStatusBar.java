@@ -46,7 +46,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
     JLabel powerValue = new JLabel();
     JButton decreasePowerButton = new JButton("-");
     JButton increasePowerButton = new JButton("+");
-    JSlider powerSlider = new JSlider(0, 100, 50);
+    JSlider powerSlider = new JSlider(0, 150, 75);
 
     JButton fireButton = new JButton("Fire");
 
