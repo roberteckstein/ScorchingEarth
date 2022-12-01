@@ -46,7 +46,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
     JLabel powerValue = new JLabel();
     JButton decreasePowerButton = new JButton("-");
     JButton increasePowerButton = new JButton("+");
-    JSlider powerSlider = new JSlider(0, 100, 50);
+    JSlider powerSlider = new JSlider(0, 150, 75);
 
     JButton fireButton = new JButton("Fire");
 
@@ -227,7 +227,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
                     game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.25 + (Math.random() / 4)));
                     game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.6), dy + (Math.random() - 0.6), 0.25 + (Math.random() / 3.5)));
                     game.bullets.add(new PaperAirplane(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.7), dy + (Math.random() - 0.7), 0.25 + (Math.random() / 3)));
-                }else if (artillery.getSelectedItem().equals(("Grape shot"))) {
+                }else if (artillery.getSelectedItem().equals(("Grape Shot"))) {
                     game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx, dy, 0.5));
                     game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.4 + (Math.random() / 4)));
                     game.bullets.add(new DefaultBullet(game, (int) x, (int) (y - 10), dx + (Math.random() - 0.5), dy + (Math.random() - 0.5), 0.4 + (Math.random() / 4)));

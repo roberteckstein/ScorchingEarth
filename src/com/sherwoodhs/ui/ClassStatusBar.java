@@ -69,24 +69,24 @@ public class ClassStatusBar extends JPanel implements ActionListener, ItemListen
 
         // Putting weapons into their respective classes. Normal Bullet is in them by default
         sergeantWeapons.put("MIRV", 2);
-        sergeantWeapons.put("Mortar", 1);
+        sergeantWeapons.put("Mortar", 2);
         sergeantWeapons.put("Sharp Shot", 3);
 
         nuclearWeapons.put("Nuclear Bomb", 2);
         nuclearWeapons.put("Sharp Shot", 3);
-        nuclearWeapons.put("Boomerang", 1);
+        nuclearWeapons.put("Boomerang", 2);
 
         scientistWeapons.put("Flare Bomber", 2);
-        scientistWeapons.put("Skipper", 1);
+        scientistWeapons.put("Skipper", 2);
         scientistWeapons.put("Impact", 2);
-        scientistWeapons.put("Mirror", 1);
+        scientistWeapons.put("Mirror", 2);
 
         engineerWeapons.put("Line", 2);
-        engineerWeapons.put("Paper Airplane", 1);
-        engineerWeapons.put("Drill", 1);
+        engineerWeapons.put("Paper Airplane", 2);
+        engineerWeapons.put("Drill", 2);
         engineerWeapons.put("Firework", 2);
 
-        pirateWeapons.put("Grape shot", 5);
+        pirateWeapons.put("Grape Shot", 5);
         pirateWeapons.put("Cannon Ball", 2);
         pirateWeapons.put("Anchor", 2);
 
