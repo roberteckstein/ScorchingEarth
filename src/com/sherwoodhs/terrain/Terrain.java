@@ -8,7 +8,10 @@ import com.sherwoodhs.explosions.DefaultExplosion;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
+import static java.awt.image.BufferedImage.TYPE_INT_ARGB;
 
 public class Terrain extends JPanel {
 
@@ -34,6 +37,12 @@ public class Terrain extends JPanel {
     private Color[][] terrain;
     private int[] terrainHeight;
 
+    //  This is an image in memory that the terrain will be painted to, which
+    //  will be used to copy from whenever it is necessary to repaint the
+    //  playfield.
+
+    private BufferedImage image;
+
     public Terrain(ScorchGame game, int width, int height) {
 
         super();
@@ -45,6 +54,8 @@ public class Terrain extends JPanel {
         this.terrain = new Color[width][height];
         this.terrainHeight = new int[width];
         this.skyColor = Color.black;
+
+        this.image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
         initTerrain();
 
@@ -87,11 +98,12 @@ public class Terrain extends JPanel {
             }
         }
         refreshGroundLevel();
+
     }
 
-    public void drawTerrain(Graphics g) {
+    public void paintTerrain() {
 
-        Graphics2D graphics = (Graphics2D)g;
+        Graphics2D graphics = (Graphics2D)image.getGraphics();
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -107,9 +119,9 @@ public class Terrain extends JPanel {
 
     }
 
-    public void drawTanks(ArrayList<Tank> tanks, Graphics g) {
+    public void paintTanks(ArrayList<Tank> tanks) {
 
-        Graphics2D graphics = (Graphics2D)g;
+        Graphics2D graphics = (Graphics2D)image.getGraphics();
 
         //  If you end up getting a ConcurrentModificationException, look below for
         //  a way to handle this.
@@ -121,9 +133,9 @@ public class Terrain extends JPanel {
 
     }
 
-    public void drawBullets(ArrayList<DefaultBullet> bullets, Graphics g) {
+    public void paintBullets(ArrayList<DefaultBullet> bullets) {
 
-        Graphics2D graphics = (Graphics2D) g;
+        Graphics2D graphics = (Graphics2D)image.getGraphics();
 
         //  Clone the array so that we don't get a ConcurrentModificationException
 
@@ -141,9 +153,9 @@ public class Terrain extends JPanel {
         }
     }
 
-    public void drawExplosions(ArrayList<DefaultExplosion> explosions, Graphics g) {
+    public void paintExplosions(ArrayList<DefaultExplosion> explosions) {
 
-        Graphics2D graphics = (Graphics2D) g;
+        Graphics2D graphics = (Graphics2D)image.getGraphics();
 
         //  Clone the array so that we don't get a ConcurrentModificationException
 
@@ -249,41 +261,27 @@ public class Terrain extends JPanel {
 
     }
 
-    // these var names are arbitrary..
-    boolean drawTerrain = true;
-    boolean drewTerrain = true;
     public void paint(Graphics g) {
 
-        if (drawTerrain) {
-            drawTerrain(g);
-            drawTerrain = false;
-        }
-
-        if (ScorchGame.redrawTank) {
-            drawTerrain(g);
-            drawTanks(game.players, g);
-        }
+        copyBufferedImage(g);
 
         if (animating) {
-            try {
-                Thread.sleep(20);
-            } catch (Exception e) {}
-            if (drewTerrain) {
-                drawTerrain(g);
-                drawTanks(game.players, g);
-                drewTerrain = false;
-            }
-            animating = updateBallisticItems(g);
-        } else {
-            drewTerrain = true;
+            animating = updateBallisticItems();
         }
 
     }
 
-    public boolean updateBallisticItems(Graphics g) {
+    public void copyBufferedImage(Graphics g) {
 
-        drawBullets(game.bullets, g);
-        drawExplosions(game.explosions, g);
+        //  Copy from the buffered image to the graphics context of the panel
+        g.drawImage(image, 0, 0, null);
+
+    }
+
+    public boolean updateBallisticItems() {
+
+        paintBullets(game.bullets);
+        paintExplosions(game.explosions);
 
         //  Clone to avoid ConcurrentModificationException
         for (DefaultBullet b : (ArrayList<DefaultBullet>)game.bullets.clone()) {
@@ -293,7 +291,7 @@ public class Terrain extends JPanel {
 
         //  Clone to avoid ConcurrentModificationException
         for (DefaultExplosion e : (ArrayList<DefaultExplosion>)game.explosions.clone()) {
-            drawTanks(game.players, g);
+            paintTanks(game.players);
             if (!e.isAlive()) {
                 game.explosions.remove(e);
             }
@@ -310,8 +308,6 @@ public class Terrain extends JPanel {
         //  that are alive. We're safe to perform a collapse of the terrain.
 
         collapseTerrain();
-
-        drawTerrain = true;
 
         //  Return false indicating that our animating is complete.
 

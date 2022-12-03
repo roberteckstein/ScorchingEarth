@@ -30,6 +30,8 @@ public class Main {
 
         while (!gameOver) {
 
+            game.renderPlayfield();
+
             game.waitForPlayerFire = true;
 
             //  If we've gone through all the players, go back to the first player. Uses modulus

@@ -104,7 +104,8 @@ public class ScorchGame implements PropertyChangeListener {
         //frame.getContentPane().add(settings, BorderLayout.SOUTH);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+        frame.setResizable(true);
+        frame.pack();
 
         //  Create each player
         for (int i = 0; i < numberOfPlayers; i++) {
@@ -119,9 +120,8 @@ public class ScorchGame implements PropertyChangeListener {
         terrain.repaint();
 
         //  Pack the components, which has the effect of "squishing" them together
-        //  as best as possible, then display the frame.
+        //  as good as possible, then display the frame.
 
-        frame.pack();
         frame.setVisible(true);
 
     }
@@ -141,6 +141,12 @@ public class ScorchGame implements PropertyChangeListener {
         this.currentWind = currentWind;
     }
 
+    public void renderPlayfield() {
+        terrain.paintTerrain();
+        terrain.paintTanks(players);
+        terrain.copyBufferedImage(terrain.getGraphics());
+    }
+
     public void performAnimation() {
         if (terrain.isAnimating()) {
             redrawTank = false;
@@ -150,10 +156,11 @@ public class ScorchGame implements PropertyChangeListener {
     public int getTankPosition(int i){
         return (playerPositions[i]);
     }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         redrawTank = true;
-        terrain.repaint();
+        renderPlayfield();
     }
 
     // Creates a Dialog Box
