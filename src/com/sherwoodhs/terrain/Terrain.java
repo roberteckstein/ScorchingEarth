@@ -258,13 +258,13 @@ public class Terrain extends JPanel {
         }
 
         terrain[i][0] = skyColor;
-
+//2
     }
 
     public void paint(Graphics g) {
 
         try {
-            Thread.sleep(20);
+            Thread.sleep(12);
         } catch (Exception e) {}
 
         copyBufferedImage(g);
