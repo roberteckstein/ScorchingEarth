@@ -13,10 +13,12 @@ import static java.lang.Math.floor;
 
 public class Mirror extends DefaultBullet {
     protected boolean limit;
+    protected int times;
     private int moveWind = 0;
     public Mirror(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
         super(game, x, y, deltaX, deltaY, gravity);
         limit = true;
+        times = 10;
     }
 
     @Override
@@ -83,7 +85,11 @@ public class Mirror extends DefaultBullet {
         limit = !limit;
         gravity *= -1;
         ScorchAudioPlayer.play("src/com/sherwoodhs/audio/magic.wav");
-        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 30, Color.red));
+        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 15, Color.red));
+        times --;
+        if (times == 0){
+            alive = false;
+        }
     }
     //um
 
