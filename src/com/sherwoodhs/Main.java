@@ -11,7 +11,6 @@ public class Main {
 
     public static final int numberOfPlayers = 5;
     public static int alivePlayers;
-
     private static int[] wins = {0,0,0,0,0};
 
     public static void main(String[] args) {
