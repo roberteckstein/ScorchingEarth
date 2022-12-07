@@ -264,7 +264,7 @@ public class Terrain extends JPanel {
     public void paint(Graphics g) {
 
         try {
-            Thread.sleep(12);
+            Thread.sleep(17);
         } catch (Exception e) {}
 
         copyBufferedImage(g);
