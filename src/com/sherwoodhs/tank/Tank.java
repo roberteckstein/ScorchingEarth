@@ -43,7 +43,7 @@ public class Tank {
 
         this.x = x;
         this.gunAngle = gunAngle;
-        this.power = 50;
+        this.power = 75;
         this.playerColor = playerColor;
 
         this.weaponsCount = new HashMap<>();
