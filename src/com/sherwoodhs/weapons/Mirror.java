@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import static java.lang.Math.floor;
 
 public class Mirror extends DefaultBullet {
-    protected int limit;
+    protected boolean limit;
     private int moveWind = 0;
     public Mirror(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
         super(game, x, y, deltaX, deltaY, gravity);
-        limit = 0;
+        limit = true;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Mirror extends DefaultBullet {
         yPosition += deltaY;
         //y motion
 
-        if ((moveWind % 4 == 0) && (limit == 0)) {
+        if ((moveWind % 4 == 0) && (limit == true)) {
             deltaX += (wind / 250);
         }
         moveWind++;
@@ -64,11 +64,11 @@ public class Mirror extends DefaultBullet {
             //  by an explosion. Subclasses can override to generate larger, smaller, or different
             //  colored explosions.
 
-            if ((yPosition > terrain.getGroundLevelAtColumn(xPosition)) && limit == 0) {
+            if ((yPosition > terrain.getGroundLevelAtColumn(xPosition)) && (limit)) {
                 this.explode(explosions, terrain);
-            }else if ((yPosition < terrain.getGroundLevelAtColumn(xPosition)) && limit == 1) {
-                this.explode(explosions, terrain);
-            }
+            }if ((yPosition < terrain.getGroundLevelAtColumn(xPosition)) && (!limit)) {
+            this.explode(explosions, terrain);
+        }
             for (Tank i: Players) {
                 if (!(i.isDestroyed())) {
                     if (((xPosition + xWidth / 2 >= i.getX()) && (xPosition - xWidth / 2 <= i.getX() + 30)) && ((yPosition + yHight / 2 >= i.getY()) && (yPosition - yHight / 2 <= i.getY() + 15))) {
@@ -80,15 +80,10 @@ public class Mirror extends DefaultBullet {
 
     @Override
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
-        if (limit == 0) {
-            limit ++;
-            gravity *= -1;
-            ScorchAudioPlayer.play("src/com/sherwoodhs/audio/magic.wav");
-        } else {
-            alive = false;
-            ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
-            explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 30, Color.red));
-        }
+        limit = !limit;
+        gravity *= -1;
+        ScorchAudioPlayer.play("src/com/sherwoodhs/audio/magic.wav");
+        explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 30, Color.red));
     }
     //um
 
