@@ -122,7 +122,9 @@ public class DefaultBullet {
         moveWind++;
         if (xPosition <= 0 || xPosition >= game.terrain.width)
             alive = false;
-
+        
+        game.bullets.add(new Particle(game, (int)xPosition, yPosition, -deltaX+(2.0-(Math.random()*4.0)), -deltaY+(2.0-(Math.random()*4.0)), 1));
+        
     }
 
     public void checkForTriggeringExplosion(ArrayList<DefaultExplosion> explosions, Terrain terrain, ArrayList<Tank> Players) {
