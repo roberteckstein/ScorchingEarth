@@ -123,7 +123,7 @@ public class DefaultBullet {
         if (xPosition <= 0 || xPosition >= game.terrain.width)
             alive = false;
         
-        game.bullets.add(new Particle(game, (int)xPosition, yPosition, -deltaX+(2.0-(Math.random()*4.0)), -deltaY+(2.0-(Math.random()*4.0)), 1));
+        generateParticle();
         
     }
 
@@ -149,5 +149,7 @@ public class DefaultBullet {
         ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
     }
-    //q
+    public void generateParticle(){
+        game.bullets.add(new Particle(game, (int)xPosition, yPosition, -deltaX+(2.0-(Math.random()*4.0)), -deltaY+(2.0-(Math.random()*4.0)), 1,Color.YELLOW));
+    }
 }
