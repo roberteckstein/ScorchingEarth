@@ -22,8 +22,7 @@ public class MIRVBullet extends DefaultBullet {
             alive = false;
             for (int i = 0; i < 5; i++)
                 game.bullets.add(
-                        new DefaultBullet(game, (int)xPosition, yPosition,
-                            deltaX+(2.0-(Math.random()*4.0)), deltaY, .5));
+                        new DefaultBullet(game, xPosition, yPosition, deltaX+(2.0-(Math.random()*4.0)), deltaY, .5));
 
         }
 

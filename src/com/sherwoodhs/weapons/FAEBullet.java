@@ -1,12 +1,11 @@
 package com.sherwoodhs.weapons;
 
 import com.sherwoodhs.ScorchGame;
-import com.sherwoodhs.explosions.DefaultExplosion;
-import com.sherwoodhs.terrain.Terrain;
+
 import com.sherwoodhs.ui.ScorchAudioPlayer;
 
 import java.awt.*;
-import java.util.ArrayList;
+
 
 public class FAEBullet extends DefaultBullet {
     protected boolean cansplit;
@@ -36,7 +35,7 @@ public class FAEBullet extends DefaultBullet {
             ScorchAudioPlayer.play("src/com/sherwoodhs/audio/pop.wav");
             for (int i = 0; i < 3; i++)
                 game.bullets.add(
-                        new DefaultBullet(game, (int)xPosition, yPosition, 0.5-(Math.random()*1.0), -3, .5));
+                        new DefaultBullet(game, xPosition, yPosition, 0.5-(Math.random()), -3, .5));
 
         }
 

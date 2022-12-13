@@ -150,6 +150,6 @@ public class DefaultBullet {
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
     }
     public void generateParticle(){
-        game.bullets.add(new Particle(game, (int)xPosition, yPosition, -deltaX+(2.0-(Math.random()*4.0)), -deltaY+(2.0-(Math.random()*4.0)), 1,Color.YELLOW));
+        game.bullets.add(new Particle(game, xPosition, yPosition, -deltaX+(2.0-(Math.random()*4.0)), -deltaY+(2.0-(Math.random()*4.0)), 1,Color.YELLOW));
     }
 }

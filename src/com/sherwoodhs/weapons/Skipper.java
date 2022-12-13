@@ -17,7 +17,7 @@ public class Skipper extends DefaultBullet {
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
         alive = false;
         ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
-        game.bullets.add(new Shadowbullet(game, (int) xPosition, yPosition - 100, deltaX, 1, 0.5));
+        game.bullets.add(new Shadowbullet(game, xPosition, yPosition - 100, deltaX, 1, 0.5));
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
     }
 }

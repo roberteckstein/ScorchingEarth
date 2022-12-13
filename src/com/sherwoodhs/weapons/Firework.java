@@ -40,6 +40,6 @@ public class Firework extends DefaultBullet {
         ScorchAudioPlayer.play("src/com/sherwoodhs/audio/fireworks.wav");
         explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, 20, Color.red));
             for (int i = 0; i < 3; i++)
-                game.bullets.add(new Shadowbullet(game, (int) xPosition, yPosition, 2.0 - (Math.random() * 5.5), -3, .5));
+                game.bullets.add(new Shadowbullet(game,xPosition, yPosition, 2.0 - (Math.random() * 5.5), -3, .5));
         }
     }

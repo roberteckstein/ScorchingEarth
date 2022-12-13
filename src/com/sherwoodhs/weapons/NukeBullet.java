@@ -3,7 +3,6 @@ package com.sherwoodhs.weapons;
 import com.sherwoodhs.ScorchGame;
 import com.sherwoodhs.explosions.DefaultExplosion;
 import com.sherwoodhs.terrain.Terrain;
-import com.sherwoodhs.ui.ScorchAudioPlayer;
 
 import java.awt.*;
 import java.util.ArrayList;

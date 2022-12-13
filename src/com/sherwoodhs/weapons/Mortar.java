@@ -32,8 +32,7 @@ public class Mortar extends DefaultBullet {
     public void explode(ArrayList<DefaultExplosion> explosions, Terrain terrain) {
         alive = false;
         if (age > 50) {
-            ScorchAudioPlayer sap = new ScorchAudioPlayer();
-            sap.play("src/com/sherwoodhs/audio/explosion.wav");
+            ScorchAudioPlayer.play("src/com/sherwoodhs/audio/explosion.wav");
             explosions.add(new DefaultExplosion(terrain, xPosition, yPosition, 1, (int) ((age - 30) / 3), Color.red));
         }
     }

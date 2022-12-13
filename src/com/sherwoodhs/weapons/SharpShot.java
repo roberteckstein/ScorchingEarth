@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 import static java.lang.Math.floor;
-
+// This Class isn't used
 public class SharpShot extends DefaultBullet{
     public SharpShot(ScorchGame game, int x, int y, double deltaX, double deltaY, double gravity) {
         super(game, x, y, deltaX, deltaY, gravity);

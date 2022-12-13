@@ -50,7 +50,7 @@ public class Mirror extends DefaultBullet {
         yPosition += deltaY;
         //y motion
 
-        if ((moveWind % 4 == 0) && (limit == true)) {
+        if ((moveWind % 4 == 0) && (limit)) {
             deltaX += (wind / 250);
         }
         moveWind++;

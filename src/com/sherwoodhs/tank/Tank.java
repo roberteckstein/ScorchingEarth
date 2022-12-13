@@ -21,13 +21,11 @@ public class Tank {
 
     private boolean destroyed = false;
 
-    private int playerNumber;
+    private final int playerNumber;
     public Color playerColor;
 
-    private int gunAngle = 90;
+    private int gunAngle;
     private int power;
-
-    private double radius = 15.0;
 
     private HashMap<String, Integer> weaponsCount;
     private String selectedWeapon;
@@ -60,10 +58,12 @@ public class Tank {
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         this.pcs.addPropertyChangeListener(listener);
     }
-
+/*
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         this.pcs.removePropertyChangeListener(listener);
     }
+
+ */
 
     public boolean isDestroyed() {
         return destroyed;
