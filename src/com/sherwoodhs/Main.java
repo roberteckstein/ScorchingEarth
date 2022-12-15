@@ -88,7 +88,7 @@ public class Main {
                 for (int i = 0; i < Main.numberOfPlayers; i++) {
                     Tank updatingTank = game.players.get(i);
                     if (!updatingTank.isDestroyed()){
-                        a.add(i+1);
+                        a.add(i);
                     }
                 }
                 if (a.size() == 0) {
@@ -96,7 +96,7 @@ public class Main {
                 } else {
                     wins[a.get(0)]++; // Add 1 to win counter of winner
                     ScorchAudioPlayer.play("src/com/sherwoodhs/audio/victory.wav");
-                    game.showDialog("🏆 Player " + a.get(0) + " wins!\n Wins:" + getWins(), "Game Over");
+                    game.showDialog("🏆 Player " + (a.get(0) + 1) + " wins!\n Wins:" + getWins(), "Game Over");
                 }
 
                 // Closes current game panel
@@ -111,7 +111,7 @@ public class Main {
     private static String getWins (){
         String str = "";
         for (int i = 0; i < wins.length; i++) {
-            str += "\n  Player " + i + ": " + wins[i];
+            str += "\n  Player " + (i + 1) + ": " + wins[i];
         }
         return(str);
     }
