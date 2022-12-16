@@ -91,6 +91,7 @@ public class Main {
                         a.add(i);
                     }
                 }
+                ScorchAudioPlayer.stop("src/com/sherwoodhs/audio/BGM.wav");
                 if (a.size() == 0) {
                     game.showDialog("😢 Everyone loses.", "Game Over");
                 } else {

@@ -28,12 +28,22 @@ public class ScorchAudioPlayer {
         try {
             Clip clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(new File(filename)));
-            if (filename.equals("BGM.wav")){
+            if (filename.equals("src/com/sherwoodhs/audio/BGM.wav")){
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
             }
             clip.start();
         } catch (Exception exc) {
             exc.printStackTrace(System.out);
         }
+    }
+    public static void stop(String filename){
+        try{
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(new File(filename)));
+            clip.stop();
+        } catch (Exception exc) {
+            exc.printStackTrace(System.out);
+        }
+
     }
 }
