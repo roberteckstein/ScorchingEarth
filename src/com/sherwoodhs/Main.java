@@ -5,7 +5,6 @@ import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.ui.ScorchAudioPlayer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Main {
 
@@ -26,6 +25,7 @@ public class Main {
 
         //  Start with player 1, which is 0 since this is zero-based
         int currentPlayer = 0;
+        ScorchAudioPlayer.play("src/com/sherwoodhs/audio/BGM.wav");
 
         while (!gameOver) {
 
