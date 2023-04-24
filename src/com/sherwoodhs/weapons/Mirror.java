@@ -67,6 +67,7 @@ public class Mirror extends DefaultBullet {
             //  colored explosions.
 
             if ((yPosition > terrain.getGroundLevelAtColumn(xPosition)) && (limit)) {
+                //comment line below to nerf
                 this.explode(explosions, terrain);
             }if ((yPosition < terrain.getGroundLevelAtColumn(xPosition)) && (!limit)) {
             this.explode(explosions, terrain);

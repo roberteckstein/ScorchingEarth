@@ -4,15 +4,27 @@ package com.sherwoodhs;
 import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.ui.ScorchAudioPlayer;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Main {
-
-    public static final int numberOfPlayers = 5;
+    public static int numberOfPlayers = 5;
     public static int alivePlayers;
-    private static int[] wins = {0,0,0,0,0};
+    private static int[] wins;
 //2
     public static void main(String[] args) {
+        try {
+            numberOfPlayers = Integer.parseInt(JOptionPane.showInputDialog(null, "Number of player (2-5): ", "PLAYERS", JOptionPane.QUESTION_MESSAGE));
+            if (numberOfPlayers >= 6 || numberOfPlayers <= 1) {
+                do {
+                    numberOfPlayers = Integer.parseInt(JOptionPane.showInputDialog(null, "Number of player (2-5): ", "PLAYERS", JOptionPane.QUESTION_MESSAGE));
+                } while (numberOfPlayers <= 1 || numberOfPlayers > 5);
+            }
+        } catch(NumberFormatException e){
+            System.exit(0);
+        }
+        wins = new int[numberOfPlayers];
 
         boolean gameOver = false;
         alivePlayers = numberOfPlayers;
