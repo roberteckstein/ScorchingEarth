@@ -37,7 +37,7 @@ public class Main {
 
         //  Start with player 1, which is 0 since this is zero-based
         int currentPlayer = 0;
-        ScorchAudioPlayer.play("src/com/sherwoodhs/audio/BGM.wav");
+        ScorchAudioPlayer.BGM(0);
 
         while (!gameOver) {
 
@@ -103,7 +103,7 @@ public class Main {
                         a.add(i);
                     }
                 }
-                ScorchAudioPlayer.stop("src/com/sherwoodhs/audio/BGM.wav");
+                ScorchAudioPlayer.BGM(1);
                 if (a.size() == 0) {
                     game.showDialog("😢 Everyone loses.", "Game Over");
                 } else {
