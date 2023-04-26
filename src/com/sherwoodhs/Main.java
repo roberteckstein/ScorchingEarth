@@ -11,17 +11,22 @@ public class Main {
     public static int numberOfPlayers = 5;
     public static int alivePlayers;
     private static int[] wins = new int[]{0,0,0,0,0};
+    private static boolean first = true;
 //2
     public static void main(String[] args) {
-        try {
-            numberOfPlayers = Integer.parseInt(JOptionPane.showInputDialog(null, "Number of player (2-5): ", "PLAYERS", JOptionPane.QUESTION_MESSAGE));
-            if (numberOfPlayers >= 6 || numberOfPlayers <= 1) {
-                do {
-                    numberOfPlayers = Integer.parseInt(JOptionPane.showInputDialog(null, "Number of player (2-5): ", "PLAYERS", JOptionPane.ERROR_MESSAGE));
-                } while (numberOfPlayers <= 1 || numberOfPlayers > 5);
+        if(first) {
+            try {
+                numberOfPlayers = Integer.parseInt(JOptionPane.showInputDialog(null, "Number of player (2-5): ", "PLAYERS", JOptionPane.QUESTION_MESSAGE));
+                first = false;
+                if (numberOfPlayers >= 6 || numberOfPlayers <= 1) {
+                    do {
+                        numberOfPlayers = Integer.parseInt(JOptionPane.showInputDialog(null, "Number of player (2-5): ", "PLAYERS", JOptionPane.ERROR_MESSAGE));
+                        first = false;
+                    } while (numberOfPlayers <= 1 || numberOfPlayers > 5);
+                }
+            } catch (NumberFormatException e) {
+                System.exit(0);
             }
-        } catch(NumberFormatException e){
-            System.exit(0);
         }
         boolean gameOver = false;
         alivePlayers = numberOfPlayers;
