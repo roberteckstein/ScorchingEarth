@@ -39,7 +39,7 @@ public class Main {
 
         //  Start with player 1, which is 0 since this is zero-based
         int currentPlayer = 0;
-        ScorchAudioPlayer.playBGM("start");
+        ScorchAudioPlayer.playBGM(ScorchAudioPlayer.Operation.Start);
 
         while (!gameOver) {
 
@@ -105,7 +105,7 @@ public class Main {
                         a.add(i);
                     }
                 }
-                ScorchAudioPlayer.playBGM("");
+                ScorchAudioPlayer.playBGM(ScorchAudioPlayer.Operation.Stop);
                 if (a.size() == 0) {
                     game.showDialog("😢 Everyone loses.", "Game Over");
                 } else {

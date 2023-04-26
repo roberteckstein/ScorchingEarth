@@ -1,5 +1,7 @@
 package com.sherwoodhs.ui;
 
+import com.sun.org.apache.xpath.internal.operations.Operation;
+
 import java.io.*;
 import javax.sound.sampled.*;
 
@@ -34,9 +36,9 @@ public class ScorchAudioPlayer {
         }
     }
     static Clip clip;
-    public static void playBGM(String operation){
+    public static void playBGM(Operation op){
         try {
-            if(operation=="start") {
+            if(op.equals(Operation.Start)) {
                 clip = AudioSystem.getClip();
                 clip.open(AudioSystem.getAudioInputStream(new File("src/com/sherwoodhs/audio/BGM.wav")));
                 clip.start();
@@ -47,5 +49,9 @@ public class ScorchAudioPlayer {
         } catch (Exception exc) {
             exc.printStackTrace(System.out);
         }
+    }
+    public enum Operation{
+        Start,
+        Stop
     }
 }
