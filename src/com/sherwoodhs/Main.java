@@ -5,27 +5,24 @@ import com.sherwoodhs.tank.Tank;
 import com.sherwoodhs.ui.ScorchAudioPlayer;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Main {
     public static int numberOfPlayers = 5;
     public static int alivePlayers;
-    private static int[] wins;
+    private static int[] wins = new int[]{0,0,0,0,0};
 //2
     public static void main(String[] args) {
         try {
             numberOfPlayers = Integer.parseInt(JOptionPane.showInputDialog(null, "Number of player (2-5): ", "PLAYERS", JOptionPane.QUESTION_MESSAGE));
             if (numberOfPlayers >= 6 || numberOfPlayers <= 1) {
                 do {
-                    numberOfPlayers = Integer.parseInt(JOptionPane.showInputDialog(null, "Number of player (2-5): ", "PLAYERS", JOptionPane.QUESTION_MESSAGE));
+                    numberOfPlayers = Integer.parseInt(JOptionPane.showInputDialog(null, "Number of player (2-5): ", "PLAYERS", JOptionPane.ERROR_MESSAGE));
                 } while (numberOfPlayers <= 1 || numberOfPlayers > 5);
             }
         } catch(NumberFormatException e){
             System.exit(0);
         }
-        wins = new int[numberOfPlayers];
-
         boolean gameOver = false;
         alivePlayers = numberOfPlayers;
         //  Randomly generate the current wind from -50 to 50
@@ -37,7 +34,7 @@ public class Main {
 
         //  Start with player 1, which is 0 since this is zero-based
         int currentPlayer = 0;
-        ScorchAudioPlayer.BGM(0);
+        ScorchAudioPlayer.playBGM("start");
 
         while (!gameOver) {
 
@@ -103,7 +100,7 @@ public class Main {
                         a.add(i);
                     }
                 }
-                ScorchAudioPlayer.BGM(1);
+                ScorchAudioPlayer.playBGM("");
                 if (a.size() == 0) {
                     game.showDialog("😢 Everyone loses.", "Game Over");
                 } else {
@@ -123,7 +120,7 @@ public class Main {
 
     private static String getWins (){
         String str = "";
-        for (int i = 0; i < wins.length; i++) {
+        for (int i = 0; i < numberOfPlayers; i++) {
             str += "\n  Player " + (i + 1) + ": " + wins[i];
         }
         return(str);
