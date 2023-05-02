@@ -149,8 +149,8 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
         artillery.setSelectedItem(currentTank.getSelectedWeapon());
 
         //  Reset the amount that is available
-        //  If it's the normal bullet it sets the value label to ∞
-        if (artillery.getSelectedItem().equals("Normal Bullet")) {
+        //  If it's the normal bullet it sets the value label to ∞ 
+        if (Objects.equals(artillery.getSelectedItem(), "Normal Bullet")) {
             amountValue.setText("" + "∞");
         } else {
             amountValue.setText("" + currentTank.getWeaponsCount().get(currentTank.getSelectedWeapon()));
@@ -174,7 +174,7 @@ public class TankStatusBar extends JPanel implements ActionListener, ItemListene
 
         int currentAngle = currentTank.getGunAngle();
         int currentPower = currentTank.getPower();
-        if (e.getSource() == fireButton && game.waitForPlayerFire == true) {
+        if (e.getSource() == fireButton && game.waitForPlayerFire) {
 
             // The fire button has been pressed, so calculate the opening position and
             // movement of the selected bullet type.
